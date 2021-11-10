@@ -15,6 +15,7 @@
 		58AB9B7A273C4CDC005445F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AB9B78273C4CDC005445F3 /* LaunchScreen.storyboard */; };
 		58AB9B85273C4CDC005445F3 /* GymAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B84273C4CDC005445F3 /* GymAppTests.swift */; };
 		58AB9B90273C4CDC005445F3 /* GymAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B8F273C4CDC005445F3 /* GymAppUITests.swift */; };
+		58AB9BA0273C5253005445F3 /* LaunchAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 58AB9B9F273C5253005445F3 /* LaunchAnimation.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		58AB9B8B273C4CDC005445F3 /* GymAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GymAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B8F273C4CDC005445F3 /* GymAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymAppUITests.swift; sourceTree = "<group>"; };
 		58AB9B91273C4CDC005445F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58AB9B9F273C5253005445F3 /* LaunchAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LaunchAnimation.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +101,11 @@
 		58AB9B6C273C4CD8005445F3 /* GymApp */ = {
 			isa = PBXGroup;
 			children = (
+				58AB9B9D273C5208005445F3 /* Assets */,
 				58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */,
 				58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */,
 				58AB9B71273C4CD8005445F3 /* ViewController.swift */,
 				58AB9B73273C4CD8005445F3 /* Main.storyboard */,
-				58AB9B76273C4CDC005445F3 /* Assets.xcassets */,
 				58AB9B78273C4CDC005445F3 /* LaunchScreen.storyboard */,
 				58AB9B7B273C4CDC005445F3 /* Info.plist */,
 			);
@@ -126,6 +128,23 @@
 				58AB9B91273C4CDC005445F3 /* Info.plist */,
 			);
 			path = GymAppUITests;
+			sourceTree = "<group>";
+		};
+		58AB9B9D273C5208005445F3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				58AB9B76273C4CDC005445F3 /* Assets.xcassets */,
+				58AB9B9E273C5217005445F3 /* Lottie */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		58AB9B9E273C5217005445F3 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				58AB9B9F273C5253005445F3 /* LaunchAnimation.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +253,7 @@
 				58AB9B7A273C4CDC005445F3 /* LaunchScreen.storyboard in Resources */,
 				58AB9B77273C4CDC005445F3 /* Assets.xcassets in Resources */,
 				58AB9B75273C4CD8005445F3 /* Main.storyboard in Resources */,
+				58AB9BA0273C5253005445F3 /* LaunchAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
