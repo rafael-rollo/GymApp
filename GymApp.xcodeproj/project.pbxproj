@@ -103,8 +103,18 @@
 				75CA9A9E19BF10F5CBE6CC96 /* Pods-GymAppTests.debug.xcconfig */,
 				FB04471DA3F08F4B5FC25DC1 /* Pods-GymAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		58A8B9D5273C598C0022F023 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */,
+				58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */,
+				58AB9B78273C4CDC005445F3 /* LaunchScreen.storyboard */,
+				58AB9B7B273C4CDC005445F3 /* Info.plist */,
+			);
+			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -133,12 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				58AB9B9D273C5208005445F3 /* Assets */,
-				58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */,
-				58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */,
 				58AB9B71273C4CD8005445F3 /* ViewController.swift */,
 				58AB9B73273C4CD8005445F3 /* Main.storyboard */,
-				58AB9B78273C4CDC005445F3 /* LaunchScreen.storyboard */,
-				58AB9B7B273C4CDC005445F3 /* Info.plist */,
+				58A8B9D5273C598C0022F023 /* SupportingFiles */,
 			);
 			path = GymApp;
 			sourceTree = "<group>";
