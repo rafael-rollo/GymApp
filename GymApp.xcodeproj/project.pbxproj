@@ -27,6 +27,7 @@
 		58A8BA02273D97210022F023 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA01273D97210022F023 /* Page.swift */; };
 		58A8BA04273D9B6C0022F023 /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA03273D9B6C0022F023 /* Carousel.swift */; };
 		58A8BA06273D9F600022F023 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA05273D9F600022F023 /* NextButton.swift */; };
+		58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA08273DA8920022F023 /* LocationPermissionViewController.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -77,6 +78,7 @@
 		58A8BA01273D97210022F023 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		58A8BA03273D9B6C0022F023 /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 		58A8BA05273D9F600022F023 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		58A8BA08273DA8920022F023 /* LocationPermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionViewController.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				58A8B9D8273C5BDF0022F023 /* Launch */,
 				58A8B9DD273D85000022F023 /* Walkthrough */,
+				58A8BA07273DA8580022F023 /* LocationPermission */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -232,6 +235,14 @@
 				58A8BA05273D9F600022F023 /* NextButton.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		58A8BA07273DA8580022F023 /* LocationPermission */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA08273DA8920022F023 /* LocationPermissionViewController.swift */,
+			);
+			path = LocationPermission;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -525,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */,
 				58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */,
 				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
 				58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */,
