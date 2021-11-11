@@ -8,6 +8,10 @@
 import UIKit
 import CoreLocation
 
+protocol LocationPermissionViewControllerDelegate: AnyObject {
+    func locationPermissionViewController(_ viewController: LocationPermissionViewController, didRequest authorizationStatus: CLAuthorizationStatus)
+}
+
 class LocationPermissionViewController: UIViewController {
 
     // MARK: - subviews
@@ -79,8 +83,19 @@ class LocationPermissionViewController: UIViewController {
     
     // MARK: - properties
     private lazy var locationManager = CLLocationManager()
+    
+    weak var delegate: LocationPermissionViewControllerDelegate?
 
     // MARK: - view lifecycle
+    init(delegate: LocationPermissionViewControllerDelegate) {
+        super.init(nibName: nil, bundle: nil)
+        self.delegate = delegate
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         super.loadView()
         setup()
@@ -89,6 +104,8 @@ class LocationPermissionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         shape.animate()
+        
+        locationManager.delegate = self
         
         allowPermissionButton.addTarget(self,
                                         action: #selector(askPermission(_:)),
@@ -100,6 +117,25 @@ class LocationPermissionViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
     }
     
+}
+
+extension LocationPermissionViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        // avoiding initial status load
+        guard status != .notDetermined else { return }
+
+        // give us some time to complete the location dialog's fade-out transition
+        Thread.sleep(forTimeInterval: 0.5)
+
+        if status == .authorizedWhenInUse {
+            delegate?.locationPermissionViewController(self, didRequest: status)
+        } else {
+            showAlert(withTitle: "Warning",
+                      message: "Some features require the phone's location access to work properly.") { [weak self] _ in
+                self?.delegate?.locationPermissionViewController(self!, didRequest: status)
+            }
+        }
+    }
 }
 
 extension LocationPermissionViewController: ViewCode {

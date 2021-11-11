@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
 
     private lazy var label: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .openSans(.bold, size: UIFont.labelFontSize)
         label.text = "Login Screen!"
         return label

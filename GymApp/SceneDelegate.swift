@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import CoreLocation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -80,7 +81,7 @@ extension SceneDelegate: LaunchViewControllerDelegate {
             return
         }
 
-        activeScene = LocationPermissionViewController()
+        activeScene = LocationPermissionViewController(delegate: self)
     }
     
 }
@@ -88,7 +89,15 @@ extension SceneDelegate: LaunchViewControllerDelegate {
 extension SceneDelegate: WalkthroughViewControllerDelegate {
     
     func walkthroughViewControllerDidComplete(_ viewController: WalkthroughViewController) {
-        activeScene = LocationPermissionViewController()
+        activeScene = LocationPermissionViewController(delegate: self)
+    }
+    
+}
+
+extension SceneDelegate: LocationPermissionViewControllerDelegate {
+    
+    func locationPermissionViewController(_ viewController: LocationPermissionViewController, didRequest authorizationStatus: CLAuthorizationStatus) {
+        activeScene = LoginViewController()
     }
     
 }
