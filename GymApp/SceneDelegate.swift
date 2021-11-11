@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             UIView.transition(
                 with: window,
-                duration: 0.3,
+                duration: 0.5,
                 options: .transitionCrossDissolve,
                 animations: nil,
                 completion: nil
@@ -76,10 +76,18 @@ extension SceneDelegate: LaunchViewControllerDelegate {
     func launchViewController(_ viewController: LaunchViewController,
                               animationDidFinish animation: AnimationView) {
         guard Storage.walkthroughHasAlreadyBeenSeen else {
-            activeScene = WalkthroughViewController()
+            activeScene = WalkthroughViewController(delegate: self)
             return
         }
 
+        activeScene = LocationPermissionViewController()
+    }
+    
+}
+
+extension SceneDelegate: WalkthroughViewControllerDelegate {
+    
+    func walkthroughViewControllerDidComplete(_ viewController: WalkthroughViewController) {
         activeScene = LocationPermissionViewController()
     }
     

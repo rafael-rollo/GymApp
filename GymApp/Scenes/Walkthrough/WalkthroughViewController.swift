@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol WalkthroughViewControllerDelegate: AnyObject {
+    func walkthroughViewControllerDidComplete(_ viewController: WalkthroughViewController)
+}
+
 class WalkthroughViewController: UIViewController {
 
     // MARK: - subviews
@@ -86,8 +90,19 @@ class WalkthroughViewController: UIViewController {
     // MARK: - properties
     
     private var currentPage: Int = 0
+    
+    weak var delegate: WalkthroughViewControllerDelegate?
 
     // MARK: - view lifecycle
+    init(delegate: WalkthroughViewControllerDelegate) {
+        super.init(nibName: nil, bundle: nil)
+        self.delegate = delegate
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         super.loadView()
         setup()
@@ -137,8 +152,7 @@ class WalkthroughViewController: UIViewController {
 
     @objc private func completeWalkthrough() {
         Storage.walkthroughHasAlreadyBeenSeen = true
-        
-        debugPrint("Go to geolocation permission screen")
+        delegate?.walkthroughViewControllerDidComplete(self)
     }
     
 }
