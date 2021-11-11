@@ -35,8 +35,8 @@ class WalkthroughViewController: UIViewController {
     
     private lazy var skipButton: UIButton = {
         let atributedTitle = NSAttributedString(string: "Skip", attributes: [
-            NSAttributedString.Key.foregroundColor: UIColor.blue,
-            NSAttributedString.Key.font: UIFont.openSans(.bold, size: UIFont.buttonFontSize)
+            .foregroundColor: UIColor(named: "Relax") ?? .purple,
+            .font: UIFont.openSans(.bold, size: UIFont.smallSystemFontSize)
         ])
 
         let button = UIButton()
