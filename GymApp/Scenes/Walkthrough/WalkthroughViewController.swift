@@ -92,11 +92,12 @@ extension WalkthroughViewController: ViewCode {
     }
 
     func addConstraints() {
-        let upperShapeXOffset = -(upperShape.bounds.width * 0.4)
-        let upperShapeYOffset = -(upperShape.bounds.height * 0.4)
+        let upperShapeXOffset = upperShape.bounds.width * 0.4
+        let upperShapeYOffset = upperShape.bounds.height - view.bounds.height * 0.3
+        
         NSLayoutConstraint.activate([
-            upperShape.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: upperShapeXOffset),
-            upperShape.topAnchor.constraint(equalTo: view.topAnchor, constant: upperShapeYOffset)
+            upperShape.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -upperShapeXOffset),
+            upperShape.topAnchor.constraint(equalTo: view.topAnchor, constant: -upperShapeYOffset)
         ])
         
         NSLayoutConstraint.activate([
