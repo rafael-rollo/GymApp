@@ -10,4 +10,5 @@ import UIKit
 extension UIColor {
     static var terracotta: UIColor? = UIColor(named: "Terracotta")
     static var blueViolet: UIColor? = UIColor(named: "BlueViolet")
+    static var shipGray: UIColor? = UIColor(named: "ShipGray")
 }

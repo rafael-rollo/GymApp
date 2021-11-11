@@ -25,7 +25,8 @@ class LocationPermissionViewController: UIViewController {
     }()
 
     private lazy var markerImageView: UIImageView = {
-        let logo = UIImage(named: "MarkerIcon")?.withTintColor(.secondaryLabel)
+        let logo = UIImage(named: "MarkerIcon")?
+                    .withTintColor(.shipGray ?? .secondaryLabel)
         let imageView = UIImageView(image: logo)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
@@ -49,7 +50,7 @@ class LocationPermissionViewController: UIViewController {
         label.font = .openSans(size: 16)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .secondaryLabel
+        label.textColor = .shipGray
         label.text = "Share your location with Gym.app to find out what gyms and studios are nearby."
         return label
     }()
