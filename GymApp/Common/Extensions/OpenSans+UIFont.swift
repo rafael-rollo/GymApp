@@ -21,7 +21,7 @@ enum OpenSansFonts: String {
 }
 
 extension UIFont {
-    static func openSans(_ font: OpenSansFonts, size: CGFloat) -> UIFont {
+    static func openSans(_ font: OpenSansFonts = .regular, size: CGFloat) -> UIFont {
         guard let font = UIFont(name: font.rawValue, size: size) else {
             fatalError("Failed to load the Open Sans font.")
         }
