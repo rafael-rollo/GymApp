@@ -95,8 +95,11 @@ class WalkthroughViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         upperShape.rotate(by: RotatingShape.Angles.firstStep)
+        
+        skipButton.addTarget(self,
+                             action: #selector(completeWalkthrough),
+                             for: .touchUpInside)
         
         pageControl.addTarget(self,
                               action: #selector(pageControlValueChanged(_:)),
@@ -132,7 +135,7 @@ class WalkthroughViewController: UIViewController {
         nextButton.animate(by: currentPage)
     }
 
-    private func completeWalkthrough() {
+    @objc private func completeWalkthrough() {
         Storage.walkthroughHasAlreadyBeenSeen = true
         
         debugPrint("Go to geolocation permission screen")
