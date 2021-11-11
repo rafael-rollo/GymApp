@@ -46,6 +46,36 @@ class WalkthroughViewController: UIViewController {
         stackView.distribution = .equalSpacing
         return stackView
     }()
+    
+    private lazy var aView: UIView = {
+        return UIView()
+    }()
+
+    private lazy var nextButton: UIButton = {
+        let image = UIImage(systemName: "arrow.forward")?
+            .withRenderingMode(.alwaysTemplate)
+
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(named: "Terracotta")
+        button.tintColor = .white
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
+        button.layer.masksToBounds = true
+        return button
+    }()
+
+    private lazy var footerStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            aView,
+            nextButton
+        ])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
 
     private lazy var label: UILabel = {
         let label = UILabel()
@@ -78,6 +108,7 @@ extension WalkthroughViewController: ViewCode {
         view.addSubview(upperShape)
         view.addSubview(titleStackView)
         view.addSubview(label)
+        view.addSubview(footerStackView)
     }
 
     func addConstraints() {
@@ -102,6 +133,17 @@ extension WalkthroughViewController: ViewCode {
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            nextButton.widthAnchor.constraint(equalToConstant: 48),
+            nextButton.heightAnchor.constraint(equalToConstant: 48)
+        ])
+
+        NSLayoutConstraint.activate([
+            footerStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -48),
+            footerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            footerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
         ])
     }
 
