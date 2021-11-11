@@ -47,6 +47,54 @@ class WalkthroughViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var firstPage: Page = {
+        let page = Page()
+        page.translatesAutoresizingMaskIntoConstraints = false
+        page.image = UIImage(named: "StretchingCharacter")
+        page.title = "Find an activity to love"
+        page.subtitle = "Try yoga, crossfit or anything in between. The choice is yours."
+        return page
+    }()
+
+    private lazy var secondPage: Page = {
+        let page = Page()
+        page.translatesAutoresizingMaskIntoConstraints = false
+        page.image = UIImage(named: "PilatesCharacter")
+        page.title = "Workout close to home or work"
+        page.subtitle = "Discover Gympass wherever you are."
+        return page
+    }()
+
+    private lazy var thirdPage: Page = {
+        let page = Page()
+        page.translatesAutoresizingMaskIntoConstraints = false
+        page.image = UIImage(named: "RunningCharacter")
+        page.title = "Hundreds of activities for one monthly membership"
+        page.subtitle = "With no contracts or membership fees. Enjoy the flexibility."
+        return page
+    }()
+
+    private lazy var contentStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            firstPage, secondPage, thirdPage
+        ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        return stack
+    }()
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.layer.masksToBounds = false
+        scrollView.addSubview(contentStackView)
+        return scrollView
+    }()
+    
     private lazy var pageControl: UIPageControl = {
         let terracotta = UIColor(named: "Terracotta")
 
@@ -83,14 +131,6 @@ class WalkthroughViewController: UIViewController {
         return stackView
     }()
 
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .openSans(.bold, size: UIFont.labelFontSize)
-        label.text = "Walkthrough Scene!"
-        return label
-    }()
-
     // MARK: - view lifecycle
     override func loadView() {
         super.loadView()
@@ -113,7 +153,7 @@ extension WalkthroughViewController: ViewCode {
     func addViews() {
         view.addSubview(upperShape)
         view.addSubview(titleStackView)
-        view.addSubview(label)
+        view.addSubview(scrollView)
         view.addSubview(footerStackView)
     }
 
@@ -137,8 +177,19 @@ extension WalkthroughViewController: ViewCode {
         ])
         
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentStackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 3)
+        ])
+
+        NSLayoutConstraint.activate([
+            scrollView.bottomAnchor.constraint(equalTo: footerStackView.topAnchor, constant: -48),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
         ])
         
         // sorry! Apple doesn't help to do it better 😢
