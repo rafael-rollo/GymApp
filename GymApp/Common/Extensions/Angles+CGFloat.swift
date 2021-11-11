@@ -9,7 +9,7 @@ import UIKit
 
 extension CGFloat {
 
-    static func angle(_ degrees: CGFloat) -> CGFloat {
+    static func angle(from degrees: CGFloat) -> CGFloat {
         return .init(.pi * degrees / 180.0)
     }
 

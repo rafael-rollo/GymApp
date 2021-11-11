@@ -16,12 +16,13 @@ enum ShapeRotationDegree: CGFloat {
 
 class WalkthroughViewController: UIViewController {
 
+    // MARK: - subviews
     private lazy var upperShape: UIImageView = {
         let shape = UIImageView(
             image: UIImage(named: "AnimatedShape")
         )
         shape.translatesAutoresizingMaskIntoConstraints = false
-        shape.transform = CGAffineTransform(rotationAngle: .angle(ShapeRotationDegree.groundZero.rawValue))
+        shape.transform = CGAffineTransform(rotationAngle: .angle(from: ShapeRotationDegree.groundZero.rawValue))
         return shape
     }()
     
@@ -64,6 +65,7 @@ class WalkthroughViewController: UIViewController {
         return label
     }()
 
+    // MARK: - view lifecycle
     override func loadView() {
         super.loadView()
         setup()
@@ -71,14 +73,11 @@ class WalkthroughViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIView.animate(withDuration: 1.0) {
-            
-            let rad = CGFloat.angle(ShapeRotationDegree.firstStep.rawValue)
-            self.upperShape.transform = CGAffineTransform(rotationAngle: rad)
-        }
+        upperShape.rotate(by: ShapeRotationDegree.firstStep.rawValue)
     }
 }
 
+// MARK: - view code
 extension WalkthroughViewController: ViewCode {
     
     func addTheme() {

@@ -22,6 +22,7 @@
 		58A8B9F7273D8BB20022F023 /* Open Sans Semibold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58A8B9ED273D8BB20022F023 /* Open Sans Semibold Italic.ttf */; };
 		58A8B9F8273D8BB20022F023 /* Open Sans Extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58A8B9EE273D8BB20022F023 /* Open Sans Extrabold.ttf */; };
 		58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8B9F9273D8CA00022F023 /* OpenSans+UIFont.swift */; };
+		58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8B9FB273D911A0022F023 /* Animations+UIView.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -67,6 +68,7 @@
 		58A8B9ED273D8BB20022F023 /* Open Sans Semibold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Semibold Italic.ttf"; sourceTree = "<group>"; };
 		58A8B9EE273D8BB20022F023 /* Open Sans Extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Extrabold.ttf"; sourceTree = "<group>"; };
 		58A8B9F9273D8CA00022F023 /* OpenSans+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenSans+UIFont.swift"; sourceTree = "<group>"; };
+		58A8B9FB273D911A0022F023 /* Animations+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animations+UIView.swift"; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				58A8B9E2273D87960022F023 /* Angles+CGFloat.swift */,
 				58A8B9F9273D8CA00022F023 /* OpenSans+UIFont.swift */,
+				58A8B9FB273D911A0022F023 /* Animations+UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */,
+				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
 				58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */,
 				58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */,
 				58A8B9E3273D87960022F023 /* Angles+CGFloat.swift in Sources */,
