@@ -21,7 +21,7 @@ class Page: UIView {
         label.font = .openSans(.bold, size: 24)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = UIColor.init(named: "BlueViolet")
+        label.textColor = .blueViolet
         return label
     }()
 
