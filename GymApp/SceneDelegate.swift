@@ -6,10 +6,27 @@
 //
 
 import UIKit
+import Lottie
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var activeScene: UIViewController? {
+        didSet {
+            guard let window = window else { return }
+
+            UIView.transition(
+                with: window,
+                duration: 0.3,
+                options: .transitionCrossDissolve,
+                animations: nil,
+                completion: nil
+            )
+
+            window.rootViewController = activeScene
+            window.makeKeyAndVisible()
+        }
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,8 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.windowScene = scene
         
         self.window = window
-        self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = LaunchViewController()
+        activeScene = LaunchViewController(delegate: self)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -53,4 +69,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+}
+
+extension SceneDelegate: LaunchViewControllerDelegate {
+    
+    func launchViewController(_ viewController: LaunchViewController,
+                              animationDidFinish animation: AnimationView) {
+        activeScene = WalkthroughViewController()
+    }
+    
 }
