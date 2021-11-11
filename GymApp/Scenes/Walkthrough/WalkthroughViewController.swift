@@ -32,10 +32,34 @@ class WalkthroughViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    private lazy var skipButton: UIButton = {
+        let atributedTitle = NSAttributedString(string: "Skip", attributes: [
+            NSAttributedString.Key.foregroundColor: UIColor.blue,
+            NSAttributedString.Key.font: UIFont.openSans(.bold, size: UIFont.buttonFontSize)
+        ])
+
+        let button = UIButton()
+        button.setAttributedTitle(atributedTitle, for: .normal)
+        return button
+    }()
+
+    private lazy var titleStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            logo,
+            skipButton
+        ])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
 
     private lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .openSans(.bold, size: UIFont.labelFontSize)
         label.text = "Walkthrough Scene!"
         return label
     }()
@@ -63,7 +87,7 @@ extension WalkthroughViewController: ViewCode {
     
     func addViews() {
         view.addSubview(upperShape)
-        view.addSubview(logo)
+        view.addSubview(titleStackView)
         view.addSubview(label)
     }
 
@@ -77,8 +101,12 @@ extension WalkthroughViewController: ViewCode {
         
         NSLayoutConstraint.activate([
             logo.widthAnchor.constraint(equalToConstant: 120),
-            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
-            logo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+        ])
+        
+        NSLayoutConstraint.activate([
+            titleStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
+            titleStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            titleStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
         ])
         
         NSLayoutConstraint.activate([
