@@ -32,6 +32,7 @@
 		58A8BA0F273DB2FF0022F023 /* AnimatedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA0E273DB2FF0022F023 /* AnimatedShape.swift */; };
 		58A8BA11273DCB540022F023 /* Branding+UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA10273DCB540022F023 /* Branding+UIColors.swift */; };
 		58A8BA14273DD0940022F023 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA13273DD0940022F023 /* LoginViewController.swift */; };
+		58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA15273DD2D80022F023 /* Alert+UIViewController.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -87,6 +88,7 @@
 		58A8BA0E273DB2FF0022F023 /* AnimatedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedShape.swift; sourceTree = "<group>"; };
 		58A8BA10273DCB540022F023 /* Branding+UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Branding+UIColors.swift"; sourceTree = "<group>"; };
 		58A8BA13273DD0940022F023 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		58A8BA15273DD2D80022F023 /* Alert+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+UIViewController.swift"; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				58A8B9F9273D8CA00022F023 /* OpenSans+UIFont.swift */,
 				58A8B9FB273D911A0022F023 /* Animations+UIView.swift */,
 				58A8BA10273DCB540022F023 /* Branding+UIColors.swift */,
+				58A8BA15273DD2D80022F023 /* Alert+UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */,
+				58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */,
 				58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */,
 				58A8BA11273DCB540022F023 /* Branding+UIColors.swift in Sources */,
 				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
