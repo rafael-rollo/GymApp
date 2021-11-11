@@ -69,5 +69,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Gym.app requires access to your phone&apos;s location to show amazing activities near you</string>
 </dict>
 </plist>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class LocationPermissionViewController: UIViewController {
 
@@ -75,6 +76,9 @@ class LocationPermissionViewController: UIViewController {
         button.setTitle("Continue", for: .normal)
         return button
     }()
+    
+    // MARK: - properties
+    private lazy var locationManager = CLLocationManager()
 
     // MARK: - view lifecycle
     override func loadView() {
@@ -85,6 +89,15 @@ class LocationPermissionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         shape.animate()
+        
+        allowPermissionButton.addTarget(self,
+                                        action: #selector(askPermission(_:)),
+                                        for: .touchUpInside)
+    }
+    
+    // MARK: - view methods
+    @objc private func askPermission(_ sender: UIButton) {
+        locationManager.requestWhenInUseAuthorization()
     }
     
 }
