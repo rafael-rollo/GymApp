@@ -14,5 +14,19 @@ extension UIView {
             self.transform = CGAffineTransform(rotationAngle: radians)
         }
     }
+    
+    func fadeOut() {
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 0
+            self.isUserInteractionEnabled = false
+        }
+    }
+
+    func fadeIn() {
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 1
+            self.isUserInteractionEnabled = true
+        }
+    }
 
 }

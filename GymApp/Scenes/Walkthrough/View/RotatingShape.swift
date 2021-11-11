@@ -26,11 +26,11 @@ class RotatingShape: UIImageView {
     }
 
     func rotate(byInterpolating xOffset: CGFloat, maxOffset: CGFloat) {
-        let px = interpolatingPolynomial(from: [0.0, maxOffset],
+        let px = interpolatingPolynomial(from: [.zero, maxOffset],
                                          to: [Angles.firstStep, Angles.secondStep])
         let angle = px(xOffset)
 
-        UIView.animate(withDuration: 0.0) { [weak self] in
+        UIView.animate(withDuration: .zero) { [weak self] in
             self?.transform = CGAffineTransform(rotationAngle: angle)
         }
     }

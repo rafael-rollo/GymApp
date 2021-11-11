@@ -95,6 +95,7 @@ class WalkthroughViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         upperShape.rotate(by: RotatingShape.Angles.firstStep)
         
         pageControl.addTarget(self,
@@ -108,8 +109,8 @@ class WalkthroughViewController: UIViewController {
     
     // MARK: - view methods
     @objc private func pageControlValueChanged(_ sender: UIPageControl) {
-        currentPage = sender.currentPage
-        carousel.snapToPage(currentPage)
+        self.currentPage = sender.currentPage
+        carousel.snapToPage(self.currentPage)
     }
     
     @objc private func nextButtonClicked(_ sender: UIButton) {
@@ -121,9 +122,18 @@ class WalkthroughViewController: UIViewController {
         currentPage += 1
         carousel.snapToPage(currentPage)
     }
+    
+    private func animateViews(carouselScrollOffset scrollOffset: CGFloat) {
+        currentPage == 2 ? skipButton.fadeOut() : skipButton.fadeIn()
+
+        upperShape.rotate(byInterpolating: scrollOffset,
+                          maxOffset: carousel.bounds.width)
+
+        nextButton.animate(by: currentPage)
+    }
 
     private func completeWalkthrough() {
-        debugPrint("Go to login")
+        debugPrint("Go to geolocation permission screen")
     }
     
 }
@@ -131,12 +141,12 @@ class WalkthroughViewController: UIViewController {
 // MARK: - Carousel delegate
 extension WalkthroughViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
-        pageControl.currentPage = currentPage
+        let scrollOffset = scrollView.contentOffset.x
 
-        nextButton.animate(by: currentPage)
-        upperShape.rotate(byInterpolating: scrollView.contentOffset.x,
-                          maxOffset: scrollView.bounds.width)
+        self.currentPage = Int(scrollOffset / scrollView.bounds.width)
+        pageControl.currentPage = self.currentPage
+
+        animateViews(carouselScrollOffset: scrollOffset)
     }
 }
 
