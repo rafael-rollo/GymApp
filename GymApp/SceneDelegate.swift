@@ -81,7 +81,12 @@ extension SceneDelegate: LaunchViewControllerDelegate {
             return
         }
 
-        activeScene = LocationPermissionViewController(delegate: self)
+        guard Storage.locationPermissionHasAlreadyBeenRequested else {
+            activeScene = LocationPermissionViewController(delegate: self)
+            return
+        }
+
+        activeScene = LoginViewController()
     }
     
 }

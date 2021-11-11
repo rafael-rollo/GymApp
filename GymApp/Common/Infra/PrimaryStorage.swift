@@ -29,6 +29,9 @@ private struct UserDefaultInfo<T> {
 }
 
 enum Storage {
+    /**
+     Walkthrought completion related info
+     */
     private static var walkthroughInfo = UserDefaultInfo(key: "completedWalkthrough", defaultValue: false)
 
     static var walkthroughHasAlreadyBeenSeen: Bool {
@@ -37,6 +40,20 @@ enum Storage {
         }
         set {
             walkthroughInfo.set(newValue)
+        }
+    }
+    
+    /**
+     Location Permission screen related info
+     */
+    private static var locationPermissionRequestInfo = UserDefaultInfo(key: "locationPermissionRequested", defaultValue: false)
+
+    static var locationPermissionHasAlreadyBeenRequested: Bool {
+        get {
+            return locationPermissionRequestInfo.get()
+        }
+        set {
+            locationPermissionRequestInfo.set(newValue)
         }
     }
 }

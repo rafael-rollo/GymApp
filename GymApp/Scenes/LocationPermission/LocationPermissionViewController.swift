@@ -108,13 +108,28 @@ class LocationPermissionViewController: UIViewController {
         locationManager.delegate = self
         
         allowPermissionButton.addTarget(self,
-                                        action: #selector(askPermission(_:)),
+                                        action: #selector(showPermissionRequestDialog(_:)),
                                         for: .touchUpInside)
     }
     
     // MARK: - view methods
-    @objc private func askPermission(_ sender: UIButton) {
+    @objc private func showPermissionRequestDialog(_ sender: UIButton) {
         locationManager.requestWhenInUseAuthorization()
+    }
+    
+    private func completeRequest(with status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            delegate?.locationPermissionViewController(self, didRequest: status)
+
+        } else {
+            let warning = "Some features require the phone's location access to work properly."
+
+            showAlert(withTitle: "Warning", message: warning) { [weak self] _ in
+                self?.delegate?.locationPermissionViewController(self!, didRequest: status)
+            }
+        }
+
+        Storage.locationPermissionHasAlreadyBeenRequested = true
     }
     
 }
@@ -126,15 +141,7 @@ extension LocationPermissionViewController: CLLocationManagerDelegate {
 
         // give us some time to complete the location dialog's fade-out transition
         Thread.sleep(forTimeInterval: 0.5)
-
-        if status == .authorizedWhenInUse {
-            delegate?.locationPermissionViewController(self, didRequest: status)
-        } else {
-            showAlert(withTitle: "Warning",
-                      message: "Some features require the phone's location access to work properly.") { [weak self] _ in
-                self?.delegate?.locationPermissionViewController(self!, didRequest: status)
-            }
-        }
+        completeRequest(with: status)
     }
 }
 
