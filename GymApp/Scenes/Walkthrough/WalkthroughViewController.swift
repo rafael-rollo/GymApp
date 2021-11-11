@@ -135,6 +135,8 @@ extension WalkthroughViewController: UIScrollViewDelegate {
         pageControl.currentPage = currentPage
 
         nextButton.animate(by: currentPage)
+        upperShape.rotate(byInterpolating: scrollView.contentOffset.x,
+                          maxOffset: scrollView.bounds.width)
     }
 }
 
