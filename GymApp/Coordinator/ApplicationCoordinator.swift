@@ -11,6 +11,7 @@ import CoreLocation
 
 class ApplicationCoordinator: Coordinator {
 
+    // MARK: - properties
     let window: UIWindow
 
     internal var rootViewController: UIViewController? {
@@ -27,6 +28,9 @@ class ApplicationCoordinator: Coordinator {
             window.makeKeyAndVisible()
         }
     }
+    
+    // MARK: - dependencies to be injected
+    private lazy var locationManager = CLLocationManager()
 
     init(window: UIWindow) {
         self.window = window
@@ -50,7 +54,7 @@ extension ApplicationCoordinator: LaunchViewControllerDelegate {
         }
 
         guard Storage.locationPermissionHasAlreadyBeenRequested else {
-            rootViewController = LocationPermissionViewController(delegate: self)
+            rootViewController = LocationPermissionViewController(delegate: self, locationManager: self.locationManager)
             return
         }
 
@@ -62,7 +66,7 @@ extension ApplicationCoordinator: LaunchViewControllerDelegate {
 extension ApplicationCoordinator: WalkthroughViewControllerDelegate {
     
     func walkthroughViewControllerDidComplete(_ viewController: WalkthroughViewController) {
-        rootViewController = LocationPermissionViewController(delegate: self)
+        rootViewController = LocationPermissionViewController(delegate: self, locationManager: self.locationManager)
     }
     
 }

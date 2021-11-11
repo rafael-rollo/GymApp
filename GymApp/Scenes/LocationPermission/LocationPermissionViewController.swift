@@ -82,14 +82,16 @@ class LocationPermissionViewController: UIViewController {
     }()
     
     // MARK: - properties
-    private lazy var locationManager = CLLocationManager()
+    private var locationManager: CLLocationManager
     
     weak var delegate: LocationPermissionViewControllerDelegate?
 
     // MARK: - view lifecycle
-    init(delegate: LocationPermissionViewControllerDelegate) {
-        super.init(nibName: nil, bundle: nil)
+    init(delegate: LocationPermissionViewControllerDelegate, locationManager: CLLocationManager) {
         self.delegate = delegate
+        self.locationManager = locationManager
+        
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
