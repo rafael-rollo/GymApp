@@ -55,6 +55,11 @@ class Carousel: UIScrollView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func snapToPage(_ page: Int) {
+        let point = CGPoint(x: CGFloat(page) * bounds.width, y: 0)
+        setContentOffset(point, animated: true)
+    }
 }
 
 extension Carousel: ViewCode {
