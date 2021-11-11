@@ -8,23 +8,29 @@
 import UIKit
 
 enum ShapeRotationDegree: CGFloat {
-    case original = -145
+    case groundZero = -150
     case firstStep = -130
     case secondStep = -160
     case thirdStep = -190
 }
 
 class WalkthroughViewController: UIViewController {
-    
-    private var currentStep: Int = 0
 
     private lazy var upperShape: UIImageView = {
         let shape = UIImageView(
             image: UIImage(named: "AnimatedShape")
         )
         shape.translatesAutoresizingMaskIntoConstraints = false
-        shape.transform = CGAffineTransform(rotationAngle: .angle(ShapeRotationDegree.original.rawValue))
+        shape.transform = CGAffineTransform(rotationAngle: .angle(ShapeRotationDegree.groundZero.rawValue))
         return shape
+    }()
+    
+    private lazy var logo: UIImageView = {
+        let logo = UIImage(named: "GymAppLogo")?.withTintColor(.white)
+        let imageView = UIImageView(image: logo)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
 
     private lazy var label: UILabel = {
@@ -57,6 +63,7 @@ extension WalkthroughViewController: ViewCode {
     
     func addViews() {
         view.addSubview(upperShape)
+        view.addSubview(logo)
         view.addSubview(label)
     }
 
@@ -66,6 +73,12 @@ extension WalkthroughViewController: ViewCode {
         NSLayoutConstraint.activate([
             upperShape.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: upperShapeXOffset),
             upperShape.topAnchor.constraint(equalTo: view.topAnchor, constant: upperShapeYOffset)
+        ])
+        
+        NSLayoutConstraint.activate([
+            logo.widthAnchor.constraint(equalToConstant: 120),
+            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
+            logo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
         ])
         
         NSLayoutConstraint.activate([
