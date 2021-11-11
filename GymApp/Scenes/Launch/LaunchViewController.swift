@@ -53,7 +53,7 @@ class LaunchViewController: UIViewController {
 extension LaunchViewController: ViewCode {
     
     func addTheme() {
-        view.backgroundColor = UIColor(named: "Terracotta")
+        view.backgroundColor = .terracotta
     }
     
     func addViews() {
