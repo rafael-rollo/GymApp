@@ -47,8 +47,15 @@ class WalkthroughViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var aView: UIView = {
-        return UIView()
+    private lazy var pageControl: UIPageControl = {
+        let terracotta = UIColor(named: "Terracotta")
+
+        let pageControll = UIPageControl()
+        pageControll.translatesAutoresizingMaskIntoConstraints = false
+        pageControll.numberOfPages = 3
+        pageControll.currentPageIndicatorTintColor = terracotta
+        pageControll.pageIndicatorTintColor = terracotta?.withAlphaComponent(0.5)
+        return pageControll
     }()
 
     private lazy var nextButton: UIButton = {
@@ -56,7 +63,6 @@ class WalkthroughViewController: UIViewController {
             .withRenderingMode(.alwaysTemplate)
 
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "Terracotta")
         button.tintColor = .white
         button.setImage(image, for: .normal)
@@ -67,7 +73,7 @@ class WalkthroughViewController: UIViewController {
 
     private lazy var footerStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-            aView,
+            pageControl,
             nextButton
         ])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -133,6 +139,11 @@ extension WalkthroughViewController: ViewCode {
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        // sorry! Apple doesn't help to do it better 😢
+        NSLayoutConstraint.activate([
+            pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
