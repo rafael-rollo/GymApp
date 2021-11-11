@@ -9,6 +9,13 @@ import UIKit
 
 class LocationPermissionViewController: UIViewController {
 
+    // MARK: - subviews
+    private lazy var shape: AnimatedShape = {
+        let shape = AnimatedShape()
+        shape.translatesAutoresizingMaskIntoConstraints = false
+        return shape
+    }()
+    
     private lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +31,7 @@ class LocationPermissionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        shape.animate()
     }
     
 }
@@ -35,10 +43,21 @@ extension LocationPermissionViewController: ViewCode {
     }
     
     func addViews() {
+        view.addSubview(shape)
         view.addSubview(label)
     }
 
     func addConstraints() {
+        let shapeXOffset = shape.bounds.width * 0.37
+        let shapeYOffset = shape.bounds.height - view.bounds.height * 0.3
+
+        NSLayoutConstraint.activate([
+            shape.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                           constant: -shapeXOffset),
+            shape.topAnchor.constraint(equalTo: view.topAnchor,
+                                       constant: -shapeYOffset)
+        ])
+        
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)

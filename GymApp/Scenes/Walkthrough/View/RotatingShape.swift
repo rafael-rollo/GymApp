@@ -16,7 +16,7 @@ class RotatingShape: UIImageView {
         static var thirdStep: CGFloat = .angle(from: -190)
     }
 
-    override init(image: UIImage? = UIImage(named: "AnimatedShape")) {
+    override init(image: UIImage? = UIImage(named: "Shape")) {
         super.init(image: image)
         transform = CGAffineTransform(rotationAngle: Angles.groundZero)
     }
