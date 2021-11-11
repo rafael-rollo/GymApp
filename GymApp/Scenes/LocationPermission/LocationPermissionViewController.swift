@@ -38,7 +38,7 @@ class LocationPermissionViewController: UIViewController {
         label.font = .openSans(.bold, size: 24)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = UIColor.init(named: "Relax")
+        label.textColor = UIColor.init(named: "BlueViolet")
         label.text = "Share location"
         return label
     }()
