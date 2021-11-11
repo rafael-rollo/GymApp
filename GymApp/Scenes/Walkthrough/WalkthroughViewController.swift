@@ -133,6 +133,8 @@ class WalkthroughViewController: UIViewController {
     }
 
     private func completeWalkthrough() {
+        Storage.walkthroughHasAlreadyBeenSeen = true
+        
         debugPrint("Go to geolocation permission screen")
     }
     

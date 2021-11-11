@@ -75,7 +75,12 @@ extension SceneDelegate: LaunchViewControllerDelegate {
     
     func launchViewController(_ viewController: LaunchViewController,
                               animationDidFinish animation: AnimationView) {
-        activeScene = WalkthroughViewController()
+        guard Storage.walkthroughHasAlreadyBeenSeen else {
+            activeScene = WalkthroughViewController()
+            return
+        }
+
+        activeScene = LocationPermissionViewController()
     }
     
 }
