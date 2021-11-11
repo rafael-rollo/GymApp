@@ -63,6 +63,7 @@ extension NextButton: ViewCode {
         layer.cornerRadius = size.height / 2
         layer.masksToBounds = true
         setImage(image, for: .normal)
+        titleLabel?.font = .openSans(.bold, size: 14)
     }
 
     func addConstraints() {
