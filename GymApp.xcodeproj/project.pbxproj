@@ -23,6 +23,7 @@
 		58A8B9F8273D8BB20022F023 /* Open Sans Extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58A8B9EE273D8BB20022F023 /* Open Sans Extrabold.ttf */; };
 		58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8B9F9273D8CA00022F023 /* OpenSans+UIFont.swift */; };
 		58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8B9FB273D911A0022F023 /* Animations+UIView.swift */; };
+		58A8B9FF273D93090022F023 /* RotatingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8B9FE273D93090022F023 /* RotatingShape.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -69,6 +70,7 @@
 		58A8B9EE273D8BB20022F023 /* Open Sans Extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Extrabold.ttf"; sourceTree = "<group>"; };
 		58A8B9F9273D8CA00022F023 /* OpenSans+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenSans+UIFont.swift"; sourceTree = "<group>"; };
 		58A8B9FB273D911A0022F023 /* Animations+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animations+UIView.swift"; sourceTree = "<group>"; };
+		58A8B9FE273D93090022F023 /* RotatingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingShape.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		58A8B9FD273D929C0022F023 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58A8B9FE273D93090022F023 /* RotatingShape.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		58AB9B61273C4CD7005445F3 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +251,7 @@
 			children = (
 				58AB9B9D273C5208005445F3 /* Assets */,
 				58A8B9D9273C5C940022F023 /* Common */,
+				58A8B9FD273D929C0022F023 /* Views */,
 				58A8B9D7273C5BD00022F023 /* Scenes */,
 				58A8B9D5273C598C0022F023 /* SupportingFiles */,
 			);
@@ -511,6 +522,7 @@
 				58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */,
 				58A8B9E3273D87960022F023 /* Angles+CGFloat.swift in Sources */,
 				58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */,
+				58A8B9FF273D93090022F023 /* RotatingShape.swift in Sources */,
 				58A8B9DC273C5CB10022F023 /* ViewCode.swift in Sources */,
 				58A8B9E0273D85330022F023 /* WalkthroughViewController.swift in Sources */,
 			);

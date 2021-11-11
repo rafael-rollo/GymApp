@@ -9,9 +9,8 @@ import UIKit
 
 extension UIView {
 
-    func rotate(by degrees: CGFloat) {
+    func rotate(by radians: CGFloat) {
         UIView.animate(withDuration: 1) {
-            let radians = CGFloat.angle(from: degrees)
             self.transform = CGAffineTransform(rotationAngle: radians)
         }
     }

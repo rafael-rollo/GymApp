@@ -7,22 +7,12 @@
 
 import UIKit
 
-enum ShapeRotationDegree: CGFloat {
-    case groundZero = -150
-    case firstStep = -130
-    case secondStep = -160
-    case thirdStep = -190
-}
-
 class WalkthroughViewController: UIViewController {
 
     // MARK: - subviews
-    private lazy var upperShape: UIImageView = {
-        let shape = UIImageView(
-            image: UIImage(named: "AnimatedShape")
-        )
+    private lazy var upperShape: RotatingShape = {
+        let shape = RotatingShape()
         shape.translatesAutoresizingMaskIntoConstraints = false
-        shape.transform = CGAffineTransform(rotationAngle: .angle(from: ShapeRotationDegree.groundZero.rawValue))
         return shape
     }()
     
@@ -73,7 +63,7 @@ class WalkthroughViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        upperShape.rotate(by: ShapeRotationDegree.firstStep.rawValue)
+        upperShape.rotate(by: RotatingShape.Angles.firstStep)
     }
 }
 
@@ -91,7 +81,7 @@ extension WalkthroughViewController: ViewCode {
     }
 
     func addConstraints() {
-        let upperShapeXOffset = upperShape.bounds.width * 0.4
+        let upperShapeXOffset = upperShape.bounds.width * 0.37
         let upperShapeYOffset = upperShape.bounds.height - view.bounds.height * 0.3
         
         NSLayoutConstraint.activate([
