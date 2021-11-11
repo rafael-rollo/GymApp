@@ -65,16 +65,9 @@ class WalkthroughViewController: UIViewController {
         return pageControll
     }()
 
-    private lazy var nextButton: UIButton = {
-        let image = UIImage(systemName: "arrow.forward")?
-            .withRenderingMode(.alwaysTemplate)
-
-        let button = UIButton()
-        button.backgroundColor = UIColor(named: "Terracotta")
-        button.tintColor = .white
-        button.setImage(image, for: .normal)
-        button.layer.cornerRadius = 24
-        button.layer.masksToBounds = true
+    private lazy var nextButton: NextButton = {
+        let button = NextButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -93,7 +86,6 @@ class WalkthroughViewController: UIViewController {
     // MARK: - properties
     
     private var currentPage: Int = 0
-    private var nextButtonWidthConstraint: NSLayoutConstraint?
 
     // MARK: - view lifecycle
     override func loadView() {
@@ -130,35 +122,6 @@ class WalkthroughViewController: UIViewController {
         carousel.snapToPage(currentPage)
     }
 
-    private func animateNextButton() {
-        let goingToLastPage = currentPage == 2
-
-        if goingToLastPage {
-            nextButtonWidthConstraint?.constant = 150
-
-            UIView.transition(with: nextButton, duration: 0.5,
-                    options: .showHideTransitionViews) { [weak self] in
-                self?.view.layoutIfNeeded()
-
-                self?.nextButton.setImage(nil, for: .normal)
-                self?.nextButton.setTitle("Get started!", for: .normal)
-            }
-
-        } else {
-            let image = UIImage(systemName: "arrow.forward")?
-                .withRenderingMode(.alwaysTemplate)
-
-            nextButtonWidthConstraint?.constant = 48
-            UIView.transition(with: nextButton, duration: 0.5,
-                    options: .showHideTransitionViews) { [weak self] in
-                self?.view.layoutIfNeeded()
-
-                self?.nextButton.setImage(image, for: .normal)
-                self?.nextButton.setTitle(nil, for: .normal)
-            }
-        }
-    }
-
     private func completeWalkthrough() {
         debugPrint("Go to login")
     }
@@ -171,7 +134,7 @@ extension WalkthroughViewController: UIScrollViewDelegate {
         currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         pageControl.currentPage = currentPage
 
-        animateNextButton()
+        nextButton.animate(by: currentPage)
     }
 }
 
@@ -218,12 +181,6 @@ extension WalkthroughViewController: ViewCode {
         // sorry! Apple doesn't help to do it better 😢
         NSLayoutConstraint.activate([
             pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -16)
-        ])
-        
-        nextButtonWidthConstraint = nextButton.widthAnchor.constraint(equalToConstant: 48)
-        NSLayoutConstraint.activate([
-            nextButtonWidthConstraint!,
-            nextButton.heightAnchor.constraint(equalToConstant: 48)
         ])
 
         NSLayoutConstraint.activate([
