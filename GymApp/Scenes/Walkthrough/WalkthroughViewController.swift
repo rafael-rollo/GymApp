@@ -50,6 +50,7 @@ class WalkthroughViewController: UIViewController {
     private lazy var carousel: Carousel = {
         let carousel = Carousel()
         carousel.translatesAutoresizingMaskIntoConstraints = false
+        carousel.delegate = self
         return carousel
     }()
     
@@ -98,6 +99,25 @@ class WalkthroughViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         upperShape.rotate(by: RotatingShape.Angles.firstStep)
+        
+        pageControl.addTarget(self,
+                              action: #selector(pageControlValueChanged(_:)),
+                              for: .valueChanged)
+    }
+    
+    // MARK: - view methods
+    @objc private func pageControlValueChanged(_ sender: UIPageControl) {
+        let point = CGPoint(x: CGFloat(sender.currentPage) * carousel.bounds.width, y: 0)
+        carousel.setContentOffset(point, animated: true)
+    }
+    
+}
+
+// MARK: - Carousel delegate
+extension WalkthroughViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPage = scrollView.contentOffset.x / scrollView.bounds.width
+        pageControl.currentPage = Int(currentPage)
     }
 }
 

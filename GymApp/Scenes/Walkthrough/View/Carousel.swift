@@ -9,8 +9,6 @@ import UIKit
 
 class Carousel: UIScrollView {
 
-    private var numberOfPages: Int = 3
-
     private lazy var firstPage: Page = {
         let page = Page()
         page.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +77,7 @@ extension Carousel: ViewCode {
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentStackView.heightAnchor.constraint(equalTo: heightAnchor),
             contentStackView.widthAnchor.constraint(equalTo: widthAnchor,
-                                                    multiplier: CGFloat(numberOfPages))
+                                                    multiplier: 3)
         ])
     }
 
