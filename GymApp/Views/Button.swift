@@ -40,6 +40,16 @@ class Button: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.backgroundColor = self?.style.backgroundColor?.withAlphaComponent(0.8)
+        } completion: { [weak self] _ in
+            self?.backgroundColor = self?.style.backgroundColor
+        }
+
+        super.touchesBegan(touches, with: event)
+    }
 }
 
 extension Button: ViewCode {
