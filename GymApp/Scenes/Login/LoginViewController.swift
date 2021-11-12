@@ -34,14 +34,43 @@ class LoginViewController: UIViewController {
         label.font = .openSans(size: 14)
         label.textColor = .secondaryLabel
         label.text = "It's the one you used to sign up for Gym.app"
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
         return label
+    }()
+    
+    private lazy var editEmailButton: UIButton = {
+        let image = UIImage(named: "PencilIcon")?
+            .withTintColor(.secondaryLabel)
+
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(image, for: .normal)
+        button.isHidden = true
+        return button
+    }()
+
+    private lazy var buttonWrapper: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(editEmailButton)
+        return view
+    }()
+
+    private lazy var descriptionStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            descriptionLabel, buttonWrapper
+        ])
+        stack.axis = .horizontal
+        stack.alignment = .fill
+        stack.distribution = .fill
+        stack.spacing = 4
+        return stack
     }()
 
     private lazy var titlesView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [
-            titleLabel, descriptionLabel
+            titleLabel, descriptionStack
         ])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
@@ -61,6 +90,16 @@ class LoginViewController: UIViewController {
         return input
     }()
     
+    private lazy var passwordTextInput: TextInput = {
+        let input = TextInput()
+        input.translatesAutoresizingMaskIntoConstraints = false
+        input.autocapitalizationType = .none
+        input.title = "Password"
+        input.isSecureTextEntry = true
+        input.isHidden = true
+        return input
+    }()
+    
     private lazy var submitButton: Button = {
         let button = Button()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +115,21 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        submitButton.addTarget(self,
+                               action: #selector(submitButtonPressed(_:)),
+                               for: .touchUpInside)
     }
+    
+    @objc private func submitButtonPressed(_ sender: UIButton) {
+        titleLabel.text = "Now, your password"
+        descriptionLabel.text = emailTextInput.text
+        editEmailButton.isHidden = false
+
+        emailTextInput.isHidden = true
+        passwordTextInput.isHidden = false
+    }
+    
 }
 
 extension LoginViewController: ViewCode {
@@ -89,6 +142,7 @@ extension LoginViewController: ViewCode {
         view.addSubview(logo)
         view.addSubview(titlesView)
         view.addSubview(emailTextInput)
+        view.addSubview(passwordTextInput)
         view.addSubview(submitButton)
     }
 
@@ -104,11 +158,22 @@ extension LoginViewController: ViewCode {
             titlesView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             titlesView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
         ])
+        
+        NSLayoutConstraint.activate([
+            editEmailButton.widthAnchor.constraint(equalToConstant: 18),
+            editEmailButton.heightAnchor.constraint(equalToConstant: 18)
+        ])
 
         NSLayoutConstraint.activate([
             emailTextInput.topAnchor.constraint(equalTo: titlesView.bottomAnchor, constant: 24),
             emailTextInput.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
             emailTextInput.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            passwordTextInput.topAnchor.constraint(equalTo: titlesView.bottomAnchor, constant: 24),
+            passwordTextInput.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
+            passwordTextInput.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
         ])
         
         NSLayoutConstraint.activate([
