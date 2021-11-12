@@ -285,7 +285,6 @@
 		58A8BA12273DD07F0022F023 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				58A8BA1C273EF3680022F023 /* View */,
 				58A8BA13273DD0940022F023 /* LoginViewController.swift */,
 			);
 			path = Login;
@@ -300,12 +299,12 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		58A8BA1C273EF3680022F023 /* View */ = {
+		58A8BA1F273EF6AD0022F023 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				58A8BA1D273EF3850022F023 /* TextField.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -336,6 +335,7 @@
 				58AB9B9D273C5208005445F3 /* Assets */,
 				58A8B9D9273C5C940022F023 /* Common */,
 				58A8BA17273DD7AA0022F023 /* Coordinator */,
+				58A8BA1F273EF6AD0022F023 /* Views */,
 				58A8B9D7273C5BD00022F023 /* Scenes */,
 				58A8B9D5273C598C0022F023 /* SupportingFiles */,
 			);
