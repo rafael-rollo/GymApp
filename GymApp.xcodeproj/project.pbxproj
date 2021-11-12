@@ -35,6 +35,7 @@
 		58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA15273DD2D80022F023 /* Alert+UIViewController.swift */; };
 		58A8BA19273DD7C40022F023 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA18273DD7C40022F023 /* Coordinator.swift */; };
 		58A8BA1B273DD7F70022F023 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA1A273DD7F70022F023 /* ApplicationCoordinator.swift */; };
+		58A8BA1E273EF3850022F023 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA1D273EF3850022F023 /* TextField.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -93,6 +94,7 @@
 		58A8BA15273DD2D80022F023 /* Alert+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+UIViewController.swift"; sourceTree = "<group>"; };
 		58A8BA18273DD7C40022F023 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		58A8BA1A273DD7F70022F023 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		58A8BA1D273EF3850022F023 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		58A8BA12273DD07F0022F023 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				58A8BA1C273EF3680022F023 /* View */,
 				58A8BA13273DD0940022F023 /* LoginViewController.swift */,
 			);
 			path = Login;
@@ -295,6 +298,14 @@
 				58A8BA1A273DD7F70022F023 /* ApplicationCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		58A8BA1C273EF3680022F023 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA1D273EF3850022F023 /* TextField.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -592,6 +603,7 @@
 				58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */,
 				58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */,
 				58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */,
+				58A8BA1E273EF3850022F023 /* TextField.swift in Sources */,
 				58A8BA11273DCB540022F023 /* Branding+UIColors.swift in Sources */,
 				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
 				58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */,

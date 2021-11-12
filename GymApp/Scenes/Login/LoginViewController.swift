@@ -39,14 +39,23 @@ class LoginViewController: UIViewController {
         return label
     }()
 
-    private lazy var titlesView: UIView = {
-        let view = UIView()
+    private lazy var titlesView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [
+            titleLabel, descriptionLabel
+        ])
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemBlue.withAlphaComponent(0.1)
-
-        view.addSubview(titleLabel)
-        view.addSubview(descriptionLabel)
+        view.axis = .vertical
+        view.alignment = .fill
+        view.distribution = .fill
+        view.spacing = 12
         return view
+    }()
+
+    private lazy var emailTextInput: TextInput = {
+        let input = TextInput()
+        input.translatesAutoresizingMaskIntoConstraints = false
+        input.title = "Email address"
+        return input
     }()
 
     override func loadView() {
@@ -68,6 +77,7 @@ extension LoginViewController: ViewCode {
     func addViews() {
         view.addSubview(logo)
         view.addSubview(titlesView)
+        view.addSubview(emailTextInput)
     }
 
     func addConstraints() {
@@ -84,15 +94,9 @@ extension LoginViewController: ViewCode {
         ])
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: titlesView.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
-            descriptionLabel.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor)
+            emailTextInput.topAnchor.constraint(equalTo: titlesView.bottomAnchor, constant: 24),
+            emailTextInput.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
+            emailTextInput.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
         ])
     }
 
