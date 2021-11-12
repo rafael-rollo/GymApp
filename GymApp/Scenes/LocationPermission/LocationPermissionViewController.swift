@@ -69,15 +69,10 @@ class LocationPermissionViewController: UIViewController {
         return view
     }()
 
-    private lazy var allowPermissionButton: UIButton = {
-        let button = UIButton()
+    private lazy var allowPermissionButton: Button = {
+        let button = Button()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(named: "Terracotta")
-        button.tintColor = .white
-        button.layer.cornerRadius = 24
-        button.layer.masksToBounds = true
-        button.titleLabel?.font = .openSans(.bold, size: 14)
-        button.setTitle("Continue", for: .normal)
+        button.title = "Continue"
         return button
     }()
     
@@ -178,7 +173,6 @@ extension LocationPermissionViewController: ViewCode {
         ])
 
         NSLayoutConstraint.activate([
-            allowPermissionButton.heightAnchor.constraint(equalToConstant: 48),
             allowPermissionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             allowPermissionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             allowPermissionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -48)

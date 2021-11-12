@@ -60,6 +60,14 @@ class LoginViewController: UIViewController {
         input.title = "Email address"
         return input
     }()
+    
+    private lazy var submitButton: Button = {
+        let button = Button()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.title = "Continue"
+        button.style = .secondary
+        return button
+    }()
 
     override func loadView() {
         super.loadView()
@@ -81,6 +89,7 @@ extension LoginViewController: ViewCode {
         view.addSubview(logo)
         view.addSubview(titlesView)
         view.addSubview(emailTextInput)
+        view.addSubview(submitButton)
     }
 
     func addConstraints() {
@@ -100,6 +109,12 @@ extension LoginViewController: ViewCode {
             emailTextInput.topAnchor.constraint(equalTo: titlesView.bottomAnchor, constant: 24),
             emailTextInput.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
             emailTextInput.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            submitButton.topAnchor.constraint(equalTo: emailTextInput.bottomAnchor, constant: 32),
+            submitButton.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
+            submitButton.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
         ])
     }
 
