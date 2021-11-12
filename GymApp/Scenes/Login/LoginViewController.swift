@@ -54,6 +54,9 @@ class LoginViewController: UIViewController {
     private lazy var emailTextInput: TextInput = {
         let input = TextInput()
         input.translatesAutoresizingMaskIntoConstraints = false
+        input.keyboardType = .emailAddress
+        input.autocapitalizationType = .none
+        input.maxLength = 46
         input.title = "Email address"
         return input
     }()

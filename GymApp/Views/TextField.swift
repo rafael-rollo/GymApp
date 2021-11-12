@@ -33,6 +33,7 @@ class TextInput: UIView {
         field.translatesAutoresizingMaskIntoConstraints = false
         field.font = .openSans(size: 12)
         field.textColor = .shipGray
+        field.autocapitalizationType = UITextAutocapitalizationType.none
         field.delegate = self
         field.addTarget(self,
                         action: #selector(textFieldDidChange(_:)),
@@ -81,6 +82,26 @@ class TextInput: UIView {
     var isSecureTextEntry: Bool = false {
         didSet {
             textField.isSecureTextEntry = isSecureTextEntry
+        }
+    }
+    
+    var maxLength: Int?
+
+    var keyboardType: UIKeyboardType {
+        get {
+            return textField.keyboardType
+        }
+        set {
+            textField.keyboardType = newValue
+        }
+    }
+
+    var autocapitalizationType: UITextAutocapitalizationType {
+        get {
+            return textField.autocapitalizationType
+        }
+        set {
+            textField.autocapitalizationType = newValue
         }
     }
 
@@ -156,6 +177,12 @@ extension TextInput: UITextFieldDelegate {
 
         if updateProjection.isEmpty {
             isTitleVisible = false
+        }
+        
+        guard let maxLength = maxLength else { return true }
+
+        if updateProjection.count > maxLength {
+            return false
         }
 
         return true
