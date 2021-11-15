@@ -61,10 +61,7 @@ extension LaunchViewController: ViewCode {
     }
 
     func addConstraints() {
-        NSLayoutConstraint.activate([
-            animation.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            animation.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        animation.constrainToCenter(of: view)
     }
     
 }
