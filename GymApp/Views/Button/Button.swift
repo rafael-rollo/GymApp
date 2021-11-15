@@ -16,6 +16,14 @@ class Button: UIButton {
         var backgroundColor: UIColor?
         var tintColor: UIColor?
     }
+    
+    private var feedbackLayer: CALayer = .init()
+
+    override var bounds: CGRect {
+        didSet {
+            feedbackLayer.frame = bounds
+        }
+    }
 
     private var height: CGFloat = 48
 
@@ -42,13 +50,15 @@ class Button: UIButton {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.1) { [weak self] in
-            self?.backgroundColor = self?.style.backgroundColor?.withAlphaComponent(0.8)
-        } completion: { [weak self] _ in
-            self?.backgroundColor = self?.style.backgroundColor
-        }
+        let feedbackAnimation = CABasicAnimation(keyPath: "backgroundColor")
+        feedbackAnimation.fromValue = UIColor.clear.cgColor
+        feedbackAnimation.toValue = UIColor.white.withAlphaComponent(0.4).cgColor
+        feedbackAnimation.duration = 0.1
+        feedbackLayer.add(feedbackAnimation, forKey: "feedbackAnimation")
 
+        CATransaction.begin()
         super.touchesBegan(touches, with: event)
+        CATransaction.commit()
     }
 }
 
@@ -59,6 +69,8 @@ extension Button: ViewCode {
         titleLabel?.font = .openSans(.bold, size: 14)
         layer.cornerRadius = self.height / 2
         layer.masksToBounds = true
+        
+        layer.insertSublayer(feedbackLayer, below: titleLabel?.layer)
     }
     
     func addConstraints() {

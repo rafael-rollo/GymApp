@@ -104,8 +104,8 @@ class LoginViewController: UIViewController {
         return input
     }()
     
-    private lazy var submitButton: Button = {
-        let button = Button()
+    private lazy var submitButton: LoadingButton = {
+        let button = LoadingButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.style = .secondary
         return button
@@ -162,7 +162,7 @@ class LoginViewController: UIViewController {
         emailTextInput.isHidden = !form.emailFieldVisible
         passwordTextInput.isHidden = !form.passwordFieldVisible
 
-        submitButton.setTitle(form.buttonTitle, for: .normal)
+        submitButton.title = form.buttonTitle
     }
 
     @objc private func submitButtonPressed(_ sender: UIButton) {
@@ -178,8 +178,11 @@ class LoginViewController: UIViewController {
     private func findUserAccount() {
         guard emailValidator.isFormValid() else { return }
         
+        submitButton.startLoading()
+        
         users?.findUserAccount(by: emailTextInput.text!) { [weak self] _ in
             self?.state = .identifiedAccount
+            self?.submitButton.stopLoading()
 
         } failureHandler: { [weak self] in
             self?.showAlert(withTitle: "Error", message: "Couldn't work.")
@@ -193,6 +196,7 @@ class LoginViewController: UIViewController {
     private func authenticateUser() {
         guard passwordValidator.isFormValid() else { return }
         
+        submitButton.startLoading()
         print("authenticate")
     }
 }

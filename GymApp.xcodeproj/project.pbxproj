@@ -41,6 +41,8 @@
 		58A8BA26273F010D0022F023 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA25273F010D0022F023 /* User.swift */; };
 		58A8BA28273F01260022F023 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA27273F01260022F023 /* Users.swift */; };
 		58A8BA2A2742BD340022F023 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA292742BD340022F023 /* Validator.swift */; };
+		58A8BA2C2742BFE00022F023 /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */; };
+		58A8BA2F2742C1000022F023 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA2E2742C1000022F023 /* LoadingButton.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -105,6 +107,8 @@
 		58A8BA25273F010D0022F023 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		58A8BA27273F01260022F023 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		58A8BA292742BD340022F023 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
+		58A8BA2E2742C1000022F023 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -313,8 +317,8 @@
 		58A8BA1F273EF6AD0022F023 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58A8BA2D2742C0050022F023 /* Button */,
 				58A8BA1D273EF3850022F023 /* TextField.swift */,
-				58A8BA20273EF88F0022F023 /* Button.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,6 +331,15 @@
 				58A8BA27273F01260022F023 /* Users.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		58A8BA2D2742C0050022F023 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA20273EF88F0022F023 /* Button.swift */,
+				58A8BA2E2742C1000022F023 /* LoadingButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -397,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				58AB9B9F273C5253005445F3 /* LaunchAnimation.json */,
+				58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -530,6 +544,7 @@
 				58A8B9F7273D8BB20022F023 /* Open Sans Semibold Italic.ttf in Resources */,
 				58A8B9EF273D8BB20022F023 /* Open Sans Bold.ttf in Resources */,
 				58AB9BA0273C5253005445F3 /* LaunchAnimation.json in Resources */,
+				58A8BA2C2742BFE00022F023 /* LoadingAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A8BA2F2742C1000022F023 /* LoadingButton.swift in Sources */,
 				58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */,
 				58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */,
 				58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */,
