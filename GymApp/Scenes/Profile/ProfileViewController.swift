@@ -1,5 +1,5 @@
 //
-//  ExpandableHeader.swift
+//  ProfileViewController.swift
 //  GymApp
 //
 //  Created by rafael.rollo on 15/11/21.
@@ -8,19 +8,19 @@
 import UIKit
 import Accelerate
 
-struct MenuItem {
-    var imageName: String
-    var title: String
-    var externalLink: String?
-    var onPress: () -> Void
-}
-
-struct MenuSection {
-    var title: String
-    var items: [MenuItem]
-}
-
-class ExpandableHeader: UIView {
+class ProfileViewController: UIViewController {
+    
+    // MARK: - layout properties
+    fileprivate struct LayoutProps {
+        static let defaultRadius: CGFloat = 12
+        static let defaultHeight: CGFloat = {
+            let statusBarHeight = UIApplication.shared.windows
+                .filter {$0.isKeyWindow}.first?.windowScene?
+                .statusBarManager?.statusBarFrame.height ?? 0
+                
+            return 76 + statusBarHeight
+        }()
+    }
     
     // MARK: - subviews
     private lazy var profileImageView: UIImageView = {
@@ -113,12 +113,12 @@ class ExpandableHeader: UIView {
         view.layer.zPosition = 100
         
         view.layer.masksToBounds = false
-        view.layer.cornerRadius = radius
+        view.layer.cornerRadius = LayoutProps.defaultRadius
         view.layer.shadowRadius = 8.0
         view.layer.shadowOpacity = 0
         view.layer.shadowColor = UIColor.secondaryLabel.cgColor
         view.layer.shadowOffset = .init(width: 0, height: 5)
-
+        
         view.addSubview(contentContainerView)
         return view
     }()
@@ -127,42 +127,42 @@ class ExpandableHeader: UIView {
         let label = UILabel()
         label.font = .openSans(size: 14)
         label.textColor = .secondaryLabel
-
+        
         guard let appVersion = Bundle.main.releaseVersionNumber,
               let appBuild = Bundle.main.buildVersionNumber else {
             return label
         }
-
+        
         label.text = "App version: \(appVersion) (\(appBuild))"
         label.sizeToFit()
         return label
     }()
-
+    
     private lazy var logoutButton: UIButton = {
         let atributedTitle = NSAttributedString(string: "Log out", attributes: [
             .foregroundColor: UIColor.terracotta ?? .systemOrange,
             .font: UIFont.openSans(.bold, size: 14)
         ])
-
+        
         let button = UIButton()
         button.setAttributedTitle(atributedTitle, for: .normal)
         button.sizeToFit()
         return button
     }()
-
+    
     private lazy var menuFooterView: UIView = {
         let view = UIView()
         view.frame.size.height = 130
-
+        
         view.addSubview(appVersionLabel)
         appVersionLabel.frame.origin = .init(x: 24, y: 24)
-
+        
         view.addSubview(logoutButton)
         logoutButton.frame.origin = .init(x: 24, y: 62)
-
+        
         return view
     }()
-    
+        
     private lazy var menuTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -176,96 +176,43 @@ class ExpandableHeader: UIView {
     }()
     
     // MARK: - properties
-    override var bounds: CGRect {
-        didSet {
-            dropShadow()
-        }
-    }
+    private var isExpanded: Bool = false
+    private final var menuItems: [MenuItems] = MenuItems.allItems
     
-    var heightConstraint: NSLayoutConstraint?
-    var menuTopConstraint: NSLayoutConstraint?
+    private var heightConstraint: NSLayoutConstraint?
+    private var menuTopConstraint: NSLayoutConstraint?
     
-    var height: CGFloat {
-        let statusBarHeight = UIApplication.shared.windows
-            .filter {$0.isKeyWindow}.first?.windowScene?
-            .statusBarManager?.statusBarFrame.height ?? 0
-        
-        return 76 + statusBarHeight
-    }
-    
-    var radius: CGFloat { return 12 }
-    
-    var isExpanded: Bool = false
-    
-    var menuItems: [MenuSection] = [
-        MenuSection(title: "Account", items: [
-            MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            }),
-            MenuItem(imageName: "PeopleIcon", title: "Dependents", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            }),
-            MenuItem(imageName: "PersonIcon", title: "Edit profile", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            }),
-            MenuItem(imageName: "WalletIcon", title: "Payments", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            }),
-            MenuItem(imageName: "HistoryIcon", title: "Check-in history", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            })
-        ]),
-        MenuSection(title: "About Gympass", items: [
-            MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            }),
-            MenuItem(imageName: "HelpIcon", title: "Help center", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            }),
-            MenuItem(imageName: "DumbbellIcon", title: "Refer a facility", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            }),
-            MenuItem(imageName: "PadlockIcon", title: "Privacy and security", externalLink: "https://gympass.com/", onPress: {
-                print("coordinator, please open \(MenuItem.self)")
-            })
-        ])
-    ]
-
     // MARK: - view lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func loadView() {
+        super.loadView()
         setup()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         toggleButton.addTarget(self,
                                action: #selector(toggleButtonPressed(_:)),
                                for: .touchUpInside)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-    override func layoutSubviews() {
-        super.layoutSubviews()
         drawShadowPath()
     }
     
-    // MARK: - methods
-    private func dropShadow() {
-        layer.shadowRadius = 8.0
-        layer.shadowOpacity = 0.3
-        layer.shadowColor = UIColor.secondaryLabel.cgColor
-        layer.shadowOffset = .init(width: 0, height: 5)
-    }
-    
+    // MARK: - view methods
     private func drawShadowPath() {
-        let currentPath = layer.shadowPath
-        let newPath = UIBezierPath(roundedRect: bounds,
-                                   cornerRadius: radius).cgPath
+        let currentPath = view.layer.shadowPath
+        let newPath = UIBezierPath(
+            roundedRect: view.bounds,
+            cornerRadius: LayoutProps.defaultRadius
+        ).cgPath
         
-        guard let heightAnimation = layer.animation(forKey: "bounds.size")
+        guard let heightAnimation = view.layer.animation(forKey: "bounds.size")
                 as? CABasicAnimation else {
-            layer.shadowPath = newPath
+            view.layer.shadowPath = newPath
             return
         }
         
@@ -274,14 +221,40 @@ class ExpandableHeader: UIView {
         pathAnimation.timingFunction = heightAnimation.timingFunction
         pathAnimation.fromValue = currentPath
         pathAnimation.toValue = newPath
+        view.layer.add(pathAnimation, forKey: "shadowPath")
         
-        layer.add(pathAnimation, forKey: "shadowPath")
-        
-        layer.shadowPath = newPath
+        view.layer.shadowPath = newPath
         baseContainerView.layer.shadowPath = UIBezierPath(
             roundedRect: baseContainerView.bounds,
-            cornerRadius: radius
+            cornerRadius: LayoutProps.defaultRadius
         ).cgPath
+    }
+    
+    @objc private func toggleButtonPressed(_ sender: UIButton) {
+        guard let superview = view.superview else {
+            return
+        }
+        
+        isExpanded.toggle()
+        
+        let toggleImage = isExpanded ? arrowUpImage : arrowDownImage
+        toggleButton.setImage(toggleImage, for: .normal)
+        
+        if !isExpanded {
+            menuTableView.setContentOffset(.zero, animated: false)
+        }
+                
+        heightConstraint?.constant = isExpanded
+            ? superview.bounds.height
+            : LayoutProps.defaultHeight
+        
+        menuTopConstraint?.constant = isExpanded
+            ? 0
+            : -UIScreen.main.bounds.height
+        
+        UIView.animate(withDuration: 0.5) {
+            superview.layoutIfNeeded()
+        }
     }
     
     private func animateBaseContainerViewShadow(byInterpolating contentOffset: Double) {
@@ -297,37 +270,50 @@ class ExpandableHeader: UIView {
             self?.baseContainerView.layer.shadowOpacity = opacity
         }
     }
+}
+
+extension ProfileViewController: ViewCode {
+    func addViews() {
+        view.addSubview(menuTableView)
+        view.addSubview(baseContainerView)
+    }
     
-    @objc private func toggleButtonPressed(_ sender: UIButton) {
-        guard let superview = superview else {
-            return
-        }
+    func addConstraints() {
+        heightConstraint = view.constrainHeight(to: LayoutProps.defaultHeight)
         
-        isExpanded.toggle()
+        baseContainerView.constrainToTopAndSides(of: view)
+        baseContainerView.constrainHeight(to: LayoutProps.defaultHeight)
         
-        let toggleImage = isExpanded ? arrowUpImage : arrowDownImage
-        toggleButton.setImage(toggleImage, for: .normal)
+        contentContainerView.constrainToTop(of: baseContainerView, notchSafe: true)
+        contentContainerView.constrainHorizontally(to: baseContainerView, withMargins: 24)
+        contentContainerView.constrainHeight(to: 68)
         
-        if !isExpanded {
-            menuTableView.setContentOffset(.zero, animated: false)
-        }
+        profileImageView.constrainSize(to: .init(width: 52, height: 52))
+        toggleButton.constrainSize(to: .init(width: 24, height: 24))
         
-        heightConstraint?.constant = isExpanded
-            ? superview.bounds.height
-            : height
+        menuTopConstraint = menuTableView.anchorBelow(of: baseContainerView)
+        menuTableView.constrainToBottomAndSides(of: view)
+    }
+    
+    func addTheme() {
+        view.backgroundColor = .white
+        view.layer.zPosition = 100
         
-        menuTopConstraint?.constant = isExpanded
-            ? 0
-            : -UIScreen.main.bounds.height
+        // shaping the root view
+        view.layer.masksToBounds = false
+        view.layer.cornerRadius = LayoutProps.defaultRadius
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
-        UIView.animate(withDuration: 0.5) {
-            superview.layoutIfNeeded()
-        }
+        // shadowing the root view
+        view.layer.shadowColor = UIColor.secondaryLabel.cgColor
+        view.layer.shadowOffset = .init(width: 0, height: 5)
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowRadius = 8.0
     }
 }
 
-// MARK: - menu data source
-extension ExpandableHeader: UITableViewDataSource, UITableViewDelegate {
+// MARK: - menu table view data source
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return menuItems.count
     }
@@ -371,40 +357,4 @@ extension ExpandableHeader: UITableViewDataSource, UITableViewDelegate {
         let yOffset = Double(scrollView.contentOffset.y)
         animateBaseContainerViewShadow(byInterpolating: yOffset)
     }
-    
-}
-
-// MARK: - view code
-extension ExpandableHeader: ViewCode {
-    
-    func addTheme() {
-        backgroundColor = .white
-        layer.zPosition = 100
-        layer.masksToBounds = false
-        layer.cornerRadius = radius
-        layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-    }
-    
-    func addViews() {
-        addSubview(menuTableView)
-        addSubview(baseContainerView)
-    }
-    
-    func addConstraints() {
-        heightConstraint = constrainHeight(to: height)
-        
-        baseContainerView.constrainToTopAndSides(of: self)
-        baseContainerView.constrainHeight(to: height)
-        
-        contentContainerView.constrainToTop(of: baseContainerView, notchSafe: true)
-        contentContainerView.constrainHorizontally(to: baseContainerView, withMargins: 24)
-        contentContainerView.constrainHeight(to: 68)
-        
-        profileImageView.constrainSize(to: .init(width: 52, height: 52))
-        toggleButton.constrainSize(to: .init(width: 24, height: 24))
-        
-        menuTopConstraint = menuTableView.anchorBelow(of: baseContainerView)
-        menuTableView.constrainToBottomAndSides(of: self)
-    }
-    
 }

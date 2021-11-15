@@ -15,12 +15,6 @@ protocol HomeFlowDelegate: Coordinator {
 class HomeViewController: UIViewController {
 
     // MARK: - subviews
-    private lazy var header: ExpandableHeader = {
-        let view = ExpandableHeader()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     private lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -91,12 +85,19 @@ extension HomeViewController: ViewCode {
         view.addSubview(toExploreButton)
         view.addSubview(toCheckinButton)
         
-        view.addSubview(header)
+        let profileVC = ProfileViewController()
+        addChild(profileVC)
+
+        let headerView = profileVC.view!
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(headerView)
+        headerView.constrainToTopAndSides(of: view)
+
+        profileVC.didMove(toParent: self)
     }
 
     func addConstraints() {
-        header.constrainToTopAndSides(of: view)
-        
         label.anchorToCenter(of: view)
         
         toExploreButton.anchorBelow(of: label, withMargin: 42)
