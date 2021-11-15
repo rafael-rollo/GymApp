@@ -139,6 +139,7 @@
 		58A8BA4F2742F3C40022F023 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		58A8BA512742F48C0022F023 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		58A8BA532742F7690022F023 /* Versions+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Versions+Bundle.swift"; sourceTree = "<group>"; };
+		58A8BA552743167C0022F023 /* GymApp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GymApp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -475,6 +476,7 @@
 				58A8BA1F273EF6AD0022F023 /* Views */,
 				58A8B9D7273C5BD00022F023 /* Scenes */,
 				58A8B9D5273C598C0022F023 /* SupportingFiles */,
+				58A8BA552743167C0022F023 /* GymApp.playground */,
 			);
 			path = GymApp;
 			sourceTree = "<group>";

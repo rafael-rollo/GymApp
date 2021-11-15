@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Accelerate
 
 struct MenuItem {
     var imageName: String
@@ -92,7 +93,7 @@ class ExpandableHeader: UIView {
         return button
     }()
     
-    private lazy var baseContentView: UIStackView = {
+    private lazy var contentContainerView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
             profileImageView, profileInfoPanel, toggleButton
         ])
@@ -105,14 +106,20 @@ class ExpandableHeader: UIView {
         return stack
     }()
     
-    private lazy var wrapperView: UIView = {
+    private lazy var baseContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.layer.zPosition = 100
+        
         view.layer.masksToBounds = false
         view.layer.cornerRadius = radius
-        view.addSubview(baseContentView)
+        view.layer.shadowRadius = 8.0
+        view.layer.shadowOpacity = 0
+        view.layer.shadowColor = UIColor.secondaryLabel.cgColor
+        view.layer.shadowOffset = .init(width: 0, height: 5)
+
+        view.addSubview(contentContainerView)
         return view
     }()
     
@@ -240,7 +247,7 @@ class ExpandableHeader: UIView {
         
     override func layoutSubviews() {
         super.layoutSubviews()
-        animateShadowPath()
+        drawShadowPath()
     }
     
     // MARK: - methods
@@ -251,9 +258,10 @@ class ExpandableHeader: UIView {
         layer.shadowOffset = .init(width: 0, height: 5)
     }
     
-    private func animateShadowPath() {
+    private func drawShadowPath() {
         let currentPath = layer.shadowPath
-        let newPath = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
+        let newPath = UIBezierPath(roundedRect: bounds,
+                                   cornerRadius: radius).cgPath
         
         guard let heightAnimation = layer.animation(forKey: "bounds.size")
                 as? CABasicAnimation else {
@@ -268,7 +276,26 @@ class ExpandableHeader: UIView {
         pathAnimation.toValue = newPath
         
         layer.add(pathAnimation, forKey: "shadowPath")
+        
         layer.shadowPath = newPath
+        baseContainerView.layer.shadowPath = UIBezierPath(
+            roundedRect: baseContainerView.bounds,
+            cornerRadius: radius
+        ).cgPath
+    }
+    
+    private func animateBaseContainerViewShadow(byInterpolating contentOffset: Double) {
+        let maxOffsetLimit = 20.0
+        let proportionalOffset = contentOffset / maxOffsetLimit
+
+        let minOpacity = 0.0, maxOpacity = 0.3
+
+        let result = vDSP.linearInterpolate(elementsOf: [minOpacity, maxOpacity],
+                                            using: [0, min(1, proportionalOffset), 1])
+        let opacity = Float(result[1])
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.baseContainerView.layer.shadowOpacity = opacity
+        }
     }
     
     @objc private func toggleButtonPressed(_ sender: UIButton) {
@@ -276,11 +303,15 @@ class ExpandableHeader: UIView {
             return
         }
         
-        isExpanded = !isExpanded
+        isExpanded.toggle()
         
         let toggleImage = isExpanded ? arrowUpImage : arrowDownImage
         toggleButton.setImage(toggleImage, for: .normal)
-                
+        
+        if !isExpanded {
+            menuTableView.setContentOffset(.zero, animated: false)
+        }
+        
         heightConstraint?.constant = isExpanded
             ? superview.bounds.height
             : height
@@ -334,6 +365,11 @@ extension ExpandableHeader: UITableViewDataSource, UITableViewDelegate {
         debugPrint("section [\(indexPath.section)] - row[\(indexPath.row)]")
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yOffset = Double(scrollView.contentOffset.y)
+        animateBaseContainerViewShadow(byInterpolating: yOffset)
+    }
+    
 }
 
 // MARK: - view code
@@ -349,23 +385,23 @@ extension ExpandableHeader: ViewCode {
     
     func addViews() {
         addSubview(menuTableView)
-        addSubview(wrapperView)
+        addSubview(baseContainerView)
     }
     
     func addConstraints() {
         heightConstraint = constrainHeight(to: height)
         
-        wrapperView.constrainToTopAndSides(of: self)
-        wrapperView.constrainHeight(to: height)
+        baseContainerView.constrainToTopAndSides(of: self)
+        baseContainerView.constrainHeight(to: height)
         
-        baseContentView.constrainToTop(of: wrapperView, notchSafe: true)
-        baseContentView.constrainHorizontally(to: wrapperView, withMargins: 24)
-        baseContentView.constrainHeight(to: 68)
+        contentContainerView.constrainToTop(of: baseContainerView, notchSafe: true)
+        contentContainerView.constrainHorizontally(to: baseContainerView, withMargins: 24)
+        contentContainerView.constrainHeight(to: 68)
         
         profileImageView.constrainSize(to: .init(width: 52, height: 52))
         toggleButton.constrainSize(to: .init(width: 24, height: 24))
         
-        menuTopConstraint = menuTableView.anchorBelow(of: wrapperView)
+        menuTopConstraint = menuTableView.anchorBelow(of: baseContainerView)
         menuTableView.constrainToBottomAndSides(of: self)
     }
     
