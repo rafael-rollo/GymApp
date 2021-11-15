@@ -116,10 +116,12 @@ class ExpandableHeader: UIView {
     private lazy var menu: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.isHidden = true
+        tableView.sectionFooterHeight = .leastNormalMagnitude
+        tableView.backgroundColor = .clear
         return tableView
     }()
 
@@ -231,6 +233,8 @@ class ExpandableHeader: UIView {
 
         let toggleImage = isExpanded ? arrowUpImage : arrowDownImage
         toggleButton.setImage(toggleImage, for: .normal)
+        
+        menu.isHidden = !isExpanded
 
         heightConstraint?.constant = isExpanded
             ? superview.bounds.height
@@ -245,14 +249,20 @@ class ExpandableHeader: UIView {
 }
 
 // MARK: - menu data source
-extension ExpandableHeader: UITableViewDataSource {
+extension ExpandableHeader: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return menuItems.count
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return menuItems[section].title
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return MenuSectionHeader.height
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = MenuSectionHeader()
+        header.title = menuItems[section].title
+        return header
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

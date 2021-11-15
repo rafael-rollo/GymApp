@@ -54,6 +54,7 @@
 		58A8BA462742E75D0022F023 /* ExploreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA452742E75D0022F023 /* ExploreCoordinator.swift */; };
 		58A8BA492742E7930022F023 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA482742E7930022F023 /* HomeCoordinator.swift */; };
 		58A8BA4C2742EDAC0022F023 /* ExpandableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */; };
+		58A8BA4E2742F2590022F023 /* MenuSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA4D2742F2590022F023 /* MenuSectionHeader.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -131,6 +132,7 @@
 		58A8BA452742E75D0022F023 /* ExploreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA482742E7930022F023 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeader.swift; sourceTree = "<group>"; };
+		58A8BA4D2742F2590022F023 /* MenuSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionHeader.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */,
+				58A8BA4D2742F2590022F023 /* MenuSectionHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				58A8BA402742E5540022F023 /* BaseTabBarController.swift in Sources */,
 				58A8BA0F273DB2FF0022F023 /* AnimatedShape.swift in Sources */,
 				58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */,
+				58A8BA4E2742F2590022F023 /* MenuSectionHeader.swift in Sources */,
 				58A8BA02273D97210022F023 /* Page.swift in Sources */,
 				58A8BA492742E7930022F023 /* HomeCoordinator.swift in Sources */,
 				58A8B9E3273D87960022F023 /* Angles+CGFloat.swift in Sources */,
