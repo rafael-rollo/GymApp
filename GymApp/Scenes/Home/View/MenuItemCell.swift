@@ -72,7 +72,10 @@ class MenuItemCell: UITableViewCell, ReusableView {
 extension MenuItemCell: ViewCode {
     
     func addTheme() {
-        selectionStyle = .none
+        let backgroundView = UIView(frame: bounds)
+        backgroundView.backgroundColor = .terracotta?.withAlphaComponent(0.07)
+
+        selectedBackgroundView = backgroundView
     }
     
     func addViews() {

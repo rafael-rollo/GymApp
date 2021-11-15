@@ -362,6 +362,8 @@ extension ExpandableHeader: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         debugPrint("section [\(indexPath.section)] - row[\(indexPath.row)]")
     }
     
