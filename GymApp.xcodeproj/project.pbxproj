@@ -49,6 +49,7 @@
 		58A8BA3A2742DF570022F023 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA392742DF570022F023 /* CheckinViewController.swift */; };
 		58A8BA3C2742DF900022F023 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA3B2742DF900022F023 /* ExploreViewController.swift */; };
 		58A8BA3E2742E39F0022F023 /* TabNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA3D2742E39F0022F023 /* TabNavigationCoordinator.swift */; };
+		58A8BA402742E5540022F023 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA3F2742E5540022F023 /* BaseTabBarController.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -121,6 +122,7 @@
 		58A8BA392742DF570022F023 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		58A8BA3B2742DF900022F023 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		58A8BA3D2742E39F0022F023 /* TabNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationCoordinator.swift; sourceTree = "<group>"; };
+		58A8BA3F2742E5540022F023 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		58A8B9D7273C5BD00022F023 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				58A8BA3F2742E5540022F023 /* BaseTabBarController.swift */,
 				58A8B9D8273C5BDF0022F023 /* Launch */,
 				58A8B9DD273D85000022F023 /* Walkthrough */,
 				58A8BA07273DA8580022F023 /* LocationPermission */,
@@ -694,6 +697,7 @@
 				58A8BA312742CA190022F023 /* ValidatedInput.swift in Sources */,
 				58A8BA332742CB1B0022F023 /* ConstraintHelpers+UIView.swift in Sources */,
 				58A8BA19273DD7C40022F023 /* Coordinator.swift in Sources */,
+				58A8BA402742E5540022F023 /* BaseTabBarController.swift in Sources */,
 				58A8BA0F273DB2FF0022F023 /* AnimatedShape.swift in Sources */,
 				58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */,
 				58A8BA02273D97210022F023 /* Page.swift in Sources */,
