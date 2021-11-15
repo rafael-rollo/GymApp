@@ -80,12 +80,14 @@ class WebViewController: UIViewController {
 
     // MARK: - properties
     private var path: URL
-
-    weak var flowDelegate: WebViewFlowDelegate?
+    
+    private var flowDelegate: WebViewFlowDelegate
 
     // MARK: - view lifecycle
-    init(path: URL) {
+    init(path: URL, flowDelegate: WebViewFlowDelegate) {
         self.path = path
+        self.flowDelegate = flowDelegate
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -109,7 +111,7 @@ class WebViewController: UIViewController {
 
     // MARK: - view methods
     @objc private func closeButtonTapped(_ sender: UIButton) {
-        flowDelegate?.webViewDidClose()
+        flowDelegate.webViewDidClose()
     }
 
     private func browse() {

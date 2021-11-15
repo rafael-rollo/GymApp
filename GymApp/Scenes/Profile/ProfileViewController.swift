@@ -8,6 +8,10 @@
 import UIKit
 import Accelerate
 
+protocol ProfileFlowDelegate: AnyObject {
+    func menuItemDidSelect(_ item: MenuItem)
+}
+
 class ProfileViewController: UIViewController {
     
     // MARK: - layout properties
@@ -182,7 +186,18 @@ class ProfileViewController: UIViewController {
     private var heightConstraint: NSLayoutConstraint?
     private var menuTopConstraint: NSLayoutConstraint?
     
+    private var flowDelegate: ProfileFlowDelegate
+    
     // MARK: - view lifecycle
+    init(flowDelegate: ProfileFlowDelegate) {
+        self.flowDelegate = flowDelegate
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         super.loadView()
         setup()
@@ -350,7 +365,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        debugPrint("section [\(indexPath.section)] - row[\(indexPath.row)]")
+        let item = menuItems[indexPath.section].items[indexPath.row]
+        flowDelegate.menuItemDidSelect(item)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

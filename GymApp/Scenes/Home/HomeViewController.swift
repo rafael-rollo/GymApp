@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeFlowDelegate: Coordinator {
+protocol HomeFlowDelegate: AnyObject {
     func toExploreTab()
     func toCheckinTab()
 }
@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
     }()
 
     // MARK: - properties
-    weak var flowDelegate: HomeFlowDelegate?
+    private var flowDelegate: HomeFlowDelegate
     private var profileViewController: ProfileViewController
 
     // MARK: - view lifecycle
@@ -67,11 +67,11 @@ class HomeViewController: UIViewController {
     
     // MARK: - view methods
     @objc func toExploreButtonTapped(_ sender: UIButton) {
-        flowDelegate?.toExploreTab()
+        flowDelegate.toExploreTab()
     }
 
     @objc func toCheckinButtonTapped(_ sender: UIButton) {
-        flowDelegate?.toCheckinTab()
+        flowDelegate.toCheckinTab()
     }
 
 }
