@@ -74,9 +74,7 @@ extension Button: ViewCode {
     }
     
     func addConstraints() {
-        NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: self.height)
-        ])
+        constrainHeight(to: self.height)
     }
     
 }
