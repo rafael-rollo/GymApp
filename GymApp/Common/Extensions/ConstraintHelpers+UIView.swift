@@ -154,8 +154,11 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
 
-    func constrainWidth(to constant: CGFloat) {
-        self.widthAnchor.constraint(equalToConstant: constant).isActive = true
+    @discardableResult
+    func constrainWidth(to constant: CGFloat) -> NSLayoutConstraint {
+        let constraint = self.widthAnchor.constraint(equalToConstant: constant)
+        constraint.isActive = true
+        return constraint
     }
 
     func constrainHeight(to constant: CGFloat) {

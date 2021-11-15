@@ -67,9 +67,7 @@ extension NextButton: ViewCode {
     }
 
     func addConstraints() {
-        widthConstraint = widthAnchor.constraint(equalToConstant: size.width)
-        widthConstraint!.isActive = true
-        
+        widthConstraint = constrainWidth(to: size.width)
         constrainHeight(to: size.height)
     }
 }
