@@ -158,26 +158,25 @@ extension LocationPermissionViewController: ViewCode {
     func addConstraints() {
         let shapeXOffset = shape.bounds.width * 0.37
         let shapeYOffset = shape.bounds.height - view.bounds.height * 0.3
-
-        shape.constrainToTopLeading(of: view, top: -shapeYOffset, leading: -shapeXOffset)
+        shape.constrainToTopAndLeading(of: view, topMargin: -shapeYOffset, leadingMargin: -shapeXOffset)
         
         logo.constrainWidth(to: 120)
-        logo.constrainToTop(of: view, with: 48, notchSafe: true)
-        logo.constrainToLeading(of: view, with: 24)
+        logo.constrainToTop(of: view, withMargin: 48, notchSafe: true)
+        logo.constrainToLeading(of: view, withMargin: 24)
 
-        allowPermissionButton.constrainToBottom(of: view, with: 48, safely: true)
-        allowPermissionButton.constrainHorizontallyTo(view, withMarginsOf: 24)
+        allowPermissionButton.constrainToBottom(of: view, withMargin: 48, footerSafe: true)
+        allowPermissionButton.constrainHorizontally(to: view, withMargins: 24)
 
         contentView.constrainHeight(to: view.bounds.height * 0.3)
-        contentView.constrainHorizontallyTo(allowPermissionButton)
-        contentView.anchorAbove(allowPermissionButton, withMarginOf: 48)
+        contentView.constrainHorizontally(to: allowPermissionButton)
+        contentView.anchorAbove(of: allowPermissionButton, withMargin: 48)
 
         subtitleLabel.constrainToBottomAndSides(of: contentView)
 
-        titleLabel.constrainHorizontallyTo(contentView)
-        titleLabel.anchorAbove(subtitleLabel, withMarginOf: 16)
+        titleLabel.constrainHorizontally(to: contentView)
+        titleLabel.anchorAbove(of: subtitleLabel, withMargin: 16)
 
-        markerImageView.anchorAbove(titleLabel, withMarginOf: 16)
+        markerImageView.anchorAbove(of: titleLabel, withMargin: 16)
     }
 
 }

@@ -186,27 +186,26 @@ extension WalkthroughViewController: ViewCode {
     func addConstraints() {
         let upperShapeXOffset = upperShape.bounds.width * 0.37
         let upperShapeYOffset = upperShape.bounds.height - view.bounds.height * 0.3
-        
-        upperShape.constrainToTopLeading(of: view,
-                                         top: -upperShapeYOffset,
-                                         leading: -upperShapeXOffset)
+        upperShape.constrainToTopAndLeading(of: view,
+                                         topMargin: -upperShapeYOffset,
+                                         leadingMargin: -upperShapeXOffset)
         
         logo.constrainWidth(to: 120)
         
-        titleStackView.constrainHorizontallyTo(view, withMarginsOf: 24)
-        titleStackView.constrainToTop(of: view, with: 48, notchSafe: true)
+        titleStackView.constrainHorizontally(to: view, withMargins: 24)
+        titleStackView.constrainToTop(of: view, withMargin: 48, notchSafe: true)
         
-        carousel.constrainHorizontallyTo(view)
+        carousel.constrainHorizontally(to: view)
         carousel.constrainHeight(to: view.bounds.height * 0.4)
-        carousel.anchorAbove(footerStackView, withMarginOf: 48)
+        carousel.anchorAbove(of: footerStackView, withMargin: 48)
 
-        footerStackView.constrainToBottom(of: view, with: 48, safely: true)
-        footerStackView.constrainHorizontallyTo(titleStackView)
+        footerStackView.constrainToBottom(of: view, withMargin: 48, footerSafe: true)
+        footerStackView.constrainHorizontally(to: titleStackView)
         
         // sorry! Apple doesn't help to do it better 😢
         // it'll conflict with stack leading constraint, but it is just to positioning properly
         // since we don't have an easy way to edit the edge insets of the page control component
-        pageControl.constrainToLeading(of: view, with: -16)
+        pageControl.constrainToLeading(of: view, withMargin: -16)
     }
 
 }

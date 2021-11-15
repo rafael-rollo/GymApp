@@ -237,22 +237,22 @@ extension LoginViewController: ViewCode {
 
     func addConstraints() {
         logo.constrainWidth(to: 120)
-        logo.constrainToTopLeading(of: view, top: 48,
-                                   leading: 24, notchSafe: true)
+        logo.constrainToTopAndLeading(of: view, topMargin: 48,
+                                   leadingMargin: 16, notchSafe: true)
 
-        titlesView.anchorBelow(logo, withMarginOf: 24)
-        titlesView.constrainHorizontallyTo(view, withMarginsOf: 24)
+        titlesView.anchorBelow(of: logo, withMargin: 24)
+        titlesView.constrainHorizontally(to: view, withMargins: 24)
         
-        switchAccountButton.constrainSizeTo(CGSize(width: 18, height: 18))
-
-        emailTextInput.anchorBelow(titlesView, withMarginOf: 24)
-        emailTextInput.constrainHorizontallyTo(titlesView)
+        switchAccountButton.constrainSize(to: CGSize(width: 18, height: 18))
         
-        passwordTextInput.anchorBelow(titlesView, withMarginOf: 24)
-        passwordTextInput.constrainHorizontallyTo(titlesView)
+        emailTextInput.anchorBelow(of: titlesView, withMargin: 24)
+        emailTextInput.constrainHorizontally(to: titlesView)
         
-        submitButton.anchorBelow(emailTextInput, withMarginOf: 38)
-        submitButton.constrainHorizontallyTo(titlesView)
+        passwordTextInput.anchorBelow(of: titlesView, withMargin: 24)
+        passwordTextInput.constrainHorizontally(to: titlesView)
+        
+        submitButton.anchorBelow(of: emailTextInput, withMargin: 38)
+        submitButton.constrainHorizontally(to: titlesView)
     }
 
 }

@@ -238,18 +238,18 @@ extension TextInput: ViewCode {
         self.constrainHeight(greaterThanOrEqualTo: 60)
 
         textFieldView.constrainHeight(to: 50)
-        textFieldView.constrainToTopAndSides(of: self, top: 8)
+        textFieldView.constrainToTopAndSides(of: self, topMargin: 8)
 
-        textField.constrainHorizontallyTo(textFieldView, withMarginsOf: 16)
-        textField.anchorToCenter(of: textFieldView, y: -1)
+        textField.constrainHorizontally(to: textFieldView, withMargins: 16)
+        textField.anchorToCenter(of: textFieldView, withOffset: .init(x: 0, y: -1))
 
         titleLeadingConstraint = fieldTitleLabel
-            .constrainToLeading(of: textFieldView, with: TitlePositions.t0.x)
+            .constrainToLeading(of: textFieldView, withMargin: TitlePositions.t0.x)
         titleTopConstraint = fieldTitleLabel
-            .constrainToTop(of: textFieldView, with: TitlePositions.t0.y)
+            .constrainToTop(of: textFieldView, withMargin: TitlePositions.t0.y)
         
-        errorMessageLabel.anchorBelow(textFieldView, withMarginOf: 4)
-        errorMessageLabel.constrainHorizontallyTo(textFieldView)
+        errorMessageLabel.anchorBelow(of: textFieldView, withMargin: 4)
+        errorMessageLabel.constrainHorizontally(to: textFieldView)
     }
 
     func addTheme() {

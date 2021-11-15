@@ -80,14 +80,14 @@ extension Page: ViewCode {
     }
 
     func addConstraints() {
-        contentView.constrainTo(edgesOf: self, withHorizontalMarginsOf: 24)
+        contentView.constrainTo(edgesOf: self, horizontalMargins: 24)
 
         subtitleLabel.constrainToBottomAndSides(of: contentView)
 
-        titleLabel.constrainHorizontallyTo(contentView)
-        titleLabel.anchorAbove(subtitleLabel, withMarginOf: 16)
+        titleLabel.constrainHorizontally(to: contentView)
+        titleLabel.anchorAbove(of: subtitleLabel, withMargin: 16)
 
-        characterImageView.anchorAbove(titleLabel, withMarginOf: 16)
+        characterImageView.anchorAbove(of: titleLabel, withMargin: 16)
     }
     
 }
