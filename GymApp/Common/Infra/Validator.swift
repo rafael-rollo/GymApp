@@ -7,14 +7,6 @@
 
 import UIKit
 
-protocol ValidatedInput: UIView {
-    var rules: [Rule] { get set }
-
-    func getText() -> String?
-    func setErrorMessageHidden()
-    func showError(_ message: String)
-}
-
 class Validator {
 
     private var targetInputViews: [ValidatedInput] = []
