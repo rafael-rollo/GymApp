@@ -17,18 +17,6 @@ class CheckinViewController: UIViewController {
         return label
     }()
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
-
-        title = "Check-in"
-        tabBarItem.image = .init(named: "CheckinIcon")
-        tabBarItem.selectedImage = .init(named: "CheckinFilledIcon")
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func loadView() {
         super.loadView()
         setup()

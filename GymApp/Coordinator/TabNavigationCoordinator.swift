@@ -7,24 +7,28 @@
 
 import UIKit
 
-enum Tab {
-    case home
-    case explore
-    case checkin
-}
-
 class TabNavigationCoordinator: NSObject, TabBasedCoordinator {
 
     internal lazy var rootViewController: UIViewController? = BaseTabBarController()
-    var childCoordinators: [StackBasedCoordinator] = []
+    
+    lazy var childCoordinators: [StackBasedCoordinator] = [
+        HomeCoordinator(),
+        ExploreCoordinator(),
+        CheckinCoordinator(),
+    ]
 
     func start() -> UIViewController {
-        let homeVc = HomeViewController()
-        let exploreVc = ExploreViewController()
-        let checkinVc = CheckinViewController()
-        
-        (rootViewController as? BaseTabBarController)?.viewControllers = [homeVc, exploreVc, checkinVc]
+        var viewControllers: [UIViewController] = []
 
+        childCoordinators.forEach { coordinator in
+            let rootViewController = coordinator.start()
+            rootViewController.tabBarItem = coordinator.tab?.getTabBarItem()
+
+            coordinator.parentCoordinator = self
+            viewControllers.append(rootViewController)
+        }
+
+        (rootViewController as? BaseTabBarController)?.viewControllers = viewControllers
         return rootViewController!
     }
 
@@ -38,6 +42,37 @@ class TabNavigationCoordinator: NSObject, TabBasedCoordinator {
             tabBarController?.selectedIndex = 1
         case .checkin:
             tabBarController?.selectedIndex = 2
+        }
+    }
+}
+
+enum Tab {
+    case home
+    case explore
+    case checkin
+
+    func getTabBarItem() -> UITabBarItem {
+        switch self {
+        case .home:
+            let item = UITabBarItem(title: "Home",
+                                    image: UIImage(named: "HomeIcon"),
+                                    selectedImage: UIImage(named: "HomeFilledIcon"))
+            item.tag = 0
+            return item
+
+        case .explore:
+            let item = UITabBarItem(title: "Explore",
+                                    image: UIImage(named: "ExploreIcon"),
+                                    selectedImage: UIImage(named: "ExploreFilledIcon"))
+            item.tag = 1
+            return item
+
+        case .checkin:
+            let item = UITabBarItem(title: "Check-in",
+                                    image: UIImage(named: "CheckinIcon"),
+                                    selectedImage: UIImage(named: "CheckinFilledIcon"))
+            item.tag = 2
+            return item
         }
     }
 }

@@ -17,18 +17,6 @@ class ExploreViewController: UIViewController {
         return label
     }()
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
-
-        title = "Explore"
-        tabBarItem.image = .init(named: "ExploreIcon")
-        tabBarItem.selectedImage = .init(named: "ExploreFilledIcon")
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func loadView() {
         super.loadView()
         setup()

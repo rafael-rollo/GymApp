@@ -50,6 +50,9 @@
 		58A8BA3C2742DF900022F023 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA3B2742DF900022F023 /* ExploreViewController.swift */; };
 		58A8BA3E2742E39F0022F023 /* TabNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA3D2742E39F0022F023 /* TabNavigationCoordinator.swift */; };
 		58A8BA402742E5540022F023 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA3F2742E5540022F023 /* BaseTabBarController.swift */; };
+		58A8BA432742E6F90022F023 /* CheckinCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA422742E6F90022F023 /* CheckinCoordinator.swift */; };
+		58A8BA462742E75D0022F023 /* ExploreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA452742E75D0022F023 /* ExploreCoordinator.swift */; };
+		58A8BA492742E7930022F023 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA482742E7930022F023 /* HomeCoordinator.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -123,6 +126,9 @@
 		58A8BA3B2742DF900022F023 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		58A8BA3D2742E39F0022F023 /* TabNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA3F2742E5540022F023 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		58A8BA422742E6F90022F023 /* CheckinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinCoordinator.swift; sourceTree = "<group>"; };
+		58A8BA452742E75D0022F023 /* ExploreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCoordinator.swift; sourceTree = "<group>"; };
+		58A8BA482742E7930022F023 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 		58A8BA342742DC450022F023 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				58A8BA472742E7830022F023 /* Coordinator */,
 				58A8BA352742DC590022F023 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -374,6 +381,7 @@
 		58A8BA372742DF190022F023 /* Checkin */ = {
 			isa = PBXGroup;
 			children = (
+				58A8BA412742E6E30022F023 /* Coordinator */,
 				58A8BA392742DF570022F023 /* CheckinViewController.swift */,
 			);
 			path = Checkin;
@@ -382,9 +390,34 @@
 		58A8BA382742DF230022F023 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				58A8BA442742E74F0022F023 /* Coordinator */,
 				58A8BA3B2742DF900022F023 /* ExploreViewController.swift */,
 			);
 			path = Explore;
+			sourceTree = "<group>";
+		};
+		58A8BA412742E6E30022F023 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA422742E6F90022F023 /* CheckinCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		58A8BA442742E74F0022F023 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA452742E75D0022F023 /* ExploreCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		58A8BA472742E7830022F023 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA482742E7930022F023 /* HomeCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -693,6 +726,7 @@
 				58A8BA2A2742BD340022F023 /* Validator.swift in Sources */,
 				58A8BA11273DCB540022F023 /* Branding+UIColors.swift in Sources */,
 				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
+				58A8BA432742E6F90022F023 /* CheckinCoordinator.swift in Sources */,
 				58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */,
 				58A8BA312742CA190022F023 /* ValidatedInput.swift in Sources */,
 				58A8BA332742CB1B0022F023 /* ConstraintHelpers+UIView.swift in Sources */,
@@ -701,6 +735,7 @@
 				58A8BA0F273DB2FF0022F023 /* AnimatedShape.swift in Sources */,
 				58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */,
 				58A8BA02273D97210022F023 /* Page.swift in Sources */,
+				58A8BA492742E7930022F023 /* HomeCoordinator.swift in Sources */,
 				58A8B9E3273D87960022F023 /* Angles+CGFloat.swift in Sources */,
 				58A8BA28273F01260022F023 /* Users.swift in Sources */,
 				58A8BA06273D9F600022F023 /* NextButton.swift in Sources */,
@@ -716,6 +751,7 @@
 				58A8B9E0273D85330022F023 /* WalkthroughViewController.swift in Sources */,
 				58A8BA21273EF88F0022F023 /* Button.swift in Sources */,
 				58A8BA3A2742DF570022F023 /* CheckinViewController.swift in Sources */,
+				58A8BA462742E75D0022F023 /* ExploreCoordinator.swift in Sources */,
 				58A8BA24273F00910022F023 /* LoginState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

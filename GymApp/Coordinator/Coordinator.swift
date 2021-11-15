@@ -20,5 +20,6 @@ protocol TabBasedCoordinator: Coordinator {
 }
 
 protocol StackBasedCoordinator: Coordinator {
-    var parentCoordinator: [TabBasedCoordinator]? { get set }
+    var tab: Tab? { get }
+    var parentCoordinator: TabBasedCoordinator? { get set }
 }
