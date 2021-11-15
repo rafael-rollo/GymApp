@@ -8,6 +8,90 @@
 import UIKit
 
 class ExpandableHeader: UIView {
+    
+    // MARK: - subviews
+    private lazy var profileImageView: UIImageView = {
+        let image = UIImage(named: "ProfilePicture")
+
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.backgroundColor = .blue
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 26
+        return imageView
+    }()
+
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .openSans(.bold, size: 16)
+        label.textColor = .shipGray
+        label.text = "Rafael"
+        return label
+    }()
+
+    private lazy var planLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .openSans(size: 10)
+        label.textColor = .secondaryLabel
+        label.text = "GymApp - Platinum"
+        return label
+    }()
+
+    private lazy var gymappIdLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .openSans(size: 10)
+        label.textColor = .secondaryLabel
+        label.text = "GymApp ID: 1900916044063"
+        return label
+    }()
+
+    private lazy var profileInfoPanel: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            nameLabel, planLabel, gymappIdLabel
+        ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.alignment = .fill
+        return stack
+    }()
+
+    private var arrowDownImage: UIImage? {
+        return UIImage(named: "ArrowDownIcon")?
+            .withTintColor(.shipGray ?? .secondaryLabel)
+    }
+
+    private var arrowUpImage: UIImage? {
+        return UIImage(named: "ArrowUpIcon")?
+            .withTintColor(.shipGray ?? .secondaryLabel)
+    }
+
+    private lazy var toggleButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(arrowDownImage, for: .normal)
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        return button
+    }()
+
+    private lazy var baseContentView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            profileImageView, profileInfoPanel, toggleButton
+        ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        stack.alignment = .center
+        stack.spacing = 12
+        return stack
+    }()
 
     // MARK: - properties
     override var bounds: CGRect {
@@ -18,7 +102,14 @@ class ExpandableHeader: UIView {
 
     var heightConstraint: NSLayoutConstraint?
 
-    var height: CGFloat { return 120 }
+    var height: CGFloat {
+        let statusBarHeight = UIApplication.shared.windows
+            .filter {$0.isKeyWindow}.first?.windowScene?
+            .statusBarManager?.statusBarFrame.height ?? 0
+
+        return 76 + statusBarHeight
+    }
+    
     var radius: CGFloat { return 12 }
 
     var isExpanded: Bool = false
@@ -28,8 +119,9 @@ class ExpandableHeader: UIView {
         super.init(frame: frame)
         setup()
 
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
-        addGestureRecognizer(gesture)
+        toggleButton.addTarget(self,
+                               action: #selector(toggleButtonPressed(_:)),
+                               for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
@@ -69,10 +161,13 @@ class ExpandableHeader: UIView {
         layer.shadowPath = newPath
     }
 
-    @objc private func viewTapped(_ sender: UIView) {
+    @objc private func toggleButtonPressed(_ sender: UIButton) {
         guard let superview = superview else {
             return
         }
+
+        let toggleImage = isExpanded ? arrowDownImage : arrowUpImage
+        toggleButton.setImage(toggleImage, for: .normal)
 
         let updatedHeightValue = isExpanded ? height : superview.bounds.height
         heightConstraint?.constant = updatedHeightValue
@@ -80,22 +175,36 @@ class ExpandableHeader: UIView {
         UIView.animate(withDuration: 0.5) {
             superview.layoutIfNeeded()
         }
-
+        
         isExpanded = !isExpanded
     }
+    
 }
 
 // MARK: - view code
 extension ExpandableHeader: ViewCode {
-    func addConstraints() {
-        heightConstraint = constrainHeight(to: height)
-    }
-
+    
     func addTheme() {
         backgroundColor = .white
-
+        layer.zPosition = 100
         layer.masksToBounds = false
         layer.cornerRadius = radius
         layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
+    
+    func addViews() {
+        addSubview(baseContentView)
+    }
+    
+    func addConstraints() {
+        heightConstraint = constrainHeight(to: height)
+        
+        baseContentView.constrainToTop(of: self, notchSafe: true)
+        baseContentView.constrainHorizontally(to: self, withMargins: 24)
+        baseContentView.constrainHeight(to: 68)
+
+        profileImageView.constrainSize(to: .init(width: 52, height: 52))
+        toggleButton.constrainSize(to: .init(width: 24, height: 24))
+    }
+
 }
