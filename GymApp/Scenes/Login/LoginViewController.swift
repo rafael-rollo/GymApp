@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func loginViewController(_ viewController: LoginViewController,
+                             didUserAuthenticate authentication: Authentication)
+}
+
 class LoginViewController: UIViewController {
 
     // MARK: - subviews
@@ -121,10 +126,12 @@ class LoginViewController: UIViewController {
     private var emailValidator = Validator()
     private var passwordValidator = Validator()
 
+    private weak var delegate: LoginViewControllerDelegate?
     private weak var users: Users?
 
     // MARK: - view lifecycle
-    init(users: Users) {
+    init(delegate: LoginViewControllerDelegate, users: Users) {
+        self.delegate = delegate
         self.users = users
         super.init(nibName: nil, bundle: nil)
     }
@@ -181,6 +188,8 @@ class LoginViewController: UIViewController {
         submitButton.startLoading()
         
         users?.findUserAccount(by: emailTextInput.text!) { [weak self] _ in
+            // hold some user's account data
+            
             self?.state = .identifiedAccount
             self?.submitButton.stopLoading()
 
@@ -197,7 +206,16 @@ class LoginViewController: UIViewController {
         guard passwordValidator.isFormValid() else { return }
         
         submitButton.startLoading()
-        print("authenticate")
+        
+        users?.getAuthentication(from: passwordTextInput.text!) { [weak self] authentication in
+            // hold some user's authentication data
+            
+            self?.delegate?.loginViewController(self!, didUserAuthenticate: authentication)
+            self?.submitButton.stopLoading()
+
+        } failureHandler: { [weak self] in
+            self?.showAlert(withTitle: "Error", message: "Couldn't work. Sorry.")
+        }
     }
 }
 

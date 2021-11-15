@@ -250,7 +250,7 @@ extension TextInput: ViewCode {
         NSLayoutConstraint.activate([ titleLeadingConstraint!, titleTopConstraint! ])
         
         NSLayoutConstraint.activate([
-            errorMessageLabel.topAnchor.constraint(equalTo: textFieldView.bottomAnchor, constant: 2),
+            errorMessageLabel.topAnchor.constraint(equalTo: textFieldView.bottomAnchor, constant: 4),
             errorMessageLabel.leadingAnchor.constraint(equalTo: textFieldView.leadingAnchor),
             errorMessageLabel.trailingAnchor.constraint(equalTo: textFieldView.trailingAnchor),
         ])

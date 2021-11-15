@@ -19,5 +19,15 @@ class Users {
             completionHandler(user)
         }
     }
+    
+    func getAuthentication(from password: String,
+                           completionHandler: @escaping (Authentication) -> Void,
+                           failureHandler: @escaping () -> Void) {
+        let responseTime = 2.5 // seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + responseTime) {
+            let authentication: Authentication = .init(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJuYW1lIjoiUmFmYWVsIFJvbGxvIiwiZW1haWwiOiJyYWZhZWwucm9sbG9AenVwLmNvbSIsImlhdCI6MTUxNjIzOTAyMn0.qh5oQSFog2_YtNRp5BlZCS-DmHl7BDp6D7dLr3YaEQo")
+            completionHandler(authentication)
+        }
+    }
 
 }

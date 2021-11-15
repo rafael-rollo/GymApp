@@ -11,3 +11,7 @@ struct User {
     var name: String
     var email: String
 }
+
+struct Authentication {
+    var token: String
+}

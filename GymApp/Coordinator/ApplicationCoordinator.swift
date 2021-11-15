@@ -59,7 +59,7 @@ extension ApplicationCoordinator: LaunchViewControllerDelegate {
             return
         }
 
-        rootViewController = LoginViewController(users: users)
+        rootViewController = LoginViewController(delegate: self, users: users)
     }
     
 }
@@ -75,7 +75,15 @@ extension ApplicationCoordinator: WalkthroughViewControllerDelegate {
 extension ApplicationCoordinator: LocationPermissionViewControllerDelegate {
     
     func locationPermissionViewController(_ viewController: LocationPermissionViewController, didRequest authorizationStatus: CLAuthorizationStatus) {
-        rootViewController = LoginViewController(users: users)
+        rootViewController = LoginViewController(delegate: self, users: users)
+    }
+    
+}
+
+extension ApplicationCoordinator: LoginViewControllerDelegate {
+    
+    func loginViewController(_ viewController: LoginViewController, didUserAuthenticate authentication: Authentication) {
+        print("go to home")
     }
     
 }
