@@ -83,7 +83,7 @@ extension ApplicationCoordinator: LocationPermissionViewControllerDelegate {
 extension ApplicationCoordinator: LoginViewControllerDelegate {
     
     func loginViewController(_ viewController: LoginViewController, didUserAuthenticate authentication: Authentication) {
-        print("go to home")
+        rootViewController = HomeViewController()
     }
     
 }

@@ -44,6 +44,8 @@ class LoadingButton: Button {
     }
 
     func startLoading() {
+        isEnabled = false
+        
         UIView.transition(with: self,
                           duration: 0.3,
                           options: .curveEaseInOut) { [weak self] in
@@ -56,6 +58,8 @@ class LoadingButton: Button {
 
     func stopLoading() {
         guard isLoading else { return }
+        
+        isEnabled = true
 
         UIView.transition(with: self,
                           duration: 0.3,

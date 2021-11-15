@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
 
     private lazy var label: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .openSans(.bold, size: 14)
         label.text = "Home Scene!"
         return label
