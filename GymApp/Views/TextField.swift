@@ -114,6 +114,15 @@ class TextInput: UIView {
         }
     }
     
+    var autocorrectionType: UITextAutocorrectionType {
+        get {
+            return textField.autocorrectionType
+        }
+        set {
+            textField.autocorrectionType = newValue
+        }
+    }
+    
     var rules: [Rule] = []
 
     // MARK: - view lifecycle

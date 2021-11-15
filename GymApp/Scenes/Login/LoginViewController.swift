@@ -91,6 +91,7 @@ class LoginViewController: UIViewController {
         input.translatesAutoresizingMaskIntoConstraints = false
         input.keyboardType = .emailAddress
         input.autocapitalizationType = .none
+        input.autocorrectionType = .no
         input.maxLength = 46
         input.title = "Email address"
         input.rules = [.notEmpty, .validEmail]
