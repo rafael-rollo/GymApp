@@ -27,7 +27,7 @@ class BaseTabBarController: UITabBarController {
 
         let appearance = UITabBarAppearance()
         appearance.backgroundColor = .white
-        appearance.shadowColor = .secondaryLabel
+        appearance.shadowColor = .white
 
         appearance.stackedLayoutAppearance.normal.iconColor = .secondaryLabel
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
@@ -41,7 +41,13 @@ class BaseTabBarController: UITabBarController {
             .foregroundColor: UIColor.shipGray!
         ]
 
-        self.tabBar.standardAppearance = appearance
+        tabBar.standardAppearance = appearance
+
+        tabBar.layer.shadowPath = UIBezierPath(rect: tabBar.bounds).cgPath
+        tabBar.layer.shadowRadius = 8.0
+        tabBar.layer.shadowOpacity = 0.3
+        tabBar.layer.shadowColor = UIColor.secondaryLabel.cgColor
+        tabBar.layer.shadowOffset = .init(width: 0, height: -5)
     }
     
 }
