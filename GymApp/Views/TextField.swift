@@ -53,6 +53,15 @@ class TextInput: UIView {
         return view
     }()
     
+    private lazy var errorMessageLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .openSans(size: 12)
+        label.textColor = .terracotta
+        label.isHidden = true
+        return label
+    }()
+    
     // MARK: - properties
     private var titleTopConstraint: NSLayoutConstraint?
     private var titleLeadingConstraint: NSLayoutConstraint?
@@ -104,6 +113,8 @@ class TextInput: UIView {
             textField.autocapitalizationType = newValue
         }
     }
+    
+    var rules: [Rule] = []
 
     // MARK: - view lifecycle
     override init(frame: CGRect) {
@@ -161,6 +172,22 @@ class TextInput: UIView {
     }
 }
 
+extension TextInput: ValidatedInput {
+    func getText() -> String? {
+        return textField.text
+    }
+
+    func setErrorMessageHidden() {
+        errorMessageLabel.text = ""
+        errorMessageLabel.isHidden = true
+    }
+
+    func showError(_ message: String) {
+        errorMessageLabel.text = message
+        errorMessageLabel.isHidden = false
+    }
+}
+
 // MARK: - text input handling
 extension TextInput: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -195,15 +222,16 @@ extension TextInput: ViewCode {
     func addViews() {
         addSubview(textFieldView)
         addSubview(fieldTitleLabel)
+        addSubview(errorMessageLabel)
     }
 
     func addConstraints() {
-        heightAnchor.constraint(equalToConstant: 60).isActive = true
+        heightAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
 
         NSLayoutConstraint.activate([
-            textFieldView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            textFieldView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            textFieldView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            textFieldView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            textFieldView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            textFieldView.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldView.heightAnchor.constraint(equalToConstant: 50),
         ])
 
@@ -220,6 +248,12 @@ extension TextInput: ViewCode {
             .constraint(equalTo: textFieldView.topAnchor,constant: TitlePositions.t0.y)
 
         NSLayoutConstraint.activate([ titleLeadingConstraint!, titleTopConstraint! ])
+        
+        NSLayoutConstraint.activate([
+            errorMessageLabel.topAnchor.constraint(equalTo: textFieldView.bottomAnchor, constant: 2),
+            errorMessageLabel.leadingAnchor.constraint(equalTo: textFieldView.leadingAnchor),
+            errorMessageLabel.trailingAnchor.constraint(equalTo: textFieldView.trailingAnchor),
+        ])
     }
 
     func addTheme() {

@@ -88,6 +88,8 @@ class LoginViewController: UIViewController {
         input.autocapitalizationType = .none
         input.maxLength = 46
         input.title = "Email address"
+        input.rules = [.notEmpty, .validEmail]
+        emailValidator.requireValidation(on: input)
         return input
     }()
     
@@ -97,6 +99,8 @@ class LoginViewController: UIViewController {
         input.autocapitalizationType = .none
         input.title = "Password"
         input.isSecureTextEntry = true
+        input.rules = [.notEmpty]
+        passwordValidator.requireValidation(on: input)
         return input
     }()
     
@@ -113,6 +117,9 @@ class LoginViewController: UIViewController {
             self.updateViews()
         }
     }
+    
+    private var emailValidator = Validator()
+    private var passwordValidator = Validator()
 
     private weak var users: Users?
 
@@ -169,6 +176,8 @@ class LoginViewController: UIViewController {
     }
 
     private func findUserAccount() {
+        guard emailValidator.isFormValid() else { return }
+        
         users?.findUserAccount(by: emailTextInput.text!) { [weak self] _ in
             self?.state = .identifiedAccount
 
@@ -182,6 +191,8 @@ class LoginViewController: UIViewController {
     }
     
     private func authenticateUser() {
+        guard passwordValidator.isFormValid() else { return }
+        
         print("authenticate")
     }
 }
@@ -232,7 +243,7 @@ extension LoginViewController: ViewCode {
         ])
         
         NSLayoutConstraint.activate([
-            submitButton.topAnchor.constraint(equalTo: emailTextInput.bottomAnchor, constant: 32),
+            submitButton.topAnchor.constraint(equalTo: emailTextInput.bottomAnchor, constant: 38),
             submitButton.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
             submitButton.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
         ])
