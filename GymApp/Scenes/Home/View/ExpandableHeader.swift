@@ -118,7 +118,7 @@ class ExpandableHeader: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
         tableView.isHidden = true
         tableView.sectionFooterHeight = .leastNormalMagnitude
         tableView.backgroundColor = .clear
@@ -151,13 +151,16 @@ class ExpandableHeader: UIView {
             MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
                 print("coordinator, please open \(MenuItem.self)")
             }),
-            MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
+            MenuItem(imageName: "PeopleIcon", title: "Dependents", externalLink: "https://gympass.com/", onPress: {
                 print("coordinator, please open \(MenuItem.self)")
             }),
-            MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
+            MenuItem(imageName: "PersonIcon", title: "Edit profile", externalLink: "https://gympass.com/", onPress: {
                 print("coordinator, please open \(MenuItem.self)")
             }),
-            MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
+            MenuItem(imageName: "WalletIcon", title: "Payments", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            }),
+            MenuItem(imageName: "HistoryIcon", title: "Check-in history", externalLink: "https://gympass.com/", onPress: {
                 print("coordinator, please open \(MenuItem.self)")
             })
         ]),
@@ -165,13 +168,13 @@ class ExpandableHeader: UIView {
             MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
                 print("coordinator, please open \(MenuItem.self)")
             }),
-            MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
+            MenuItem(imageName: "HelpIcon", title: "Help center", externalLink: "https://gympass.com/", onPress: {
                 print("coordinator, please open \(MenuItem.self)")
             }),
-            MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
+            MenuItem(imageName: "DumbbellIcon", title: "Refer a facility", externalLink: "https://gympass.com/", onPress: {
                 print("coordinator, please open \(MenuItem.self)")
             }),
-            MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
+            MenuItem(imageName: "PadlockIcon", title: "Privacy and security", externalLink: "https://gympass.com/", onPress: {
                 print("coordinator, please open \(MenuItem.self)")
             })
         ])
@@ -269,12 +272,18 @@ extension ExpandableHeader: UITableViewDataSource, UITableViewDelegate {
         return menuItems[section].items.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return MenuItemCell.height
+    }
 
-        cell.textLabel?.text = menuItems[indexPath.section]
-            .items[indexPath.row]
-            .title
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemCell.reuseId, for: indexPath) as? MenuItemCell else {
+            fatalError("Provide an appropriate cell for the menu")
+        }
+
+        let item = menuItems[indexPath.section].items[indexPath.row]
+        cell.setup(from: item)
+
         return cell
     }
     

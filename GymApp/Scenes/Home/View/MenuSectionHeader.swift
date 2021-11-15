@@ -8,6 +8,8 @@
 import UIKit
 
 class MenuSectionHeader: UIView {
+    
+    static let height: CGFloat = 60
 
     private lazy var label: UILabel = {
         let label = UILabel()
@@ -16,10 +18,6 @@ class MenuSectionHeader: UIView {
         label.textColor = .shipGray
         return label
     }()
-
-    static var height: CGFloat {
-        return 60
-    }
 
     var title: String? {
         didSet {

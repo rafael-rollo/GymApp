@@ -55,6 +55,8 @@
 		58A8BA492742E7930022F023 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA482742E7930022F023 /* HomeCoordinator.swift */; };
 		58A8BA4C2742EDAC0022F023 /* ExpandableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */; };
 		58A8BA4E2742F2590022F023 /* MenuSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA4D2742F2590022F023 /* MenuSectionHeader.swift */; };
+		58A8BA502742F3C40022F023 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA4F2742F3C40022F023 /* ReusableView.swift */; };
+		58A8BA522742F48C0022F023 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA512742F48C0022F023 /* MenuItemCell.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -133,6 +135,8 @@
 		58A8BA482742E7930022F023 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeader.swift; sourceTree = "<group>"; };
 		58A8BA4D2742F2590022F023 /* MenuSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionHeader.swift; sourceTree = "<group>"; };
+		58A8BA4F2742F3C40022F023 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		58A8BA512742F48C0022F023 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 			children = (
 				58A8B9DB273C5CB10022F023 /* ViewCode.swift */,
 				58A8BA302742CA190022F023 /* ValidatedInput.swift */,
+				58A8BA4F2742F3C40022F023 /* ReusableView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 			children = (
 				58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */,
 				58A8BA4D2742F2590022F023 /* MenuSectionHeader.swift */,
+				58A8BA512742F48C0022F023 /* MenuItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -741,6 +747,7 @@
 				58A8BA2A2742BD340022F023 /* Validator.swift in Sources */,
 				58A8BA11273DCB540022F023 /* Branding+UIColors.swift in Sources */,
 				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
+				58A8BA502742F3C40022F023 /* ReusableView.swift in Sources */,
 				58A8BA432742E6F90022F023 /* CheckinCoordinator.swift in Sources */,
 				58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */,
 				58A8BA312742CA190022F023 /* ValidatedInput.swift in Sources */,
@@ -766,6 +773,7 @@
 				58A8BA26273F010D0022F023 /* User.swift in Sources */,
 				58A8B9E0273D85330022F023 /* WalkthroughViewController.swift in Sources */,
 				58A8BA21273EF88F0022F023 /* Button.swift in Sources */,
+				58A8BA522742F48C0022F023 /* MenuItemCell.swift in Sources */,
 				58A8BA3A2742DF570022F023 /* CheckinViewController.swift in Sources */,
 				58A8BA462742E75D0022F023 /* ExploreCoordinator.swift in Sources */,
 				58A8BA24273F00910022F023 /* LoginState.swift in Sources */,
