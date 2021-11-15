@@ -116,6 +116,46 @@ class ExpandableHeader: UIView {
         return view
     }()
     
+    private lazy var appVersionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .openSans(size: 14)
+        label.textColor = .secondaryLabel
+
+        guard let appVersion = Bundle.main.releaseVersionNumber,
+              let appBuild = Bundle.main.buildVersionNumber else {
+            return label
+        }
+
+        label.text = "App version: \(appVersion) (\(appBuild))"
+        label.sizeToFit()
+        return label
+    }()
+
+    private lazy var logoutButton: UIButton = {
+        let atributedTitle = NSAttributedString(string: "Log out", attributes: [
+            .foregroundColor: UIColor.terracotta ?? .systemOrange,
+            .font: UIFont.openSans(.bold, size: 14)
+        ])
+
+        let button = UIButton()
+        button.setAttributedTitle(atributedTitle, for: .normal)
+        button.sizeToFit()
+        return button
+    }()
+
+    private lazy var menuFooterView: UIView = {
+        let view = UIView()
+        view.frame.size.height = 130
+
+        view.addSubview(appVersionLabel)
+        appVersionLabel.frame.origin = .init(x: 24, y: 24)
+
+        view.addSubview(logoutButton)
+        logoutButton.frame.origin = .init(x: 24, y: 62)
+
+        return view
+    }()
+    
     private lazy var menuTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -124,6 +164,7 @@ class ExpandableHeader: UIView {
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
         tableView.sectionFooterHeight = .leastNormalMagnitude
         tableView.backgroundColor = .clear
+        tableView.tableFooterView = menuFooterView
         return tableView
     }()
     
