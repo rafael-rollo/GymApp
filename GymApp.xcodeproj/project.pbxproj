@@ -37,6 +37,9 @@
 		58A8BA1B273DD7F70022F023 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA1A273DD7F70022F023 /* ApplicationCoordinator.swift */; };
 		58A8BA1E273EF3850022F023 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA1D273EF3850022F023 /* TextField.swift */; };
 		58A8BA21273EF88F0022F023 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA20273EF88F0022F023 /* Button.swift */; };
+		58A8BA24273F00910022F023 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA23273F00910022F023 /* LoginState.swift */; };
+		58A8BA26273F010D0022F023 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA25273F010D0022F023 /* User.swift */; };
+		58A8BA28273F01260022F023 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA27273F01260022F023 /* Users.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -97,6 +100,9 @@
 		58A8BA1A273DD7F70022F023 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA1D273EF3850022F023 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		58A8BA20273EF88F0022F023 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		58A8BA23273F00910022F023 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
+		58A8BA25273F010D0022F023 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		58A8BA27273F01260022F023 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -310,6 +316,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		58A8BA22273F00820022F023 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA23273F00910022F023 /* LoginState.swift */,
+				58A8BA25273F010D0022F023 /* User.swift */,
+				58A8BA27273F01260022F023 /* Users.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		58AB9B61273C4CD7005445F3 = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +354,7 @@
 				58AB9B9D273C5208005445F3 /* Assets */,
 				58A8B9D9273C5C940022F023 /* Common */,
 				58A8BA17273DD7AA0022F023 /* Coordinator */,
+				58A8BA22273F00820022F023 /* Models */,
 				58A8BA1F273EF6AD0022F023 /* Views */,
 				58A8B9D7273C5BD00022F023 /* Scenes */,
 				58A8B9D5273C598C0022F023 /* SupportingFiles */,
@@ -615,6 +632,7 @@
 				58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */,
 				58A8BA02273D97210022F023 /* Page.swift in Sources */,
 				58A8B9E3273D87960022F023 /* Angles+CGFloat.swift in Sources */,
+				58A8BA28273F01260022F023 /* Users.swift in Sources */,
 				58A8BA06273D9F600022F023 /* NextButton.swift in Sources */,
 				58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */,
 				58A8BA04273D9B6C0022F023 /* Carousel.swift in Sources */,
@@ -623,8 +641,10 @@
 				58A8BA14273DD0940022F023 /* LoginViewController.swift in Sources */,
 				58A8B9FF273D93090022F023 /* RotatingShape.swift in Sources */,
 				58A8B9DC273C5CB10022F023 /* ViewCode.swift in Sources */,
+				58A8BA26273F010D0022F023 /* User.swift in Sources */,
 				58A8B9E0273D85330022F023 /* WalkthroughViewController.swift in Sources */,
 				58A8BA21273EF88F0022F023 /* Button.swift in Sources */,
+				58A8BA24273F00910022F023 /* LoginState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

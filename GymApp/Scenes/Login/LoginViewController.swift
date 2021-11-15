@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    // MARK: - subviews
     private lazy var logo: UIImageView = {
         let logo = UIImage(named: "GymAppLogo")?
             .withTintColor(.terracotta ?? .systemRed)
@@ -39,7 +40,7 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    private lazy var editEmailButton: UIButton = {
+    private lazy var switchAccountButton: UIButton = {
         let image = UIImage(named: "PencilIcon")?
             .withTintColor(.secondaryLabel)
 
@@ -53,7 +54,7 @@ class LoginViewController: UIViewController {
     private lazy var buttonWrapper: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(editEmailButton)
+        view.addSubview(switchAccountButton)
         return view
     }()
 
@@ -96,17 +97,34 @@ class LoginViewController: UIViewController {
         input.autocapitalizationType = .none
         input.title = "Password"
         input.isSecureTextEntry = true
-        input.isHidden = true
         return input
     }()
     
     private lazy var submitButton: Button = {
         let button = Button()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Continue"
         button.style = .secondary
         return button
     }()
+    
+    // MARK: - properties
+    private var state: LoginState = .undeterminedUser {
+        didSet {
+            self.updateViews()
+        }
+    }
+
+    private weak var users: Users?
+
+    // MARK: - view lifecycle
+    init(users: Users) {
+        self.users = users
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func loadView() {
         super.loadView()
@@ -116,22 +134,51 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateViews()
         submitButton.addTarget(self,
                                action: #selector(submitButtonPressed(_:)),
                                for: .touchUpInside)
     }
     
-    @objc private func submitButtonPressed(_ sender: UIButton) {
-        titleLabel.text = "Now, your password"
-        descriptionLabel.text = emailTextInput.text
-        editEmailButton.isHidden = false
+    // MARK: - view methods
+    private func updateViews() {
+        let form = state.formInfo()
 
-        emailTextInput.isHidden = true
-        passwordTextInput.isHidden = false
+        titleLabel.text = form.title
+        descriptionLabel.text = form.description ?? emailTextInput.text
+        switchAccountButton.isHidden = !form.switchableAccount
+
+        emailTextInput.isHidden = !form.emailFieldVisible
+        passwordTextInput.isHidden = !form.passwordFieldVisible
+
+        submitButton.setTitle(form.buttonTitle, for: .normal)
     }
-    
+
+    @objc private func submitButtonPressed(_ sender: UIButton) {
+        switch state {
+        case .undeterminedUser:
+            findUserAccount()
+
+        case .identifiedAccount:
+            authenticateUser()
+        }
+    }
+
+    private func findUserAccount() {
+        users?.findUserAccount(by: emailTextInput.text!) { [weak self] _ in
+            self?.state = .identifiedAccount
+
+        } failureHandler: { [weak self] in
+            self?.showAlert(withTitle: "Error", message: "Couldn't work.")
+        }
+    }
+
+    private func authenticateUser() {
+        print("authenticate")
+    }
 }
 
+// MARK: - view code
 extension LoginViewController: ViewCode {
     
     func addTheme() {
@@ -160,8 +207,8 @@ extension LoginViewController: ViewCode {
         ])
         
         NSLayoutConstraint.activate([
-            editEmailButton.widthAnchor.constraint(equalToConstant: 18),
-            editEmailButton.heightAnchor.constraint(equalToConstant: 18)
+            switchAccountButton.widthAnchor.constraint(equalToConstant: 18),
+            switchAccountButton.heightAnchor.constraint(equalToConstant: 18)
         ])
 
         NSLayoutConstraint.activate([
