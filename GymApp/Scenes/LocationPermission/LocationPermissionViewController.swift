@@ -159,48 +159,25 @@ extension LocationPermissionViewController: ViewCode {
         let shapeXOffset = shape.bounds.width * 0.37
         let shapeYOffset = shape.bounds.height - view.bounds.height * 0.3
 
-        NSLayoutConstraint.activate([
-            shape.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                           constant: -shapeXOffset),
-            shape.topAnchor.constraint(equalTo: view.topAnchor,
-                                       constant: -shapeYOffset)
-        ])
+        shape.constrainToTopLeading(of: view, top: -shapeYOffset, leading: -shapeXOffset)
         
-        NSLayoutConstraint.activate([
-            logo.widthAnchor.constraint(equalToConstant: 120),
-            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
-            logo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24)
-        ])
+        logo.constrainWidth(to: 120)
+        logo.constrainToTop(of: view, with: 48, safely: true)
+        logo.constrainToLeading(of: view, with: 24)
 
-        NSLayoutConstraint.activate([
-            allowPermissionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            allowPermissionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            allowPermissionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -48)
-        ])
+        allowPermissionButton.constrainToBottom(of: view, with: 48, safely: true)
+        allowPermissionButton.constrainHorizontallyTo(view, withMarginsOf: 24)
 
-        NSLayoutConstraint.activate([
-            contentView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-            contentView.leadingAnchor.constraint(equalTo: allowPermissionButton.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: allowPermissionButton.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: allowPermissionButton.topAnchor, constant: -48)
-        ])
+        contentView.constrainHeight(to: view.bounds.height * 0.3)
+        contentView.constrainHorizontallyTo(allowPermissionButton)
+        contentView.anchorAbove(allowPermissionButton, withMarginOf: 48)
 
-        NSLayoutConstraint.activate([
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
+        subtitleLabel.constrainToBottomAndSides(of: contentView)
 
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -16)
-        ])
+        titleLabel.constrainHorizontallyTo(contentView)
+        titleLabel.anchorAbove(subtitleLabel, withMarginOf: 16)
 
-        NSLayoutConstraint.activate([
-            markerImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
-            markerImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
-        ])
+        markerImageView.anchorAbove(titleLabel, withMarginOf: 16)
     }
 
 }

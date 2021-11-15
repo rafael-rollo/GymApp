@@ -89,11 +89,13 @@ extension UIView {
         self.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin).isActive = true
     }
 
-    func constrainToBottomAndSides(of view: UIView) {
+    func constrainToBottomAndSides(of view: UIView,
+                                   bottom: CGFloat = 0,
+                                   horizontalMargins: CGFloat = 0) {
         let constraints = [
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottom),
+            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalMargins),
+            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalMargins)
         ]
 
         NSLayoutConstraint.activate(constraints)
