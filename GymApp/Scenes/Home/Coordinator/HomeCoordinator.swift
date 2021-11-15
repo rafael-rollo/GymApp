@@ -9,7 +9,7 @@ import UIKit
 
 class HomeCoordinator: StackBasedCoordinator {
 
-    internal lazy var rootViewController: UIViewController? = UIViewController()
+    internal var rootViewController: UIViewController?
 
     var parentCoordinator: TabBasedCoordinator?
 

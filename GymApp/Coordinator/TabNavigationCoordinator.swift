@@ -9,7 +9,7 @@ import UIKit
 
 class TabNavigationCoordinator: NSObject, TabBasedCoordinator {
 
-    internal lazy var rootViewController: UIViewController? = BaseTabBarController()
+    internal var rootViewController: UIViewController?
     
     lazy var childCoordinators: [StackBasedCoordinator] = [
         HomeCoordinator(),
@@ -28,8 +28,11 @@ class TabNavigationCoordinator: NSObject, TabBasedCoordinator {
             viewControllers.append(rootViewController)
         }
 
-        (rootViewController as? BaseTabBarController)?.viewControllers = viewControllers
-        return rootViewController!
+        let tabBarViewController = BaseTabBarController()
+        tabBarViewController.viewControllers = viewControllers
+
+        rootViewController = tabBarViewController
+        return tabBarViewController
     }
 
     func moveTo(_ tab: Tab) {
