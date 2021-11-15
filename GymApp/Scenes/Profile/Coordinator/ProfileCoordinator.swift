@@ -32,7 +32,10 @@ class ProfileCoordinator: StackBasedCoordinator {
         return controller
     }
     
-    func openExternalLink(_ url: URL) {
+    func openExternalLink(of item: MenuItem) {
+        guard let externalLink = item.externalLink,
+              let url = URL(string: externalLink) else { return }
+
         let webview = WebViewController(path: url, flowDelegate: self)
         webview.modalPresentationStyle = .fullScreen
 
@@ -41,18 +44,25 @@ class ProfileCoordinator: StackBasedCoordinator {
         }
     }
     
+    func navigateToSubmenu(of item: MenuItem) {
+        guard let items = item.submenuItems else { return }
+
+        let menu = MenuViewController(items: items, flowDelegate: self)
+        menu.title = item.title
+
+        navigationController.pushViewController(menu, animated: true)
+    }
+    
 }
 
 extension ProfileCoordinator: ProfileFlowDelegate {
     
     func menuItemDidSelect(_ item: MenuItem) {
-        guard let externalLink = item.externalLink else {
-            // navigateToSubmenuScene()
-            return
+        if item.isFinal {
+            openExternalLink(of: item)
+        } else {
+            navigateToSubmenu(of: item)
         }
-
-        guard let url = URL(string: externalLink) else { return }
-        openExternalLink(url)
     }
     
 }
