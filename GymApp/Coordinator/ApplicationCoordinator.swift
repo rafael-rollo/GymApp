@@ -59,7 +59,12 @@ extension ApplicationCoordinator: LaunchViewControllerDelegate {
             return
         }
 
-        rootViewController = LoginViewController(delegate: self, users: users)
+        guard Storage.isUserLogged else {
+            rootViewController = LoginViewController(delegate: self, users: users)
+            return
+        }
+
+        goToHome()
     }
     
 }
@@ -82,8 +87,7 @@ extension ApplicationCoordinator: LocationPermissionViewControllerDelegate {
 
 extension ApplicationCoordinator: LoginViewControllerDelegate {
     
-    func loginViewController(_ viewController: LoginViewController,
-                             didUserAuthenticate authentication: Authentication) {
+    private func goToHome() {
         let tabBarController = UITabBarController()
 
         let homeVc = HomeViewController()
@@ -113,6 +117,11 @@ extension ApplicationCoordinator: LoginViewControllerDelegate {
 
 
         rootViewController = tabBarController
+    }
+    
+    func loginViewController(_ viewController: LoginViewController,
+                             didUserAuthenticate authentication: Authentication) {
+        goToHome()
     }
     
 }

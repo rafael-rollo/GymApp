@@ -29,6 +29,7 @@ private struct UserDefaultInfo<T> {
 }
 
 enum Storage {
+    
     /**
      Walkthrought completion related info
      */
@@ -56,4 +57,31 @@ enum Storage {
             locationPermissionRequestInfo.set(newValue)
         }
     }
+    
+    /**
+     User's log in related info
+     */
+    private static var usersAuthenticationToken = UserDefaultInfo<String?>(key: "authentication", defaultValue: nil)
+
+    static var usersAuthentication: Authentication? {
+        get {
+            guard let usersAuthenticationToken = usersAuthenticationToken.get() else { return nil }
+            return Authentication(token: usersAuthenticationToken)
+        }
+        set {
+            guard let token = newValue?.token else {
+                debugPrint("Couldn't save an invalid authentication token")
+                return
+            }
+
+            usersAuthenticationToken.set(token)
+        }
+    }
+
+    static var isUserLogged: Bool {
+        get {
+            return usersAuthenticationToken.get() != nil
+        }
+    }
+    
 }

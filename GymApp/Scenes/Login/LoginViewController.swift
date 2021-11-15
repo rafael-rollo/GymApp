@@ -210,6 +210,7 @@ class LoginViewController: UIViewController {
         
         users?.getAuthentication(from: passwordTextInput.text!) { [weak self] authentication in
             // hold some user's authentication data
+            Storage.usersAuthentication = authentication
             
             self?.delegate?.loginViewController(self!, didUserAuthenticate: authentication)
             self?.submitButton.stopLoading()
