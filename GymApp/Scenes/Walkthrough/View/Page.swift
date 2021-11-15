@@ -70,36 +70,24 @@ class Page: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 extension Page: ViewCode {
+    
     func addViews() {
         addSubview(contentView)
     }
 
     func addConstraints() {
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
-        ])
+        contentView.constrainTo(edgesOf: self, withHorizontalMarginsOf: 24)
 
-        NSLayoutConstraint.activate([
-            subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
+        subtitleLabel.constrainToBottomAndSides(of: contentView)
 
-        NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -16),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
+        titleLabel.constrainHorizontallyTo(contentView)
+        titleLabel.anchorAbove(subtitleLabel, withMarginOf: 16)
 
-        NSLayoutConstraint.activate([
-            characterImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
-            characterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
-        ])
+        characterImageView.anchorAbove(titleLabel, withMarginOf: 16)
     }
+    
 }
