@@ -53,6 +53,7 @@
 		58A8BA432742E6F90022F023 /* CheckinCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA422742E6F90022F023 /* CheckinCoordinator.swift */; };
 		58A8BA462742E75D0022F023 /* ExploreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA452742E75D0022F023 /* ExploreCoordinator.swift */; };
 		58A8BA492742E7930022F023 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA482742E7930022F023 /* HomeCoordinator.swift */; };
+		58A8BA4C2742EDAC0022F023 /* ExpandableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -129,6 +130,7 @@
 		58A8BA422742E6F90022F023 /* CheckinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA452742E75D0022F023 /* ExploreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA482742E7930022F023 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeader.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				58A8BA472742E7830022F023 /* Coordinator */,
+				58A8BA4A2742ED980022F023 /* View */,
 				58A8BA352742DC590022F023 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -418,6 +421,14 @@
 				58A8BA482742E7930022F023 /* HomeCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		58A8BA4A2742ED980022F023 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA4B2742EDAC0022F023 /* ExpandableHeader.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -720,6 +731,7 @@
 				58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */,
 				58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */,
 				58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */,
+				58A8BA4C2742EDAC0022F023 /* ExpandableHeader.swift in Sources */,
 				58A8BA1E273EF3850022F023 /* TextInput.swift in Sources */,
 				58A8BA3E2742E39F0022F023 /* TabNavigationCoordinator.swift in Sources */,
 				58A8BA362742DC590022F023 /* HomeViewController.swift in Sources */,
