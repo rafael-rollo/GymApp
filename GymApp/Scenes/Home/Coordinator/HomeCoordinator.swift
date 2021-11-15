@@ -18,10 +18,18 @@ class HomeCoordinator: StackBasedCoordinator {
     }
 
     func start() -> UIViewController {
-        let controller = UINavigationController(rootViewController: HomeViewController())
+        let controller = UINavigationController(rootViewController: HomeViewController(coordinator: self))
         controller.isNavigationBarHidden = true
 
         rootViewController = controller
         return controller
+    }
+    
+    func goToExplore() {
+        parentCoordinator?.moveTo(.explore)
+    }
+
+    func goToCheckin() {
+        parentCoordinator?.moveTo(.checkin)
     }
 }
