@@ -14,7 +14,7 @@ class ApplicationCoordinator: Coordinator {
     // MARK: - properties
     let window: UIWindow
 
-    internal var rootViewController: UIViewController? {
+    internal lazy var rootViewController: UIViewController? = UIViewController() {
         didSet {
             UIView.transition(
                 with: window,
@@ -64,7 +64,7 @@ extension ApplicationCoordinator: LaunchViewControllerDelegate {
             return
         }
 
-        goToHome()
+        rootViewController = TabNavigationCoordinator().start()
     }
     
 }
@@ -87,41 +87,9 @@ extension ApplicationCoordinator: LocationPermissionViewControllerDelegate {
 
 extension ApplicationCoordinator: LoginViewControllerDelegate {
     
-    private func goToHome() {
-        let tabBarController = UITabBarController()
-
-        let homeVc = HomeViewController()
-        let exploreVc = ExploreViewController()
-        let checkinVc = CheckinViewController()
-        tabBarController.viewControllers = [homeVc, exploreVc, checkinVc]
-
-        let font = UIFont.openSans(.semibold, size: 10)
-
-        let appearance = UITabBarAppearance()
-        appearance.backgroundColor = .white
-        appearance.shadowColor = .secondaryLabel
-
-        appearance.stackedLayoutAppearance.normal.iconColor = .secondaryLabel
-        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-            .font: font,
-            .foregroundColor: UIColor.secondaryLabel
-        ]
-
-        appearance.stackedLayoutAppearance.selected.iconColor = .shipGray
-        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-            .font: font,
-            .foregroundColor: UIColor.shipGray!
-        ]
-
-        tabBarController.tabBar.standardAppearance = appearance
-
-
-        rootViewController = tabBarController
-    }
-    
     func loginViewController(_ viewController: LoginViewController,
                              didUserAuthenticate authentication: Authentication) {
-        goToHome()
+        rootViewController = TabNavigationCoordinator().start()
     }
     
 }
