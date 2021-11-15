@@ -236,40 +236,23 @@ extension LoginViewController: ViewCode {
     }
 
     func addConstraints() {
-        NSLayoutConstraint.activate([
-            logo.widthAnchor.constraint(equalToConstant: 120),
-            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
-            logo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-        ])
+        logo.constrainWidth(to: 120)
+        logo.constrainToTopLeading(of: view, top: 48,
+                                   leading: 24, notchSafe: true)
 
-        NSLayoutConstraint.activate([
-            titlesView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 24),
-            titlesView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            titlesView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
-        ])
+        titlesView.anchorBelow(logo, withMarginOf: 24)
+        titlesView.constrainHorizontallyTo(view, withMarginsOf: 24)
         
-        NSLayoutConstraint.activate([
-            switchAccountButton.widthAnchor.constraint(equalToConstant: 18),
-            switchAccountButton.heightAnchor.constraint(equalToConstant: 18)
-        ])
+        switchAccountButton.constrainSizeTo(CGSize(width: 18, height: 18))
 
-        NSLayoutConstraint.activate([
-            emailTextInput.topAnchor.constraint(equalTo: titlesView.bottomAnchor, constant: 24),
-            emailTextInput.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
-            emailTextInput.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
-        ])
+        emailTextInput.anchorBelow(titlesView, withMarginOf: 24)
+        emailTextInput.constrainHorizontallyTo(titlesView)
         
-        NSLayoutConstraint.activate([
-            passwordTextInput.topAnchor.constraint(equalTo: titlesView.bottomAnchor, constant: 24),
-            passwordTextInput.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
-            passwordTextInput.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
-        ])
+        passwordTextInput.anchorBelow(titlesView, withMarginOf: 24)
+        passwordTextInput.constrainHorizontallyTo(titlesView)
         
-        NSLayoutConstraint.activate([
-            submitButton.topAnchor.constraint(equalTo: emailTextInput.bottomAnchor, constant: 38),
-            submitButton.leadingAnchor.constraint(equalTo: titlesView.leadingAnchor),
-            submitButton.trailingAnchor.constraint(equalTo: titlesView.trailingAnchor),
-        ])
+        submitButton.anchorBelow(emailTextInput, withMarginOf: 38)
+        submitButton.constrainHorizontallyTo(titlesView)
     }
 
 }

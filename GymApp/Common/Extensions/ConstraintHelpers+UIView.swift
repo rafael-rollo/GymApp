@@ -50,29 +50,34 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
 
-    func constrainToTop(of view: UIView, with margin: CGFloat = 0, safely: Bool = false) {
-        let topAnchor = safely ? view.safeTopAnchor : view.topAnchor
+    func constrainToTop(of view: UIView, with margin: CGFloat = 0, notchSafe: Bool = false) {
+        let topAnchor = notchSafe ? view.safeTopAnchor : view.topAnchor
         self.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
     }
 
     func constrainToTopLeading(of view: UIView,
                                top topMargin: CGFloat = 0,
-                               leading leadingMargin: CGFloat = 0) {
+                               leading leadingMargin: CGFloat = 0,
+                               notchSafe: Bool = false) {
+        let topAnchor = notchSafe ? view.safeTopAnchor : view.topAnchor
+
         let constraints = [
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingMargin),
-            self.topAnchor.constraint(equalTo: view.topAnchor, constant: topMargin)
+            self.topAnchor.constraint(equalTo: topAnchor, constant: topMargin)
         ]
 
         NSLayoutConstraint.activate(constraints)
     }
 
-    func constrainToTopAndSides(of view: UIView) {
+    func constrainToTopAndSides(of view: UIView, notchSafe: Bool = false) {
+        let topAnchor = notchSafe ? view.safeTopAnchor : view.topAnchor
+
         let constraints = [
-            self.topAnchor.constraint(equalTo: view.topAnchor),
+            self.topAnchor.constraint(equalTo: topAnchor),
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             self.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
-
+        
         NSLayoutConstraint.activate(constraints)
     }
 
@@ -121,14 +126,23 @@ extension UIView {
     
     // MARK: - positioning helpers
     func anchorAbove(_ view: UIView, withMarginOf margin: CGFloat) {
+        self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -margin).isActive = true
+    }
+    
+    func anchorBelow(_ view: UIView, withMarginOf margin: CGFloat) {
+        self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: margin).isActive = true
+    }
+    
+    // MARK: - sizing helpers
+    func constrainSizeTo(_ size: CGSize) {
         let constraints = [
-            self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -margin),
+            self.widthAnchor.constraint(equalToConstant: size.width),
+            self.heightAnchor.constraint(equalToConstant: size.height)
         ]
 
         NSLayoutConstraint.activate(constraints)
     }
 
-    // MARK: - sizing helpers
     func constrainWidth(to constant: CGFloat) {
         self.widthAnchor.constraint(equalToConstant: constant).isActive = true
     }

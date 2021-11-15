@@ -194,7 +194,7 @@ extension WalkthroughViewController: ViewCode {
         logo.constrainWidth(to: 120)
         
         titleStackView.constrainHorizontallyTo(view, withMarginsOf: 24)
-        titleStackView.constrainToTop(of: view, with: 48, safely: true)
+        titleStackView.constrainToTop(of: view, with: 48, notchSafe: true)
         
         carousel.constrainHorizontallyTo(view)
         carousel.constrainHeight(to: view.bounds.height * 0.4)

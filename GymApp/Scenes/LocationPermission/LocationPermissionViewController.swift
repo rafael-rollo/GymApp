@@ -162,7 +162,7 @@ extension LocationPermissionViewController: ViewCode {
         shape.constrainToTopLeading(of: view, top: -shapeYOffset, leading: -shapeXOffset)
         
         logo.constrainWidth(to: 120)
-        logo.constrainToTop(of: view, with: 48, safely: true)
+        logo.constrainToTop(of: view, with: 48, notchSafe: true)
         logo.constrainToLeading(of: view, with: 24)
 
         allowPermissionButton.constrainToBottom(of: view, with: 48, safely: true)
