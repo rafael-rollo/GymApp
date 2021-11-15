@@ -18,7 +18,9 @@ class HomeCoordinator: StackBasedCoordinator {
     }
 
     func start() -> UIViewController {
-        let controller = UINavigationController(rootViewController: HomeViewController(coordinator: self))
+        let controller = UINavigationController(
+            rootViewController: HomeViewController(flowDelegate: self)
+        )
         controller.isNavigationBarHidden = true
 
         rootViewController = controller
@@ -32,4 +34,16 @@ class HomeCoordinator: StackBasedCoordinator {
     func goToCheckin() {
         parentCoordinator?.moveTo(.checkin)
     }
+}
+
+extension HomeCoordinator: HomeFlowDelegate {
+    
+    func toExploreTab() {
+        parentCoordinator?.moveTo(.explore)
+    }
+
+    func toCheckinTab() {
+        parentCoordinator?.moveTo(.checkin)
+    }
+    
 }

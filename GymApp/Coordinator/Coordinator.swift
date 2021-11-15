@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol Coordinated: UIViewController {
-    var coordinator: Coordinator { get set }
-}
-
 protocol Coordinator: AnyObject {
     var rootViewController: UIViewController? { get set }
 

@@ -7,7 +7,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, Coordinated {
+protocol HomeFlowDelegate: Coordinator {
+    func toExploreTab()
+    func toCheckinTab()
+}
+
+class HomeViewController: UIViewController {
 
     // MARK: - subviews
     private lazy var label: UILabel = {
@@ -33,11 +38,11 @@ class HomeViewController: UIViewController, Coordinated {
     }()
 
     // MARK: - properties
-    var coordinator: Coordinator
+    weak var flowDelegate: HomeFlowDelegate?
 
     // MARK: - view lifecycle
-    init(coordinator: Coordinator) {
-        self.coordinator = coordinator
+    init(flowDelegate: HomeFlowDelegate) {
+        self.flowDelegate = flowDelegate
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -60,19 +65,11 @@ class HomeViewController: UIViewController, Coordinated {
     
     // MARK: - view methods
     @objc func toExploreButtonTapped(_ sender: UIButton) {
-        guard let coordinator = coordinator as? HomeCoordinator else {
-            fatalError("Provide an appropriate coordinator for \(#file)")
-        }
-
-        coordinator.goToExplore()
+        flowDelegate?.toExploreTab()
     }
 
     @objc func toCheckinButtonTapped(_ sender: UIButton) {
-        guard let coordinator = coordinator as? HomeCoordinator else {
-            fatalError("Provide an appropriate coordinator for \(#file)")
-        }
-
-        coordinator.goToCheckin()
+        flowDelegate?.toCheckinTab()
     }
 
 }
