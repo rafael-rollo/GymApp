@@ -45,6 +45,7 @@
 		58A8BA2F2742C1000022F023 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA2E2742C1000022F023 /* LoadingButton.swift */; };
 		58A8BA312742CA190022F023 /* ValidatedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA302742CA190022F023 /* ValidatedInput.swift */; };
 		58A8BA332742CB1B0022F023 /* ConstraintHelpers+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA322742CB1B0022F023 /* ConstraintHelpers+UIView.swift */; };
+		58A8BA362742DC590022F023 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA352742DC590022F023 /* HomeViewController.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -113,6 +114,7 @@
 		58A8BA2E2742C1000022F023 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		58A8BA302742CA190022F023 /* ValidatedInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedInput.swift; sourceTree = "<group>"; };
 		58A8BA322742CB1B0022F023 /* ConstraintHelpers+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintHelpers+UIView.swift"; sourceTree = "<group>"; };
+		58A8BA352742DC590022F023 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				58A8B9DD273D85000022F023 /* Walkthrough */,
 				58A8BA07273DA8580022F023 /* LocationPermission */,
 				58A8BA12273DD07F0022F023 /* Login */,
+				58A8BA342742DC450022F023 /* Home */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -346,6 +349,14 @@
 				58A8BA2E2742C1000022F023 /* LoadingButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		58A8BA342742DC450022F023 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA352742DC590022F023 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -649,6 +660,7 @@
 				58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */,
 				58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */,
 				58A8BA1E273EF3850022F023 /* TextInput.swift in Sources */,
+				58A8BA362742DC590022F023 /* HomeViewController.swift in Sources */,
 				58A8BA2A2742BD340022F023 /* Validator.swift in Sources */,
 				58A8BA11273DCB540022F023 /* Branding+UIColors.swift in Sources */,
 				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
