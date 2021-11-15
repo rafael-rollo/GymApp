@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  CheckinViewController.swift
 //  GymApp
 //
 //  Created by rafael.rollo on 15/11/21.
@@ -7,22 +7,22 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class CheckinViewController: UIViewController {
 
     private lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .openSans(.bold, size: 14)
-        label.text = "Home Scene!"
+        label.text = "Check-in Scene!"
         return label
     }()
-    
+
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        title = "Home"
-        tabBarItem.image = .init(named: "HomeIcon")
-        tabBarItem.selectedImage = .init(named: "HomeFilledIcon")
+        title = "Check-in"
+        tabBarItem.image = .init(named: "CheckinIcon")
+        tabBarItem.selectedImage = .init(named: "CheckinFilledIcon")
     }
 
     required init?(coder: NSCoder) {
@@ -37,10 +37,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
 }
 
-extension HomeViewController: ViewCode {
+extension CheckinViewController: ViewCode {
     
     func addTheme() {
         view.backgroundColor = .white

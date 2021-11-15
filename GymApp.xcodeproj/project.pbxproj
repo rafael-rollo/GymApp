@@ -46,6 +46,8 @@
 		58A8BA312742CA190022F023 /* ValidatedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA302742CA190022F023 /* ValidatedInput.swift */; };
 		58A8BA332742CB1B0022F023 /* ConstraintHelpers+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA322742CB1B0022F023 /* ConstraintHelpers+UIView.swift */; };
 		58A8BA362742DC590022F023 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA352742DC590022F023 /* HomeViewController.swift */; };
+		58A8BA3A2742DF570022F023 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA392742DF570022F023 /* CheckinViewController.swift */; };
+		58A8BA3C2742DF900022F023 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA3B2742DF900022F023 /* ExploreViewController.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -115,6 +117,8 @@
 		58A8BA302742CA190022F023 /* ValidatedInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedInput.swift; sourceTree = "<group>"; };
 		58A8BA322742CB1B0022F023 /* ConstraintHelpers+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintHelpers+UIView.swift"; sourceTree = "<group>"; };
 		58A8BA352742DC590022F023 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		58A8BA392742DF570022F023 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
+		58A8BA3B2742DF900022F023 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				58A8BA07273DA8580022F023 /* LocationPermission */,
 				58A8BA12273DD07F0022F023 /* Login */,
 				58A8BA342742DC450022F023 /* Home */,
+				58A8BA372742DF190022F023 /* Checkin */,
+				58A8BA382742DF230022F023 /* Explore */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -357,6 +363,22 @@
 				58A8BA352742DC590022F023 /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		58A8BA372742DF190022F023 /* Checkin */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA392742DF570022F023 /* CheckinViewController.swift */,
+			);
+			path = Checkin;
+			sourceTree = "<group>";
+		};
+		58A8BA382742DF230022F023 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA3B2742DF900022F023 /* ExploreViewController.swift */,
+			);
+			path = Explore;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -675,6 +697,7 @@
 				58A8BA28273F01260022F023 /* Users.swift in Sources */,
 				58A8BA06273D9F600022F023 /* NextButton.swift in Sources */,
 				58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */,
+				58A8BA3C2742DF900022F023 /* ExploreViewController.swift in Sources */,
 				58A8BA04273D9B6C0022F023 /* Carousel.swift in Sources */,
 				58A8BA0C273DA96E0022F023 /* PrimaryStorage.swift in Sources */,
 				58A8BA1B273DD7F70022F023 /* ApplicationCoordinator.swift in Sources */,
@@ -684,6 +707,7 @@
 				58A8BA26273F010D0022F023 /* User.swift in Sources */,
 				58A8B9E0273D85330022F023 /* WalkthroughViewController.swift in Sources */,
 				58A8BA21273EF88F0022F023 /* Button.swift in Sources */,
+				58A8BA3A2742DF570022F023 /* CheckinViewController.swift in Sources */,
 				58A8BA24273F00910022F023 /* LoginState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

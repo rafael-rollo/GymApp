@@ -82,8 +82,37 @@ extension ApplicationCoordinator: LocationPermissionViewControllerDelegate {
 
 extension ApplicationCoordinator: LoginViewControllerDelegate {
     
-    func loginViewController(_ viewController: LoginViewController, didUserAuthenticate authentication: Authentication) {
-        rootViewController = HomeViewController()
+    func loginViewController(_ viewController: LoginViewController,
+                             didUserAuthenticate authentication: Authentication) {
+        let tabBarController = UITabBarController()
+
+        let homeVc = HomeViewController()
+        let exploreVc = ExploreViewController()
+        let checkinVc = CheckinViewController()
+        tabBarController.viewControllers = [homeVc, exploreVc, checkinVc]
+
+        let font = UIFont.openSans(.semibold, size: 10)
+
+        let appearance = UITabBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = .secondaryLabel
+
+        appearance.stackedLayoutAppearance.normal.iconColor = .secondaryLabel
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+            .font: font,
+            .foregroundColor: UIColor.secondaryLabel
+        ]
+
+        appearance.stackedLayoutAppearance.selected.iconColor = .shipGray
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
+            .font: font,
+            .foregroundColor: UIColor.shipGray!
+        ]
+
+        tabBarController.tabBar.standardAppearance = appearance
+
+
+        rootViewController = tabBarController
     }
     
 }
