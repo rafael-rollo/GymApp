@@ -246,7 +246,7 @@ extension UIView {
     /// - Returns: The activated layout constraint's reference
     ///
     @discardableResult
-    func anchorBelow(of view: UIView, withMargin margin: CGFloat) -> NSLayoutConstraint {
+    func anchorBelow(of view: UIView, withMargin margin: CGFloat = .zero) -> NSLayoutConstraint {
         let constraint = self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: margin)
         constraint.isActive = true
         return constraint

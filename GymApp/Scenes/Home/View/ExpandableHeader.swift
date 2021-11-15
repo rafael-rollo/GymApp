@@ -7,6 +7,18 @@
 
 import UIKit
 
+struct MenuItem {
+    var imageName: String
+    var title: String
+    var externalLink: String?
+    var onPress: () -> Void
+}
+
+struct MenuSection {
+    var title: String
+    var items: [MenuItem]
+}
+
 class ExpandableHeader: UIView {
     
     // MARK: - subviews
@@ -92,6 +104,24 @@ class ExpandableHeader: UIView {
         stack.spacing = 12
         return stack
     }()
+    
+    private lazy var wrapperView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(baseContentView)
+        view.layer.zPosition = 100
+        return view
+    }()
+
+    private lazy var menu: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.isHidden = true
+        return tableView
+    }()
 
     // MARK: - properties
     override var bounds: CGRect {
@@ -113,6 +143,37 @@ class ExpandableHeader: UIView {
     var radius: CGFloat { return 12 }
 
     var isExpanded: Bool = false
+    
+    var menuItems: [MenuSection] = [
+        MenuSection(title: "Account", items: [
+            MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            }),
+            MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            }),
+            MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            }),
+            MenuItem(imageName: "GearIcon", title: "Plan management", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            })
+        ]),
+        MenuSection(title: "About Gympass", items: [
+            MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            }),
+            MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            }),
+            MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            }),
+            MenuItem(imageName: "BellIcon", title: "Notifications", externalLink: "https://gympass.com/", onPress: {
+                print("coordinator, please open \(MenuItem.self)")
+            })
+        ])
+    ]
 
     // MARK: - view lifecycle
     override init(frame: CGRect) {
@@ -166,17 +227,45 @@ class ExpandableHeader: UIView {
             return
         }
 
-        let toggleImage = isExpanded ? arrowDownImage : arrowUpImage
+        isExpanded = !isExpanded
+
+        let toggleImage = isExpanded ? arrowUpImage : arrowDownImage
         toggleButton.setImage(toggleImage, for: .normal)
 
-        let updatedHeightValue = isExpanded ? height : superview.bounds.height
-        heightConstraint?.constant = updatedHeightValue
-
+        heightConstraint?.constant = isExpanded
+            ? superview.bounds.height
+            : height
         UIView.animate(withDuration: 0.5) {
             superview.layoutIfNeeded()
         }
-        
-        isExpanded = !isExpanded
+
+        menu.isHidden = !isExpanded
+    }
+    
+}
+
+// MARK: - menu data source
+extension ExpandableHeader: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return menuItems.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return menuItems[section].title
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems[section].items.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+
+        cell.textLabel?.text = menuItems[indexPath.section]
+            .items[indexPath.row]
+            .title
+        return cell
     }
     
 }
@@ -193,18 +282,25 @@ extension ExpandableHeader: ViewCode {
     }
     
     func addViews() {
-        addSubview(baseContentView)
+        addSubview(wrapperView)
+        addSubview(menu)
     }
     
     func addConstraints() {
         heightConstraint = constrainHeight(to: height)
         
-        baseContentView.constrainToTop(of: self, notchSafe: true)
-        baseContentView.constrainHorizontally(to: self, withMargins: 24)
+        wrapperView.constrainToTopAndSides(of: self)
+        wrapperView.constrainHeight(to: height)
+        
+        baseContentView.constrainToTop(of: wrapperView, notchSafe: true)
+        baseContentView.constrainHorizontally(to: wrapperView, withMargins: 24)
         baseContentView.constrainHeight(to: 68)
 
         profileImageView.constrainSize(to: .init(width: 52, height: 52))
         toggleButton.constrainSize(to: .init(width: 24, height: 24))
+        
+        menu.anchorBelow(of: wrapperView)
+        menu.constrainToBottomAndSides(of: self)
     }
 
 }

@@ -87,11 +87,11 @@ extension HomeViewController: ViewCode {
     }
     
     func addViews() {
-        view.addSubview(header)
-        
         view.addSubview(label)
         view.addSubview(toExploreButton)
         view.addSubview(toCheckinButton)
+        
+        view.addSubview(header)
     }
 
     func addConstraints() {
