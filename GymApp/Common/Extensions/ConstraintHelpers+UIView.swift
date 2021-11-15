@@ -50,9 +50,16 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
 
-    func constrainToTop(of view: UIView, with margin: CGFloat = 0, notchSafe: Bool = false) {
+    @discardableResult
+    func constrainToTop(of view: UIView,
+                        with margin: CGFloat = 0,
+                        notchSafe: Bool = false) -> NSLayoutConstraint {
+
         let topAnchor = notchSafe ? view.safeTopAnchor : view.topAnchor
-        self.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
+        let constraint = self.topAnchor.constraint(equalTo: topAnchor, constant: margin)
+
+        NSLayoutConstraint.activate([constraint])
+        return constraint
     }
 
     func constrainToTopLeading(of view: UIView,
@@ -69,24 +76,28 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
 
-    func constrainToTopAndSides(of view: UIView, notchSafe: Bool = false) {
+    func constrainToTopAndSides(of view: UIView,
+                                top: CGFloat = 0,
+                                horizontalMargins: CGFloat = 0,
+                                notchSafe: Bool = false) {
         let topAnchor = notchSafe ? view.safeTopAnchor : view.topAnchor
 
         let constraints = [
-            self.topAnchor.constraint(equalTo: topAnchor),
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            self.topAnchor.constraint(equalTo: topAnchor, constant: top),
+            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalMargins),
+            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalMargins)
         ]
-        
+
         NSLayoutConstraint.activate(constraints)
     }
 
-    func constrainToLeading(of view: UIView, with margin: CGFloat = 0) {
-        let constraints = [
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-        ]
+    @discardableResult
+    func constrainToLeading(of view: UIView, with margin: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = self.leadingAnchor
+            .constraint(equalTo: view.leadingAnchor, constant: margin)
 
-        NSLayoutConstraint.activate(constraints)
+        NSLayoutConstraint.activate([constraint])
+        return constraint
     }
 
     func constrainToBottom(of view: UIView, with margin: CGFloat = 0, safely: Bool = false) {
@@ -114,15 +125,6 @@ extension UIView {
 
         NSLayoutConstraint.activate(constraints)
     }
-
-    func constrainToCenter(of view: UIView) {
-        let constraints = [
-            self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            self.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ]
-
-        NSLayoutConstraint.activate(constraints)
-    }
     
     // MARK: - positioning helpers
     func anchorAbove(_ view: UIView, withMarginOf margin: CGFloat) {
@@ -131,6 +133,15 @@ extension UIView {
     
     func anchorBelow(_ view: UIView, withMarginOf margin: CGFloat) {
         self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: margin).isActive = true
+    }
+    
+    func anchorToCenter(of view: UIView, x: CGFloat = 0, y: CGFloat = 0) {
+        let constraints = [
+            self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: x),
+            self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: y)
+        ]
+
+        NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: - sizing helpers
@@ -149,6 +160,13 @@ extension UIView {
 
     func constrainHeight(to constant: CGFloat) {
         self.heightAnchor.constraint(equalToConstant: constant).isActive = true
+    }
+    
+    @discardableResult
+    func constrainHeight(greaterThanOrEqualTo constant: CGFloat) -> NSLayoutConstraint {
+        let constraint = self.heightAnchor.constraint(greaterThanOrEqualToConstant: constant)
+        constraint.isActive = true
+        return constraint
     }
 
 }

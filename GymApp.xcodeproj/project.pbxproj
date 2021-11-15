@@ -35,7 +35,7 @@
 		58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA15273DD2D80022F023 /* Alert+UIViewController.swift */; };
 		58A8BA19273DD7C40022F023 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA18273DD7C40022F023 /* Coordinator.swift */; };
 		58A8BA1B273DD7F70022F023 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA1A273DD7F70022F023 /* ApplicationCoordinator.swift */; };
-		58A8BA1E273EF3850022F023 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA1D273EF3850022F023 /* TextField.swift */; };
+		58A8BA1E273EF3850022F023 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA1D273EF3850022F023 /* TextInput.swift */; };
 		58A8BA21273EF88F0022F023 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA20273EF88F0022F023 /* Button.swift */; };
 		58A8BA24273F00910022F023 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA23273F00910022F023 /* LoginState.swift */; };
 		58A8BA26273F010D0022F023 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA25273F010D0022F023 /* User.swift */; };
@@ -103,7 +103,7 @@
 		58A8BA15273DD2D80022F023 /* Alert+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+UIViewController.swift"; sourceTree = "<group>"; };
 		58A8BA18273DD7C40022F023 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		58A8BA1A273DD7F70022F023 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
-		58A8BA1D273EF3850022F023 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		58A8BA1D273EF3850022F023 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		58A8BA20273EF88F0022F023 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		58A8BA23273F00910022F023 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		58A8BA25273F010D0022F023 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				58A8BA2D2742C0050022F023 /* Button */,
-				58A8BA1D273EF3850022F023 /* TextField.swift */,
+				58A8BA1D273EF3850022F023 /* TextInput.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -648,7 +648,7 @@
 				58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */,
 				58A8BA16273DD2D80022F023 /* Alert+UIViewController.swift in Sources */,
 				58A8B9FA273D8CA00022F023 /* OpenSans+UIFont.swift in Sources */,
-				58A8BA1E273EF3850022F023 /* TextField.swift in Sources */,
+				58A8BA1E273EF3850022F023 /* TextInput.swift in Sources */,
 				58A8BA2A2742BD340022F023 /* Validator.swift in Sources */,
 				58A8BA11273DCB540022F023 /* Branding+UIColors.swift in Sources */,
 				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
