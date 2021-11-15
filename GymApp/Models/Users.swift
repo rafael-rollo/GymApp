@@ -13,7 +13,7 @@ class Users {
                          completionHandler: @escaping (User) -> Void,
                          failureHandler: @escaping () -> Void) {
 
-        let responseTime = 1.0 // seconds
+        let responseTime = 2.0 // seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + responseTime) {
             let user: User = .init(name: "Rafael Rollo", email: "rafael.rollo@zup.com.br")
             completionHandler(user)

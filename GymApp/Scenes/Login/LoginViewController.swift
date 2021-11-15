@@ -133,11 +133,15 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateViews()
+        
         submitButton.addTarget(self,
                                action: #selector(submitButtonPressed(_:)),
                                for: .touchUpInside)
+        
+        switchAccountButton.addTarget(self,
+                                      action: #selector(switchAccount),
+                                      for: .touchUpInside)
     }
     
     // MARK: - view methods
@@ -173,6 +177,10 @@ class LoginViewController: UIViewController {
         }
     }
 
+    @objc private func switchAccount() {
+        state = .undeterminedUser
+    }
+    
     private func authenticateUser() {
         print("authenticate")
     }
