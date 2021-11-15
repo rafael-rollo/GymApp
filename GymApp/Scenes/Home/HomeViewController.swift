@@ -39,10 +39,12 @@ class HomeViewController: UIViewController {
 
     // MARK: - properties
     weak var flowDelegate: HomeFlowDelegate?
+    private var profileViewController: ProfileViewController
 
     // MARK: - view lifecycle
-    init(flowDelegate: HomeFlowDelegate) {
+    init(flowDelegate: HomeFlowDelegate, profileViewController: ProfileViewController) {
         self.flowDelegate = flowDelegate
+        self.profileViewController = profileViewController
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -74,7 +76,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: ViewCode {
+extension HomeViewController: ViewCodeController {
     
     func addTheme() {
         view.backgroundColor = .white
@@ -84,17 +86,18 @@ extension HomeViewController: ViewCode {
         view.addSubview(label)
         view.addSubview(toExploreButton)
         view.addSubview(toCheckinButton)
-        
-        let profileVC = ProfileViewController()
-        addChild(profileVC)
+    }
+    
+    func addChild() {
+        addChild(profileViewController)
 
-        let headerView = profileVC.view!
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+        let childRootView = profileViewController.view!
+        childRootView.translatesAutoresizingMaskIntoConstraints = false
 
-        view.addSubview(headerView)
-        headerView.constrainToTopAndSides(of: view)
+        view.addSubview(childRootView)
+        childRootView.constrainToTopAndSides(of: view)
 
-        profileVC.didMove(toParent: self)
+        profileViewController.didMove(toParent: self)
     }
 
     func addConstraints() {

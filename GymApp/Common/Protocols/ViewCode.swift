@@ -21,13 +21,25 @@ extension ViewCode {
         addTheme()
         addViews()
         addConstraints()
-        
     }
     
     func addTheme() {}
-
     func addViews() {}
-    
     func addConstraints() {}
     
+}
+
+protocol ViewCodeController: ViewCode {
+    func addChild()
+}
+
+extension ViewCodeController {
+    func setup() {
+        addTheme()
+        addViews()
+        addChild()
+        addConstraints()
+    }
+
+    func addChild() {}
 }

@@ -17,14 +17,26 @@ class HomeCoordinator: StackBasedCoordinator {
         return .home
     }
 
-    func start() -> UIViewController {
-        let controller = UINavigationController(
-            rootViewController: HomeViewController(flowDelegate: self)
-        )
-        controller.isNavigationBarHidden = true
+    private var navigationController: UINavigationController
 
-        rootViewController = controller
-        return controller
+    init(navigationController: UINavigationController = UINavigationController()) {
+        self.navigationController = navigationController
+    }
+    
+    func start() -> UIViewController {
+        let profileViewController = ProfileCoordinator(navigationController: navigationController)
+            .start() as! ProfileViewController
+
+        let homeViewController = HomeViewController(
+            flowDelegate: self,
+            profileViewController: profileViewController
+        )
+
+        navigationController.setViewControllers([homeViewController], animated: false)
+        navigationController.isNavigationBarHidden = true
+
+        rootViewController = navigationController
+        return navigationController
     }
     
     func goToExplore() {
