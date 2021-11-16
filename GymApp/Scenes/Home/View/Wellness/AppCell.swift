@@ -9,6 +9,11 @@ import UIKit
 import AlamofireImage
 
 class AppCell: UICollectionViewCell, ReusableView {
+    
+    fileprivate struct LayoutProps {
+        static let height: CGFloat = 42
+        static let radius: CGFloat = 12
+    }
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -72,6 +77,16 @@ class AppCell: UICollectionViewCell, ReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        // Improve scrolling performance with an explicit shadowPath
+        layer.shadowPath = UIBezierPath(
+            roundedRect: bounds,
+            cornerRadius: LayoutProps.radius
+        ).cgPath
+    }
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
 
@@ -101,8 +116,14 @@ extension AppCell: ViewCode {
     
     func addTheme() {
         backgroundColor = .white
+
         layer.masksToBounds = false
-        layer.cornerRadius = 12
+        layer.cornerRadius = LayoutProps.radius
+
+        layer.shadowRadius = 8.0
+        layer.shadowOpacity = 0.3
+        layer.shadowColor = UIColor.secondaryLabel.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 5)
     }
     
     func addViews() {
@@ -111,7 +132,7 @@ extension AppCell: ViewCode {
 
     func addConstraints() {
         containerView.constrainTo(edgesOf: self)
-        imageView.constrainWidth(to: 42)
+        imageView.constrainWidth(to: LayoutProps.height)
     }
 
 }

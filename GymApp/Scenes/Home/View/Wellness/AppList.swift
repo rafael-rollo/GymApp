@@ -22,6 +22,7 @@ class AppList: UIView {
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
+        collectionView.clipsToBounds = false
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
