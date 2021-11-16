@@ -17,13 +17,16 @@ class ProfileViewController: UIViewController {
     // MARK: - layout properties
     struct LayoutProps {
         static let defaultRadius: CGFloat = 12
+        
         static let defaultHeight: CGFloat = {
             let statusBarHeight = UIApplication.shared.windows
                 .filter {$0.isKeyWindow}.first?.windowScene?
                 .statusBarManager?.statusBarFrame.height ?? 0
                 
-            return 76 + statusBarHeight
+            return 84 + statusBarHeight
         }()
+        
+        static let contractedFormYOffset: CGFloat = -UIScreen.main.bounds.height - defaultHeight - defaultRadius
     }
     
     // MARK: - subviews
@@ -265,7 +268,7 @@ class ProfileViewController: UIViewController {
         
         menuTopConstraint?.constant = isExpanded
             ? 0
-            : -UIScreen.main.bounds.height
+            : LayoutProps.contractedFormYOffset
         
         UIView.animate(withDuration: 0.5) {
             superview.layoutIfNeeded()
@@ -299,7 +302,7 @@ extension ProfileViewController: ViewCode {
         baseContainerView.constrainToTopAndSides(of: view)
         baseContainerView.constrainHeight(to: LayoutProps.defaultHeight)
         
-        contentContainerView.constrainToTop(of: baseContainerView, notchSafe: true)
+        contentContainerView.constrainToTop(of: baseContainerView, withMargin: 8, notchSafe: true)
         contentContainerView.constrainHorizontally(to: baseContainerView, withMargins: 24)
         contentContainerView.constrainHeight(to: 68)
         
