@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 protocol BannerCarouselDelegate: AnyObject {
     func bannerCarouselDelegate(_ carousel: BannerCarousel,
@@ -15,12 +16,23 @@ protocol BannerCarouselDelegate: AnyObject {
 class BannerCarousel: UIView {
     
     // MARK: - subviews
+    private lazy var skeletonAnimationView: AnimationView = {
+        let animation = AnimationView(name: "BannerSkeleton")
+        animation.translatesAutoresizingMaskIntoConstraints = false
+        animation.contentMode = .scaleToFill
+        animation.loopMode = .loop
+        animation.animationSpeed = 1.5
+        animation.play()
+        return animation
+    }()
+    
     private lazy var contentContainer: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
+        stackView.addArrangedSubview(skeletonAnimationView)
         return stackView
     }()
 
@@ -92,6 +104,8 @@ class BannerCarousel: UIView {
     }
     
     private func load(_ banners: [BannerData]) {
+        skeletonAnimationView.removeFromSuperview()
+        
         banners.forEach { bannerData in
             let banner = Banner()
             banner.setup(from: bannerData)

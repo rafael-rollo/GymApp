@@ -65,6 +65,7 @@
 		58A8BA692743C4ED0022F023 /* BannerCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA682743C4ED0022F023 /* BannerCarousel.swift */; };
 		58A8BA6D2743C8700022F023 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6C2743C8700022F023 /* Banner.swift */; };
 		58A8BA702743C9180022F023 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6F2743C9180022F023 /* HomeAPI.swift */; };
+		58A8BA72274416F30022F023 /* BannerSkeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA71274416F30022F023 /* BannerSkeleton.json */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -154,6 +155,7 @@
 		58A8BA682743C4ED0022F023 /* BannerCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCarousel.swift; sourceTree = "<group>"; };
 		58A8BA6C2743C8700022F023 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		58A8BA6F2743C9180022F023 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		58A8BA71274416F30022F023 /* BannerSkeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BannerSkeleton.json; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 			children = (
 				58AB9B9F273C5253005445F3 /* LaunchAnimation.json */,
 				58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */,
+				58A8BA71274416F30022F023 /* BannerSkeleton.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				58AB9B7A273C4CDC005445F3 /* LaunchScreen.storyboard in Resources */,
 				58A8B9F1273D8BB20022F023 /* Open Sans Italic.ttf in Resources */,
 				58A8B9F5273D8BB20022F023 /* Open Sans Light.ttf in Resources */,
+				58A8BA72274416F30022F023 /* BannerSkeleton.json in Resources */,
 				58A8B9F2273D8BB20022F023 /* Open Sans Bold Italic.ttf in Resources */,
 				58A8B9F0273D8BB20022F023 /* Open Sans Semibold.ttf in Resources */,
 				58A8B9F3273D8BB20022F023 /* Open Sans Extrabold Italic.ttf in Resources */,
