@@ -268,6 +268,22 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
     
+    /// Positions your view code component centering on the X axis of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view to anchor center horizontally
+    ///     - offset: A float representing the offset to apply as the constant of the
+    ///     centerX anchor constraint
+    ///
+    @discardableResult
+    func anchorToCenterX(of view: UIView, withOffset offset: CGFloat = .zero) -> NSLayoutConstraint {
+        let constraint = self.centerXAnchor
+            .constraint(equalTo: view.centerXAnchor, constant: offset)
+
+        NSLayoutConstraint.activate([constraint])
+        return constraint
+    }
+    
     /// Positions your view code component centering on the Y axis of the target view
     ///
     /// - Parameters:

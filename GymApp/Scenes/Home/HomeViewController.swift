@@ -15,26 +15,20 @@ protocol HomeFlowDelegate: AnyObject {
 class HomeViewController: UIViewController {
 
     // MARK: - subviews
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .openSans(.bold, size: 14)
-        label.text = "Home Scene!"
-        return label
+    private lazy var contentContainerView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        return stackView
     }()
     
-    private lazy var toExploreButton: Button = {
-        let button = Button()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Go to Explore"
-        return button
-    }()
-
-    private lazy var toCheckinButton: UIButton = {
-        let button = Button()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Go to Check-in"
-        return button
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(contentContainerView)
+        return scrollView
     }()
 
     // MARK: - properties
@@ -60,9 +54,6 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        toExploreButton.addTarget(self, action: #selector(toExploreButtonTapped(_:)), for: .touchUpInside)
-        toCheckinButton.addTarget(self, action: #selector(toCheckinButtonTapped(_:)), for: .touchUpInside)
     }
     
     // MARK: - view methods
@@ -83,9 +74,7 @@ extension HomeViewController: ViewCodeController {
     }
     
     func addViews() {
-        view.addSubview(label)
-        view.addSubview(toExploreButton)
-        view.addSubview(toCheckinButton)
+        view.addSubview(scrollView)
     }
     
     func addChild() {
@@ -101,13 +90,16 @@ extension HomeViewController: ViewCodeController {
     }
 
     func addConstraints() {
-        label.anchorToCenter(of: view)
-        
-        toExploreButton.anchorBelow(of: label, withMargin: 42)
-        toExploreButton.constrainHorizontally(to: view, withMargins: 48)
+        scrollView.anchorBelow(of: profileViewController.view, withMargin: -12)
+        scrollView.constrainToBottomAndSides(of: view)
 
-        toCheckinButton.anchorBelow(of: toExploreButton, withMargin: 12)
-        toCheckinButton.constrainHorizontally(to: view, withMargins: 48)
+        contentContainerView.constrainToTopAndSides(of: scrollView)
+        let bottomConstraint = contentContainerView.constrainToBottom(of: scrollView)
+        bottomConstraint.priority = .defaultLow
+
+        contentContainerView.anchorToCenterX(of: scrollView)
+        let centerYConstraint = contentContainerView.anchorToCenterY(of: scrollView)
+        centerYConstraint.priority = .defaultLow
     }
 
 }
