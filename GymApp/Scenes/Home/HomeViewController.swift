@@ -15,48 +15,13 @@ protocol HomeFlowDelegate: AnyObject {
 class HomeViewController: UIViewController {
 
     // MARK: - subviews
-    private lazy var firstView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blueViolet?.withAlphaComponent(0.3)
-        return view
+    private lazy var bannerCarousel: BannerCarousel = {
+        let carousel = BannerCarousel()
+        carousel.translatesAutoresizingMaskIntoConstraints = false
+        return carousel
     }()
 
-    private lazy var secondView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .terracotta?.withAlphaComponent(0.3)
-        return view
-    }()
-
-    private lazy var thirdView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .shipGray?.withAlphaComponent(0.3)
-        return view
-    }()
-
-    private lazy var bannersContentContainer: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [
-            firstView, secondView, thirdView
-        ])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        return stackView
-    }()
-
-    private lazy var bannerCarousel: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isPagingEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.addSubview(bannersContentContainer)
-        return scrollView
-    }()
-    
-    private lazy var contentContainerView: UIStackView = {
+    private lazy var contentContainer: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             bannerCarousel
         ])
@@ -70,7 +35,7 @@ class HomeViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(contentContainerView)
+        scrollView.addSubview(contentContainer)
         return scrollView
     }()
 
@@ -138,22 +103,13 @@ extension HomeViewController: ViewCodeController {
         scrollView.constrainToTop(of: view, withMargin: topMargin)
         scrollView.constrainToBottomAndSides(of: view)
 
-        contentContainerView.constrainToTopAndSides(of: scrollView)
-        let bottomConstraint = contentContainerView.constrainToBottom(of: scrollView)
+        contentContainer.constrainToTopAndSides(of: scrollView)
+        let bottomConstraint = contentContainer.constrainToBottom(of: scrollView)
         bottomConstraint.priority = .defaultLow
 
-        contentContainerView.anchorToCenterX(of: scrollView)
-        let centerYConstraint = contentContainerView.anchorToCenterY(of: scrollView)
+        contentContainer.anchorToCenterX(of: scrollView)
+        let centerYConstraint = contentContainer.anchorToCenterY(of: scrollView)
         centerYConstraint.priority = .defaultLow
-        
-        bannerCarousel.constrainHeight(to: 240)
-
-        bannersContentContainer.constrainTo(edgesOf: bannerCarousel)
-        NSLayoutConstraint.activate([
-            bannersContentContainer.heightAnchor.constraint(equalTo: bannerCarousel.heightAnchor),
-            bannersContentContainer.widthAnchor.constraint(equalTo: bannerCarousel.widthAnchor,
-                                                           multiplier: 3),
-        ])
     }
 
 }

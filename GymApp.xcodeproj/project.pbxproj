@@ -62,6 +62,7 @@
 		58A8BA6027431E0A0022F023 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA5F27431E0A0022F023 /* ProfileCoordinator.swift */; };
 		58A8BA6327431F6D0022F023 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6227431F6D0022F023 /* WebViewController.swift */; };
 		58A8BA66274323560022F023 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA65274323560022F023 /* MenuViewController.swift */; };
+		58A8BA692743C4ED0022F023 /* BannerCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA682743C4ED0022F023 /* BannerCarousel.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -148,6 +149,7 @@
 		58A8BA5F27431E0A0022F023 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA6227431F6D0022F023 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		58A8BA65274323560022F023 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		58A8BA682743C4ED0022F023 /* BannerCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCarousel.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				58A8BA472742E7830022F023 /* Coordinator */,
+				58A8BA672743C4CE0022F023 /* View */,
 				58A8BA352742DC590022F023 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -494,6 +497,14 @@
 				58A8BA65274323560022F023 /* MenuViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		58A8BA672743C4CE0022F023 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA682743C4ED0022F023 /* BannerCarousel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -832,6 +843,7 @@
 				58A8B9FF273D93090022F023 /* RotatingShape.swift in Sources */,
 				58A8B9DC273C5CB10022F023 /* ViewCode.swift in Sources */,
 				58A8BA26273F010D0022F023 /* User.swift in Sources */,
+				58A8BA692743C4ED0022F023 /* BannerCarousel.swift in Sources */,
 				58A8B9E0273D85330022F023 /* WalkthroughViewController.swift in Sources */,
 				58A8BA21273EF88F0022F023 /* Button.swift in Sources */,
 				58A8BA522742F48C0022F023 /* MenuItemCell.swift in Sources */,
