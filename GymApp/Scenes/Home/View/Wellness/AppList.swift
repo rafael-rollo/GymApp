@@ -8,15 +8,18 @@
 import UIKit
 
 class AppList: UIView {
-
-    private lazy var collectionView: UICollectionView = {
+    
+    private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.67, height: 74)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        return layout
+    }()
 
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.register(AppCell.self, forCellWithReuseIdentifier: AppCell.reuseId)
         collectionView.dataSource = self
         collectionView.delegate = self
