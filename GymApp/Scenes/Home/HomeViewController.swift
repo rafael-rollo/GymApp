@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeFlowDelegate: AnyObject {
     func carouselBannerDidTap(_ bannerData: BannerData)
+    func userStrikesDidTap()
 }
 
 class HomeViewController: UIViewController {
@@ -24,6 +25,7 @@ class HomeViewController: UIViewController {
     private lazy var userStrikes: UserStrikes = {
         let strikes = UserStrikes()
         strikes.translatesAutoresizingMaskIntoConstraints = false
+        strikes.delegate = self
         return strikes
     }()
 
@@ -110,6 +112,15 @@ extension HomeViewController: BannerCarouselDelegate {
     
     func bannerCarouselDelegate(_ carousel: BannerCarousel, didTapBanner data: BannerData) {
         self.flowDelegate.carouselBannerDidTap(data)
+    }
+    
+}
+
+// MARK: - strikes view delegation
+extension HomeViewController: UserStrikesDelegate {
+    
+    func userStrikesDidTap() {
+        self.flowDelegate.userStrikesDidTap()
     }
     
 }

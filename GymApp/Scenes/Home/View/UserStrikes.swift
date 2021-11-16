@@ -8,6 +8,10 @@
 import UIKit
 import Lottie
 
+protocol UserStrikesDelegate: AnyObject {
+    func userStrikesDidTap()
+}
+
 class UserStrikes: UIView {
     
     // MARK: - layout
@@ -128,7 +132,7 @@ class UserStrikes: UIView {
         }
     }
 
-    var onTap: (() -> Void)?
+    weak var delegate: UserStrikesDelegate?
 
     // MARK: - view lifecycle
     override init(frame: CGRect) {
@@ -187,7 +191,7 @@ class UserStrikes: UIView {
         feedbackLayer.add(feedbackAnimation, forKey: "feedbackAnimation")
 
         CATransaction.begin()
-        onTap?()
+        delegate?.userStrikesDidTap()
         CATransaction.commit()
     }
 

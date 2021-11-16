@@ -17,6 +17,8 @@ class HomeCoordinator: StackBasedCoordinator {
 
     internal var navigationController: UINavigationController
     internal var rootViewController: UIViewController?
+    
+    private var isPresentingModal: Bool = false
 
     // dependencies to inject
     private var homeApi: HomeAPI
@@ -44,6 +46,18 @@ class HomeCoordinator: StackBasedCoordinator {
         return navigationController
     }
     
+    private func pushUsersUsageStatsPage() {
+        let url = "https://gympass.com"
+        guard let url = URL(string: url) else { return }
+
+        let webview = WebViewController(path: url, flowDelegate: self)
+        webview.modalPresentationStyle = .fullScreen
+
+        navigationController.present(webview, animated: true) { [weak self] in
+            self?.isPresentingModal.toggle()
+        }
+    }
+    
 }
 
 extension HomeCoordinator: HomeFlowDelegate {
@@ -56,12 +70,20 @@ extension HomeCoordinator: HomeFlowDelegate {
         parentCoordinator?.moveTo(tab, passing: bannerDestination.bag)
     }
     
-    func toExploreTab() {
-        parentCoordinator?.moveTo(.explore)
+    func userStrikesDidTap() {
+        pushUsersUsageStatsPage()
     }
+    
+}
 
-    func toCheckinTab() {
-        parentCoordinator?.moveTo(.checkin)
+extension HomeCoordinator: WebViewFlowDelegate {
+    
+    func webViewDidClose() {
+        guard isPresentingModal else { return }
+
+        navigationController.dismiss(animated: true) { [weak self] in
+            self?.isPresentingModal.toggle()
+        }
     }
     
 }
