@@ -22,6 +22,7 @@ class BannerCarousel: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.addSubview(contentContainer)
@@ -63,6 +64,10 @@ class BannerCarousel: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        
+        pageControl.addTarget(self,
+                              action: #selector(pageControlValueChanged(_:)),
+                              for: .valueChanged)
     }
 
     required init?(coder: NSCoder) {
@@ -70,6 +75,15 @@ class BannerCarousel: UIView {
     }
     
     // MARK: - view methods
+    @objc private func pageControlValueChanged(_ sender: UIPageControl) {
+        self.snapToPage(sender.currentPage)
+    }
+
+    private func snapToPage(_ page: Int) {
+        let point = CGPoint(x: CGFloat(page) * scrollView.bounds.width, y: 0)
+        scrollView.setContentOffset(point, animated: true)
+    }
+    
     private func load(_ banners: [BannerData]) {
         banners.forEach { bannerInfo in
             let banner = Banner()
@@ -93,6 +107,17 @@ class BannerCarousel: UIView {
             self?.contentContainer.alpha = 1
         }
     }
+}
+
+extension BannerCarousel: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollOffset = scrollView.contentOffset.x
+        let currentPage = Int(scrollOffset / scrollView.bounds.width)
+
+        pageControl.currentPage = currentPage
+    }
+    
 }
 
 extension BannerCarousel: ViewCode {
