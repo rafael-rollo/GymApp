@@ -8,8 +8,6 @@
 import UIKit
 
 protocol HomeFlowDelegate: AnyObject {
-    func toExploreTab()
-    func toCheckinTab()
     func carouselBannerDidTap(_ bannerData: BannerData)
 }
 
@@ -95,18 +93,10 @@ class HomeViewController: UIViewController {
     private func updateViews(with data: HomeData) {
         bannerCarousel.banners = data.banners
     }
-    
-    // MARK: - view methods
-    @objc func toExploreButtonTapped(_ sender: UIButton) {
-        flowDelegate.toExploreTab()
-    }
-
-    @objc func toCheckinButtonTapped(_ sender: UIButton) {
-        flowDelegate.toCheckinTab()
-    }
 
 }
 
+// MARK: - banner carousel delegation
 extension HomeViewController: BannerCarouselDelegate {
     
     func bannerCarouselDelegate(_ carousel: BannerCarousel, didTapBanner data: BannerData) {

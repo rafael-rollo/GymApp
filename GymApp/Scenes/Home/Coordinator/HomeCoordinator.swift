@@ -44,13 +44,6 @@ class HomeCoordinator: StackBasedCoordinator {
         return navigationController
     }
     
-    func goToExplore() {
-        parentCoordinator?.moveTo(.explore)
-    }
-
-    func goToCheckin() {
-        parentCoordinator?.moveTo(.checkin)
-    }
 }
 
 extension HomeCoordinator: HomeFlowDelegate {
