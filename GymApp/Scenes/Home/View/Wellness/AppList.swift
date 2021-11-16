@@ -13,7 +13,8 @@ class AppList: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.72, height: 74)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.67, height: 74)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(AppCell.self, forCellWithReuseIdentifier: AppCell.reuseId)

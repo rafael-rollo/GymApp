@@ -39,10 +39,25 @@ class WellnessApps: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .openSans(size: 12)
         label.textColor = .shipGray
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
         label.text = "Enjoy premium access to our digital partners to take care of your body, mind, and mood"
         return label
+    }()
+    
+    private lazy var titlesView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [
+            titleLabel,
+            subtitleLabel,
+        ])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.distribution = .fill
+        view.alignment = .fill
+        view.isLayoutMarginsRelativeArrangement = true
+        view.layoutMargins = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 92)
+        view.spacing = 16
+        return view
     }()
 
     private lazy var appList: AppList = {
@@ -53,17 +68,16 @@ class WellnessApps: UIView {
 
     private lazy var containerView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [
-            titleLabel,
-            subtitleLabel,
-            appList
+            titlesView,
+            appList,
         ])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.distribution = .fill
         view.alignment = .fill
-        view.backgroundColor = .terracotta?.withAlphaComponent(0.1)
+        view.backgroundColor = .terracotta?.withAlphaComponent(0.2)
         view.isLayoutMarginsRelativeArrangement = true
-        view.layoutMargins = UIEdgeInsets(top: 32, left: 24, bottom: 32, right: 24)
+        view.layoutMargins = UIEdgeInsets(top: 32, left: 0, bottom: 32, right: 0)
         view.spacing = 16
         return view
     }()
