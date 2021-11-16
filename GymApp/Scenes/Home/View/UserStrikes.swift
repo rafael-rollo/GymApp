@@ -10,11 +10,13 @@ import Lottie
 
 class UserStrikes: UIView {
     
+    // MARK: - layout
     struct LayoutProps {
         static let height: CGFloat = 206
         static let contentHeight: CGFloat = height - SectionTitle.LayoutProps.height - 24
     }
 
+    // MARK: - subviews
     private lazy var sectionTitle: SectionTitle = {
         let title = SectionTitle()
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -107,6 +109,17 @@ class UserStrikes: UIView {
         return stack
     }()
     
+    private var feedbackLayer: CALayer = .init()
+
+    private lazy var feedbackAnimation: CABasicAnimation = {
+        let animation = CABasicAnimation(keyPath: "backgroundColor")
+        animation.fromValue = UIColor.clear.cgColor
+        animation.toValue = UIColor.white.withAlphaComponent(0.4).cgColor
+        animation.duration = 0.1
+        return animation
+    }()
+
+    // MARK: - properties
     var strikes: [StrikeData]? {
         didSet {
             if let strikes = strikes {
@@ -115,15 +128,31 @@ class UserStrikes: UIView {
         }
     }
 
+    var onTap: (() -> Void)?
+
+    // MARK: - view lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        
+        let tapRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(strikesViewTapped(_:))
+        )
+        
+        addGestureRecognizer(tapRecognizer)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        feedbackLayer.frame = bounds
+    }
+    
+    // MARK: view methods
     private func load(_ strikes: [StrikeData]) {
         strikes.forEach { strikeData in
             let strike = Strike()
@@ -153,10 +182,24 @@ class UserStrikes: UIView {
             completion: nil
         )
     }
+    
+    @objc private func strikesViewTapped(_ view: UIView) {
+        feedbackLayer.add(feedbackAnimation, forKey: "feedbackAnimation")
+
+        CATransaction.begin()
+        onTap?()
+        CATransaction.commit()
+    }
 
 }
 
+// MARK: - view code
 extension UserStrikes: ViewCode {
+    
+    func addTheme() {
+        layer.insertSublayer(feedbackLayer, above: contentView.layer)
+    }
+    
     func addViews() {
         addSubview(containerView)
     }
