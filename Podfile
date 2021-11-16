@@ -8,6 +8,7 @@ target 'GymApp' do
   # Pods for GymApp
 
   pod 'lottie-ios'
+  pod 'AlamofireImage', '~> 4.1'
 
   target 'GymAppTests' do
     inherit! :search_paths
