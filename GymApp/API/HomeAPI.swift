@@ -96,7 +96,6 @@ class HomeAPI {
                 StrikeData(number: 2, label: "day streak"),
                 StrikeData(number: 25, label: "facilities"),
                 StrikeData(number: 18, label: "neighborhoods"),
-                StrikeData(number: 290, label: "check-ins"),
                 StrikeData(number: 5, label: "cities"),
             ]
 

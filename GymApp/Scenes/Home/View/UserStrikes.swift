@@ -32,6 +32,64 @@ class UserStrikes: UIView {
         return wrapper
     }()
 
+    private lazy var characterImageView: UIImageView = {
+        let image = UIImage(named: "ElevatedRunningCharacter")
+
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }()
+
+    private lazy var strikesStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        stack.alignment = .fill
+        stack.spacing = 32
+        return stack
+    }()
+
+    private lazy var strikesView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        scrollView.addSubview(strikesStackView)
+        return scrollView
+    }()
+
+    private lazy var gradientLayer: CAGradientLayer = {
+        let layer = CAGradientLayer()
+        layer.colors = [UIColor.white.cgColor,
+                        UIColor.white.withAlphaComponent(0.0).cgColor]
+        layer.frame = CGRect(x: 0, y: 0, width: 24, height: 124)
+        layer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        layer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        return layer
+    }()
+
+    private lazy var strikesViewWrapper: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(strikesView)
+
+        view.layer.insertSublayer(gradientLayer, above: strikesView.layer)
+        return view
+    }()
+
+    private lazy var contentView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            characterImageView, strikesViewWrapper
+        ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        stack.alignment = .bottom
+        return stack
+    }()
+    
     private lazy var containerView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
             sectionTitle,
@@ -62,15 +120,33 @@ class UserStrikes: UIView {
     }
     
     private func load(_ strikes: [StrikeData]) {
-        let animateUpdate: (() -> Void)? = { [weak self] in
-            self?.sectionTitle.text = "Your strikes"
+        strikes.forEach { strikeData in
+            let strike = Strike()
+            strike.setup(from: strikeData)
+
+            strikesStackView.addArrangedSubview(strike)
         }
 
-        UIView.transition(with: self,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: animateUpdate,
-                          completion: nil)
+        transitionAnimating()
+    }
+
+    private func transitionAnimating() {
+        let transition: (() -> Void)? = { [weak self] in
+            guard let self = self else { return }
+
+            self.sectionTitle.text = "Your strikes"
+
+            self.skeletonView.removeFromSuperview()
+            self.containerView.addArrangedSubview(self.contentView)
+        }
+
+        UIView.transition(
+            with: self,
+            duration: 0.5,
+            options: .transitionCrossDissolve,
+            animations: transition,
+            completion: nil
+        )
     }
 
 }
@@ -81,7 +157,13 @@ extension UserStrikes: ViewCode {
     }
 
     func addConstraints() {
-        self.constrainHeight(to: 200)
+        self.constrainHeight(to: 226)
         containerView.constrainTo(edgesOf: self)
+
+        characterImageView.constrainHeight(to: 124)
+        strikesView.constrainHeight(to: 124)
+
+        strikesStackView.constrainTo(edgesOf: strikesView)
+        strikesView.constrainTo(edgesOf: strikesViewWrapper)
     }
 }
