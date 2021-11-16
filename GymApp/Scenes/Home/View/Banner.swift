@@ -15,7 +15,6 @@ class Banner: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .openSans(.bold, size: 16)
         label.textColor = .shipGray
-        label.text = "Personal training"
         return label
     }()
 
@@ -27,7 +26,6 @@ class Banner: UIView {
         label.textColor = .shipGray
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.text = "Discover dedicated support to ensure you reach your goals."
         return label
     }()
 
@@ -35,8 +33,6 @@ class Banner: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .openSans(.extrabold, size: 14)
-        label.textColor = .elm
-        label.text = "Get started"
         return label
     }()
 
@@ -57,9 +53,7 @@ class Banner: UIView {
     }()
 
     private lazy var textureImageView: UIImageView = {
-        let image = UIImage(named: "GreenStarsTexture")
-
-        let imageView = UIImageView(image: image)
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -67,16 +61,13 @@ class Banner: UIView {
     private lazy var backgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .skeptic
         view.addSubview(textureImageView)
         view.addSubview(infoView)
         return view
     }()
 
     private lazy var characterImageView: UIImageView = {
-        let image = UIImage(named: "TrainerCharacter")
-
-        let imageView = UIImageView(image: image)
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -88,6 +79,18 @@ class Banner: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup(from bannerInfo: BannerData) {
+        titleLabel.text = bannerInfo.title
+        descriptionLabel.text = bannerInfo.description
+        callToActionLabel.text = bannerInfo.callToAction
+
+        backgroundView.backgroundColor = UIColor(named: bannerInfo.backgroundColor)
+        callToActionLabel.textColor = UIColor(named: bannerInfo.callToActionFontColor)
+
+        textureImageView.image = UIImage(named: bannerInfo.backgroundImageName)
+        characterImageView.image = UIImage(named: bannerInfo.characterImageName)
     }
 }
 
@@ -109,7 +112,7 @@ extension Banner: ViewCode {
 
         infoView.constrainVertically(to: backgroundView)
         infoView.constrainToLeading(of: backgroundView)
-        infoView.constrainWidth(referencedBy: backgroundView, withRatio: 0.7)
+        infoView.constrainWidth(referencedBy: backgroundView, withRatio: 0.67)
     }
     
 }

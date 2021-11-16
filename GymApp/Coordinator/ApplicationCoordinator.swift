@@ -31,7 +31,7 @@ class ApplicationCoordinator: Coordinator {
     
     // MARK: - dependencies to be injected
     private lazy var locationManager = CLLocationManager()
-    private lazy var users = Users()
+    private lazy var users = UsersAPI()
 
     init(window: UIWindow) {
         self.window = window

@@ -19,8 +19,13 @@ class HomeCoordinator: StackBasedCoordinator {
 
     private var navigationController: UINavigationController
 
-    init(navigationController: UINavigationController = UINavigationController()) {
+    // dependencies to inject
+    private var homeApi: HomeAPI
+
+    init(navigationController: UINavigationController = UINavigationController(),
+         homeApi: HomeAPI = HomeAPI()) {
         self.navigationController = navigationController
+        self.homeApi = homeApi
     }
     
     func start() -> UIViewController {
@@ -29,7 +34,8 @@ class HomeCoordinator: StackBasedCoordinator {
 
         let homeViewController = HomeViewController(
             flowDelegate: self,
-            profileViewController: profileViewController
+            profileViewController: profileViewController,
+            homeApi: homeApi
         )
 
         navigationController.setViewControllers([homeViewController], animated: false)
@@ -49,6 +55,10 @@ class HomeCoordinator: StackBasedCoordinator {
 }
 
 extension HomeCoordinator: HomeFlowDelegate {
+    
+    func carouselBannerDidTap() {
+
+    }
     
     func toExploreTab() {
         parentCoordinator?.moveTo(.explore)

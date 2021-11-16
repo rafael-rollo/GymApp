@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Users {
+class UsersAPI {
 
     func findUserAccount(by email: String,
                          completionHandler: @escaping (User) -> Void,

@@ -13,4 +13,7 @@ extension UIColor {
     static var shipGray: UIColor? = UIColor(named: "ShipGray")
     static var skeptic: UIColor? = UIColor(named: "Skeptic")
     static var elm: UIColor? = UIColor(named: "Elm")
+    static var moonRaker: UIColor? = UIColor(named: "MoonRaker")
+    static var linkWater: UIColor? = UIColor(named: "LinkWater")
+    static var havelockBlue: UIColor? = UIColor(named: "HavelockBlue")
 }

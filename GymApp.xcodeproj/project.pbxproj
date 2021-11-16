@@ -39,7 +39,7 @@
 		58A8BA21273EF88F0022F023 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA20273EF88F0022F023 /* Button.swift */; };
 		58A8BA24273F00910022F023 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA23273F00910022F023 /* LoginState.swift */; };
 		58A8BA26273F010D0022F023 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA25273F010D0022F023 /* User.swift */; };
-		58A8BA28273F01260022F023 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA27273F01260022F023 /* Users.swift */; };
+		58A8BA28273F01260022F023 /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA27273F01260022F023 /* UsersAPI.swift */; };
 		58A8BA2A2742BD340022F023 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA292742BD340022F023 /* Validator.swift */; };
 		58A8BA2C2742BFE00022F023 /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */; };
 		58A8BA2F2742C1000022F023 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA2E2742C1000022F023 /* LoadingButton.swift */; };
@@ -64,6 +64,7 @@
 		58A8BA66274323560022F023 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA65274323560022F023 /* MenuViewController.swift */; };
 		58A8BA692743C4ED0022F023 /* BannerCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA682743C4ED0022F023 /* BannerCarousel.swift */; };
 		58A8BA6D2743C8700022F023 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6C2743C8700022F023 /* Banner.swift */; };
+		58A8BA702743C9180022F023 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6F2743C9180022F023 /* HomeAPI.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -126,7 +127,7 @@
 		58A8BA20273EF88F0022F023 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		58A8BA23273F00910022F023 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		58A8BA25273F010D0022F023 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		58A8BA27273F01260022F023 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		58A8BA27273F01260022F023 /* UsersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
 		58A8BA292742BD340022F023 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		58A8BA2E2742C1000022F023 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		58A8BA65274323560022F023 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		58A8BA682743C4ED0022F023 /* BannerCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCarousel.swift; sourceTree = "<group>"; };
 		58A8BA6C2743C8700022F023 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		58A8BA6F2743C9180022F023 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -382,7 +384,6 @@
 			children = (
 				58A8BA23273F00910022F023 /* LoginState.swift */,
 				58A8BA25273F010D0022F023 /* User.swift */,
-				58A8BA27273F01260022F023 /* Users.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -510,6 +511,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		58A8BA6E2743C9080022F023 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA6F2743C9180022F023 /* HomeAPI.swift */,
+				58A8BA27273F01260022F023 /* UsersAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		58AB9B61273C4CD7005445F3 = {
 			isa = PBXGroup;
 			children = (
@@ -541,6 +551,7 @@
 				58A8BA22273F00820022F023 /* Models */,
 				58A8BA1F273EF6AD0022F023 /* Views */,
 				58A8B9D7273C5BD00022F023 /* Scenes */,
+				58A8BA6E2743C9080022F023 /* API */,
 				58A8B9D5273C598C0022F023 /* SupportingFiles */,
 				58A8BA552743167C0022F023 /* GymApp.playground */,
 			);
@@ -807,6 +818,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A8BA702743C9180022F023 /* HomeAPI.swift in Sources */,
 				58A8BA6027431E0A0022F023 /* ProfileCoordinator.swift in Sources */,
 				58A8BA2F2742C1000022F023 /* LoadingButton.swift in Sources */,
 				58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */,
@@ -833,7 +845,7 @@
 				58A8BA02273D97210022F023 /* Page.swift in Sources */,
 				58A8BA492742E7930022F023 /* HomeCoordinator.swift in Sources */,
 				58A8B9E3273D87960022F023 /* Angles+CGFloat.swift in Sources */,
-				58A8BA28273F01260022F023 /* Users.swift in Sources */,
+				58A8BA28273F01260022F023 /* UsersAPI.swift in Sources */,
 				58A8BA06273D9F600022F023 /* NextButton.swift in Sources */,
 				58A8BA6327431F6D0022F023 /* WebViewController.swift in Sources */,
 				58A8BA6D2743C8700022F023 /* Banner.swift in Sources */,

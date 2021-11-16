@@ -9,16 +9,9 @@ import UIKit
 
 class BannerCarousel: UIView {
     
-    private lazy var firstPage: Banner = {
-        let banner = Banner()
-        banner.translatesAutoresizingMaskIntoConstraints = false
-        return banner
-    }()
-
+    // MARK: - subviews
     private lazy var contentContainer: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [
-            firstPage,
-        ])
+        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -38,7 +31,7 @@ class BannerCarousel: UIView {
     private lazy var pageControl: UIPageControl = {
         let pageControll = UIPageControl()
         pageControll.translatesAutoresizingMaskIntoConstraints = false
-        pageControll.numberOfPages = 3
+        pageControll.numberOfPages = 0
         pageControll.pageIndicatorTintColor = .blueViolet?.withAlphaComponent(0.5)
         pageControll.currentPageIndicatorTintColor = .blueViolet
         return pageControll
@@ -55,6 +48,18 @@ class BannerCarousel: UIView {
         return stack
     }()
 
+    // MARK: - attributes
+    var banners: [BannerData]? {
+        didSet {
+            if let banners = banners {
+                self.load(banners)
+            }
+        }
+    }
+
+    private var contentContainerWidthConstraint: NSLayoutConstraint?
+
+    // MARK: - lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -62,6 +67,31 @@ class BannerCarousel: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - view methods
+    private func load(_ banners: [BannerData]) {
+        banners.forEach { bannerInfo in
+            let banner = Banner()
+            banner.setup(from: bannerInfo)
+            contentContainer.addArrangedSubview(banner)
+        }
+
+        pageControl.numberOfPages = banners.count
+        resizeContentContainer(for: banners.count)
+    }
+
+    private func resizeContentContainer(for numberOfPages: Int) {
+        contentContainerWidthConstraint?.isActive = false
+        contentContainer.constrainWidth(referencedBy: scrollView,
+                                        withRatio: CGFloat(numberOfPages))
+
+        contentContainer.alpha = 0
+        layoutIfNeeded()
+
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.contentContainer.alpha = 1
+        }
     }
 }
 
@@ -80,13 +110,10 @@ extension BannerCarousel: ViewCode {
         carousel.constrainTo(edgesOf: self)
 
         contentContainer.constrainTo(edgesOf: scrollView)
-        NSLayoutConstraint.activate([
-            contentContainer.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
-            contentContainer.widthAnchor.constraint(
-                equalTo: scrollView.widthAnchor,
-                multiplier: 1
-            )
-        ])
+        contentContainer.constrainHeight(referencedBy: scrollView)
+
+        contentContainerWidthConstraint = contentContainer
+            .constrainWidth(referencedBy: scrollView)
     }
 
 }
