@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     private lazy var bannerCarousel: BannerCarousel = {
         let carousel = BannerCarousel()
         carousel.translatesAutoresizingMaskIntoConstraints = false
-        carousel.flowDelegate = flowDelegate
+        carousel.delegate = self
         return carousel
     }()
 
@@ -105,6 +105,14 @@ class HomeViewController: UIViewController {
         flowDelegate.toCheckinTab()
     }
 
+}
+
+extension HomeViewController: BannerCarouselDelegate {
+    
+    func bannerCarouselDelegate(_ carousel: BannerCarousel, didTapBanner data: BannerData) {
+        self.flowDelegate.carouselBannerDidTap(data)
+    }
+    
 }
 
 extension HomeViewController: ViewCodeController {
