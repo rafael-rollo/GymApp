@@ -88,6 +88,7 @@ class BannerCarousel: UIView {
         banners.forEach { bannerInfo in
             let banner = Banner()
             banner.setup(from: bannerInfo)
+            
             contentContainer.addArrangedSubview(banner)
         }
 
