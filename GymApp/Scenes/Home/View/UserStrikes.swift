@@ -9,6 +9,11 @@ import UIKit
 import Lottie
 
 class UserStrikes: UIView {
+    
+    struct LayoutProps {
+        static let height: CGFloat = 206
+        static let contentHeight: CGFloat = height - SectionTitle.LayoutProps.height - 24
+    }
 
     private lazy var sectionTitle: SectionTitle = {
         let title = SectionTitle()
@@ -64,7 +69,7 @@ class UserStrikes: UIView {
         let layer = CAGradientLayer()
         layer.colors = [UIColor.white.cgColor,
                         UIColor.white.withAlphaComponent(0.0).cgColor]
-        layer.frame = CGRect(x: 0, y: 0, width: 24, height: 124)
+        layer.frame = CGRect(x: 0, y: 0, width: 24, height: LayoutProps.contentHeight)
         layer.startPoint = CGPoint(x: 0.0, y: 0.5)
         layer.endPoint = CGPoint(x: 1.0, y: 0.5)
         return layer
@@ -157,11 +162,11 @@ extension UserStrikes: ViewCode {
     }
 
     func addConstraints() {
-        self.constrainHeight(to: 226)
+        self.constrainHeight(to: LayoutProps.height)
         containerView.constrainTo(edgesOf: self)
 
-        characterImageView.constrainHeight(to: 124)
-        strikesView.constrainHeight(to: 124)
+        characterImageView.constrainHeight(to: LayoutProps.contentHeight)
+        strikesView.constrainHeight(to: LayoutProps.contentHeight)
 
         strikesStackView.constrainTo(edgesOf: strikesView)
         strikesView.constrainTo(edgesOf: strikesViewWrapper)

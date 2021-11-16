@@ -8,6 +8,10 @@
 import UIKit
 
 class SectionTitle: UIView {
+    
+    struct LayoutProps {
+        static let height: CGFloat = 68
+    }
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -45,7 +49,7 @@ extension SectionTitle: ViewCode {
     }
 
     func addConstraints() {
-        self.constrainHeight(to: 68)
+        self.constrainHeight(to: LayoutProps.height)
 
         titleLabel.constrainToLeading(of: self, withMargin: 24)
         titleLabel.anchorToCenterY(of: self, withOffset: 4)
