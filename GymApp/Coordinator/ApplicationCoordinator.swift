@@ -31,6 +31,7 @@ class ApplicationCoordinator: Coordinator {
     
     // MARK: - dependencies to be injected
     private lazy var locationManager = CLLocationManager()
+    private lazy var users = Users()
 
     init(window: UIWindow) {
         self.window = window
@@ -58,7 +59,7 @@ extension ApplicationCoordinator: LaunchViewControllerDelegate {
             return
         }
 
-        rootViewController = LoginViewController()
+        rootViewController = LoginViewController(delegate: self, users: users)
     }
     
 }
@@ -74,7 +75,15 @@ extension ApplicationCoordinator: WalkthroughViewControllerDelegate {
 extension ApplicationCoordinator: LocationPermissionViewControllerDelegate {
     
     func locationPermissionViewController(_ viewController: LocationPermissionViewController, didRequest authorizationStatus: CLAuthorizationStatus) {
-        rootViewController = LoginViewController()
+        rootViewController = LoginViewController(delegate: self, users: users)
+    }
+    
+}
+
+extension ApplicationCoordinator: LoginViewControllerDelegate {
+    
+    func loginViewController(_ viewController: LoginViewController, didUserAuthenticate authentication: Authentication) {
+        print("go to home")
     }
     
 }
