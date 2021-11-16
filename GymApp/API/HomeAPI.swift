@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct StrikeData {
+    var number: Int
+    var label: String
+}
+
 struct BannerDestination {
     let tab: String
     let route: String
@@ -42,6 +47,7 @@ struct UserData {
 struct HomeData {
     var userData: UserData
     var banners: [BannerData]
+    var userStrikes: [StrikeData]
 }
 
 class HomeAPI {
@@ -85,7 +91,17 @@ class HomeAPI {
                                                           params: ["ref": "group-classes"]))
             ]
 
-            let homeData = HomeData(userData: userData, banners: bannersData)
+            let strikesData = [
+                StrikeData(number: 290, label: "check-ins"),
+                StrikeData(number: 2, label: "day streak"),
+                StrikeData(number: 25, label: "facilities"),
+                StrikeData(number: 18, label: "neighborhoods"),
+                StrikeData(number: 290, label: "check-ins"),
+                StrikeData(number: 5, label: "cities"),
+            ]
+
+            let homeData = HomeData(userData: userData, banners: bannersData, userStrikes: strikesData)
+            
             completionHandler(homeData)
         }
     }

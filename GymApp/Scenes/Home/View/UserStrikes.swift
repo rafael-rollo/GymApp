@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class CheckinStrikes: UIView {
+class UserStrikes: UIView {
 
     private lazy var sectionTitle: SectionTitle = {
         let title = SectionTitle()
@@ -43,6 +43,14 @@ class CheckinStrikes: UIView {
         stack.alignment = .fill
         return stack
     }()
+    
+    var strikes: [StrikeData]? {
+        didSet {
+            if let strikes = strikes {
+                self.load(strikes)
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,10 +60,22 @@ class CheckinStrikes: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func load(_ strikes: [StrikeData]) {
+        let animateUpdate: (() -> Void)? = { [weak self] in
+            self?.sectionTitle.text = "Your strikes"
+        }
+
+        UIView.transition(with: self,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: animateUpdate,
+                          completion: nil)
+    }
 
 }
 
-extension CheckinStrikes: ViewCode {
+extension UserStrikes: ViewCode {
     func addViews() {
         addSubview(containerView)
     }

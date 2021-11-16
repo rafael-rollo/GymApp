@@ -21,8 +21,8 @@ class HomeViewController: UIViewController {
         return carousel
     }()
     
-    private lazy var checkinStrikes: CheckinStrikes = {
-        let strikes = CheckinStrikes()
+    private lazy var userStrikes: UserStrikes = {
+        let strikes = UserStrikes()
         strikes.translatesAutoresizingMaskIntoConstraints = false
         return strikes
     }()
@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     private lazy var contentContainer: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             bannerCarousel,
-            checkinStrikes,
+            userStrikes,
         ])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -100,6 +100,7 @@ class HomeViewController: UIViewController {
 
     private func updateViews(with data: HomeData) {
         bannerCarousel.banners = data.banners
+        userStrikes.strikes = data.userStrikes
     }
 
 }

@@ -67,7 +67,7 @@
 		58A8BA702743C9180022F023 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6F2743C9180022F023 /* HomeAPI.swift */; };
 		58A8BA72274416F30022F023 /* BannerSkeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA71274416F30022F023 /* BannerSkeleton.json */; };
 		58A8BA74274417E30022F023 /* PillsSkeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA73274417E30022F023 /* PillsSkeleton.json */; };
-		58A8BA76274418590022F023 /* CheckinStrikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA75274418590022F023 /* CheckinStrikes.swift */; };
+		58A8BA76274418590022F023 /* UserStrikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA75274418590022F023 /* UserStrikes.swift */; };
 		58A8BA78274418900022F023 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA77274418900022F023 /* SectionTitle.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
@@ -160,7 +160,7 @@
 		58A8BA6F2743C9180022F023 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		58A8BA71274416F30022F023 /* BannerSkeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BannerSkeleton.json; sourceTree = "<group>"; };
 		58A8BA73274417E30022F023 /* PillsSkeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PillsSkeleton.json; sourceTree = "<group>"; };
-		58A8BA75274418590022F023 /* CheckinStrikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinStrikes.swift; sourceTree = "<group>"; };
+		58A8BA75274418590022F023 /* UserStrikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStrikes.swift; sourceTree = "<group>"; };
 		58A8BA77274418900022F023 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 			children = (
 				58A8BA682743C4ED0022F023 /* BannerCarousel.swift */,
 				58A8BA6C2743C8700022F023 /* Banner.swift */,
-				58A8BA75274418590022F023 /* CheckinStrikes.swift */,
+				58A8BA75274418590022F023 /* UserStrikes.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -867,7 +867,7 @@
 				58A8BA3C2742DF900022F023 /* ExploreViewController.swift in Sources */,
 				58A8BA04273D9B6C0022F023 /* Carousel.swift in Sources */,
 				58A8BA0C273DA96E0022F023 /* PrimaryStorage.swift in Sources */,
-				58A8BA76274418590022F023 /* CheckinStrikes.swift in Sources */,
+				58A8BA76274418590022F023 /* UserStrikes.swift in Sources */,
 				58A8BA1B273DD7F70022F023 /* ApplicationCoordinator.swift in Sources */,
 				58A8BA5A27431AE70022F023 /* MenuItems.swift in Sources */,
 				58A8BA14273DD0940022F023 /* LoginViewController.swift in Sources */,
