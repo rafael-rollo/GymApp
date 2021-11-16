@@ -59,6 +59,8 @@ class BannerCarousel: UIView {
     }
 
     private var contentContainerWidthConstraint: NSLayoutConstraint?
+    
+    weak var flowDelegate: HomeFlowDelegate?
 
     // MARK: - lifecycle
     override init(frame: CGRect) {
@@ -85,10 +87,14 @@ class BannerCarousel: UIView {
     }
     
     private func load(_ banners: [BannerData]) {
-        banners.forEach { bannerInfo in
+        banners.forEach { bannerData in
             let banner = Banner()
-            banner.setup(from: bannerInfo)
-            
+            banner.setup(from: bannerData)
+            banner.onTap = { [weak self] in
+                guard let self = self else { return }
+                self.flowDelegate?.carouselBannerDidTap(bannerData)
+            }
+
             contentContainer.addArrangedSubview(banner)
         }
 

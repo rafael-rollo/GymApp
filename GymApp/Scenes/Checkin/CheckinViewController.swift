@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CheckinViewController: UIViewController {
+class CheckinViewController: UIViewController, Coordinated {
 
     private lazy var label: UILabel = {
         let label = UILabel()
@@ -16,6 +16,8 @@ class CheckinViewController: UIViewController {
         label.text = "Check-in Scene!"
         return label
     }()
+    
+    var navigationParams: [String : Any]?
 
     override func loadView() {
         super.loadView()

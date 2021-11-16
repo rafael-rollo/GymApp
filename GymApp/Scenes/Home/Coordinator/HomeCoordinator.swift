@@ -9,15 +9,14 @@ import UIKit
 
 class HomeCoordinator: StackBasedCoordinator {
 
-    internal var rootViewController: UIViewController?
-
     var parentCoordinator: TabBasedCoordinator?
 
     var tab: Tab? {
         return .home
     }
 
-    private var navigationController: UINavigationController
+    internal var navigationController: UINavigationController
+    internal var rootViewController: UIViewController?
 
     // dependencies to inject
     private var homeApi: HomeAPI
@@ -56,8 +55,12 @@ class HomeCoordinator: StackBasedCoordinator {
 
 extension HomeCoordinator: HomeFlowDelegate {
     
-    func carouselBannerDidTap() {
+    func carouselBannerDidTap(_ bannerData: BannerData) {
+        guard let bannerDestination = bannerData.destination else { return }
 
+        guard let tab = Tab(rawValue: bannerDestination.tab) else { return }
+
+        parentCoordinator?.moveTo(tab, passing: bannerDestination.bag)
     }
     
     func toExploreTab() {

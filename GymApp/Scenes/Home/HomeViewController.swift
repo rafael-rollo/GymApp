@@ -10,7 +10,7 @@ import UIKit
 protocol HomeFlowDelegate: AnyObject {
     func toExploreTab()
     func toCheckinTab()
-    func carouselBannerDidTap()
+    func carouselBannerDidTap(_ bannerData: BannerData)
 }
 
 class HomeViewController: UIViewController {
@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     private lazy var bannerCarousel: BannerCarousel = {
         let carousel = BannerCarousel()
         carousel.translatesAutoresizingMaskIntoConstraints = false
+        carousel.flowDelegate = flowDelegate
         return carousel
     }()
 

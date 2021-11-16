@@ -82,6 +82,10 @@ class Banner: UIView {
         return animation
     }()
     
+    // MARK: - properties
+    var onTap: (() -> Void)?
+
+    // MARK: - view lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -100,6 +104,7 @@ class Banner: UIView {
         feedbackLayer.frame = bounds
     }
     
+    // MARK: - view methods
     func setup(from bannerInfo: BannerData) {
         titleLabel.text = bannerInfo.title
         descriptionLabel.text = bannerInfo.description
@@ -114,7 +119,10 @@ class Banner: UIView {
     
     @objc private func bannerTapped(_ sender: UIView) {
         feedbackLayer.add(feedbackAnimation, forKey: "feedbackAnimation")
-        debugPrint("tapped")
+
+        CATransaction.begin()
+        onTap?()
+        CATransaction.commit()
     }
 }
 

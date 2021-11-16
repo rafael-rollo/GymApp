@@ -9,20 +9,27 @@ import UIKit
 
 class ExploreCoordinator: StackBasedCoordinator {
 
-    internal var rootViewController: UIViewController?
-
     var parentCoordinator: TabBasedCoordinator?
 
     var tab: Tab? {
         return .explore
     }
+    
+    internal var navigationController: UINavigationController
+    internal var rootViewController: UIViewController?
+
+    init(navigationController: UINavigationController = UINavigationController()) {
+        self.navigationController = navigationController
+    }
 
     func start() -> UIViewController {
-        let controller = UINavigationController(rootViewController: ExploreViewController())
-        controller.isNavigationBarHidden = true
+        let controller = ExploreViewController()
+
+        navigationController.setViewControllers([controller], animated: false)
+        navigationController.isNavigationBarHidden = true
 
         rootViewController = controller
-        return controller
+        return navigationController
     }
 
 }

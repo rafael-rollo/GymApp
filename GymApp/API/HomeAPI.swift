@@ -7,6 +7,20 @@
 
 import Foundation
 
+struct BannerDestination {
+    let tab: String
+    let route: String
+    let bag: [String: Any]?
+
+    init?(path: String, params: [String: Any]? = nil) {
+        let tokens = path.split(separator: "/")
+
+        self.tab = String(tokens[0])
+        self.route = String(tokens[1])
+        self.bag = params
+    }
+}
+
 struct BannerData {
     var title: String
     var description: String
@@ -15,6 +29,7 @@ struct BannerData {
     var backgroundColor: String
     var backgroundImageName: String
     var characterImageName: String
+    var destination: BannerDestination?
 }
 
 struct UserData {
@@ -40,7 +55,7 @@ class HomeAPI {
             
             let photoURI = URL(string: "https://user-images.githubusercontent.com/13206745/114415754-5c378f00-9b86-11eb-996d-4d42858ad3c1.jpeg")
             let userData = UserData(photoURI: photoURI!, shortName: "Rafael", plan: "GymApp - Platinum", gymappID: "19009160440663")
-
+                    
             let bannersData: [BannerData] = [
                 BannerData(title: "Personal training",
                            description: "Discover dedicated support to ensure you reach your goals.",
@@ -48,21 +63,26 @@ class HomeAPI {
                            callToActionFontColor: "Elm",
                            backgroundColor: "Skeptic",
                            backgroundImageName: "GreenStarsTexture",
-                           characterImageName: "TrainerCharacter"),
+                           characterImageName: "TrainerCharacter",
+                           destination: BannerDestination(path: "/explore/root",
+                                                          params: ["ref": "personal-training"])),
                 BannerData(title: "Dependents",
-                           description: "Enjoy Gym.app with your family",
+                           description: "Enjoy GymApp with your family",
                            callToAction: "See dependents",
                            callToActionFontColor: "BlueViolet",
                            backgroundColor: "MoonRaker",
                            backgroundImageName: "PurpleCirclesTexture",
-                           characterImageName: "BadmintonCharacter"),
+                           characterImageName: "BadmintonCharacter",
+                           destination: BannerDestination(path: "/home/dependents")),
                 BannerData(title: "Interactive group classes",
                            description: "Join a group class and stay active at home!",
                            callToAction: "Check schedule",
                            callToActionFontColor: "HavelockBlue",
                            backgroundColor: "LinkWater",
                            backgroundImageName: "VideoIconsTexture",
-                           characterImageName: "DancingCharacter")
+                           characterImageName: "DancingCharacter",
+                           destination: BannerDestination(path: "/explore/root",
+                                                          params: ["ref": "group-classes"]))
             ]
 
             let homeData = HomeData(userData: userData, banners: bannersData)

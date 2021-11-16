@@ -9,20 +9,27 @@ import UIKit
 
 class CheckinCoordinator: StackBasedCoordinator {
 
-    internal var rootViewController: UIViewController?
-
     var parentCoordinator: TabBasedCoordinator?
 
     var tab: Tab? {
         return .checkin
     }
+    
+    internal var navigationController: UINavigationController
+    internal var rootViewController: UIViewController?
+
+    init(navigationController: UINavigationController = UINavigationController()) {
+        self.navigationController = navigationController
+    }
 
     func start() -> UIViewController {
-        let controller = UINavigationController(rootViewController: CheckinViewController())
-        controller.isNavigationBarHidden = true
+        let controller = CheckinViewController()
+
+        navigationController.setViewControllers([controller], animated: false)
+        navigationController.isNavigationBarHidden = true
 
         rootViewController = controller
-        return controller
+        return navigationController
     }
 
 }

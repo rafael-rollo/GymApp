@@ -35,21 +35,20 @@ class TabNavigationCoordinator: NSObject, TabBasedCoordinator {
         return tabBarViewController
     }
 
-    func moveTo(_ tab: Tab) {
-        let tabBarController = rootViewController as? UITabBarController
+    // TODO: Create some Deeplink coordinator to handle navigation infered by the backend responses
+    func moveTo(_ tab: Tab, passing navigationParams: [String: Any]? = nil) {
+        let tabIndex = tab.getTabBarItem().tag
 
-        switch tab {
-        case .home:
-            tabBarController?.selectedIndex = 0
-        case .explore:
-            tabBarController?.selectedIndex = 1
-        case .checkin:
-            tabBarController?.selectedIndex = 2
+        if let coordinated = childCoordinators[tabIndex].rootViewController as? Coordinated {
+            coordinated.navigationParams = navigationParams
         }
+
+        let tabBarController = rootViewController as? UITabBarController
+        tabBarController?.selectedIndex = tab.getTabBarItem().tag
     }
 }
 
-enum Tab {
+enum Tab: String {
     case home
     case explore
     case checkin
