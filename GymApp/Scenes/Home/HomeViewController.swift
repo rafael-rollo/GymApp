@@ -133,7 +133,9 @@ extension HomeViewController: ViewCodeController {
     }
 
     func addConstraints() {
-        scrollView.anchorBelow(of: profileViewController.view, withMargin: -12)
+        let topMargin = ProfileViewController.LayoutProps.defaultHeight - 12
+
+        scrollView.constrainToTop(of: view, withMargin: topMargin)
         scrollView.constrainToBottomAndSides(of: view)
 
         contentContainerView.constrainToTopAndSides(of: scrollView)

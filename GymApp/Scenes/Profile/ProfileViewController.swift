@@ -15,7 +15,7 @@ protocol ProfileFlowDelegate: AnyObject {
 class ProfileViewController: UIViewController {
     
     // MARK: - layout properties
-    fileprivate struct LayoutProps {
+    struct LayoutProps {
         static let defaultRadius: CGFloat = 12
         static let defaultHeight: CGFloat = {
             let statusBarHeight = UIApplication.shared.windows
