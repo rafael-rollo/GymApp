@@ -72,7 +72,6 @@
 		58A8BA7A27441AD10022F023 /* Strike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA7927441AD10022F023 /* Strike.swift */; };
 		58A8BA7F274442530022F023 /* WellnessApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA7E274442530022F023 /* WellnessApps.swift */; };
 		58A8BA82274444350022F023 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA81274444350022F023 /* AppCell.swift */; };
-		58A8BA84274444630022F023 /* AppList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA83274444630022F023 /* AppList.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -169,7 +168,6 @@
 		58A8BA7927441AD10022F023 /* Strike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strike.swift; sourceTree = "<group>"; };
 		58A8BA7E274442530022F023 /* WellnessApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessApps.swift; sourceTree = "<group>"; };
 		58A8BA81274444350022F023 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
-		58A8BA83274444630022F023 /* AppList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppList.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -560,7 +558,6 @@
 			isa = PBXGroup;
 			children = (
 				58A8BA81274444350022F023 /* AppCell.swift */,
-				58A8BA83274444630022F023 /* AppList.swift */,
 				58A8BA7E274442530022F023 /* WellnessApps.swift */,
 			);
 			path = Wellness;
@@ -881,7 +878,6 @@
 				58A8BA362742DC590022F023 /* HomeViewController.swift in Sources */,
 				58A8BA2A2742BD340022F023 /* Validator.swift in Sources */,
 				58A8BA11273DCB540022F023 /* Branding+UIColors.swift in Sources */,
-				58A8BA84274444630022F023 /* AppList.swift in Sources */,
 				58A8B9FC273D911A0022F023 /* Animations+UIView.swift in Sources */,
 				58A8BA502742F3C40022F023 /* ReusableView.swift in Sources */,
 				58A8BA432742E6F90022F023 /* CheckinCoordinator.swift in Sources */,

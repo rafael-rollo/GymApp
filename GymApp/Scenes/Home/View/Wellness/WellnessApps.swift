@@ -8,6 +8,10 @@
 import UIKit
 import Lottie
 
+protocol WellnessAppsDelegate: AnyObject {
+    func appDidSelect(_ app: WellnessAppData)
+}
+
 class WellnessApps: UIView {
 
     fileprivate struct LayoutProps {
@@ -60,16 +64,31 @@ class WellnessApps: UIView {
         return view
     }()
 
-    private lazy var appList: AppList = {
-        let list = AppList()
-        list.translatesAutoresizingMaskIntoConstraints = false
-        return list
+    private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 16
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.67, height: 74)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        return layout
+    }()
+
+    private lazy var appsCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.register(AppCell.self, forCellWithReuseIdentifier: AppCell.reuseId)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.clipsToBounds = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
     }()
 
     private lazy var containerView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [
             titlesView,
-            appList,
+            appsCollectionView,
         ])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
@@ -82,14 +101,16 @@ class WellnessApps: UIView {
         return view
     }()
 
-    var apps: [WellnessAppData]? {
+    // MARK: - properties
+    var apps: [WellnessAppData] = [] {
         didSet {
-            if let apps = apps {
-                self.load(apps)
-            }
+            self.load(apps)
         }
     }
+    
+    weak var delegate: WellnessAppsDelegate?
 
+    // MARK: - view lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -100,8 +121,7 @@ class WellnessApps: UIView {
     }
     
     private func load(_ apps: [WellnessAppData]) {
-        appList.apps = apps
-
+        appsCollectionView.reloadData()
         transitionAnimating()
     }
 
@@ -123,6 +143,29 @@ class WellnessApps: UIView {
             completion: nil
         )
     }
+}
+
+extension WellnessApps: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return apps.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppCell.reuseId, for: indexPath)
+                as? AppCell else {
+            fatalError("Provide an appropriate cell for the app list view")
+        }
+
+        cell.setup(from: apps[indexPath.row])
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let app = apps[indexPath.row]
+        delegate?.appDidSelect(app)
+    }
+    
 }
 
 extension WellnessApps: ViewCode {

@@ -46,8 +46,20 @@ class HomeCoordinator: StackBasedCoordinator {
         return navigationController
     }
     
-    private func pushUsersUsageStatsPage() {
+    private func showUsersUsageStatsPage() {
         let url = "https://gympass.com"
+        guard let url = URL(string: url) else { return }
+
+        let webview = WebViewController(path: url, flowDelegate: self)
+        webview.modalPresentationStyle = .fullScreen
+
+        navigationController.present(webview, animated: true) { [weak self] in
+            self?.isPresentingModal.toggle()
+        }
+    }
+    
+    private func showWellnessPage(for app: WellnessAppData) {
+        let url = "https://gympass.com?app=\(app.slug)"
         guard let url = URL(string: url) else { return }
 
         let webview = WebViewController(path: url, flowDelegate: self)
@@ -71,7 +83,11 @@ extension HomeCoordinator: HomeFlowDelegate {
     }
     
     func userStrikesDidTap() {
-        pushUsersUsageStatsPage()
+        showUsersUsageStatsPage()
+    }
+    
+    func wellnessAppDidTap(_ appData: WellnessAppData) {
+        showWellnessPage(for: appData)
     }
     
 }

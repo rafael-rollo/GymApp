@@ -10,6 +10,7 @@ import UIKit
 protocol HomeFlowDelegate: AnyObject {
     func carouselBannerDidTap(_ bannerData: BannerData)
     func userStrikesDidTap()
+    func wellnessAppDidTap(_ appData: WellnessAppData)
 }
 
 class HomeViewController: UIViewController {
@@ -32,6 +33,7 @@ class HomeViewController: UIViewController {
     private lazy var wellnessApps: WellnessApps = {
         let view = WellnessApps()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
 
@@ -129,6 +131,15 @@ extension HomeViewController: UserStrikesDelegate {
     
     func userStrikesDidTap() {
         self.flowDelegate.userStrikesDidTap()
+    }
+    
+}
+
+// MARK: - wellness apps view delegation
+extension HomeViewController: WellnessAppsDelegate {
+    
+    func appDidSelect(_ app: WellnessAppData) {
+        self.flowDelegate.wellnessAppDidTap(app)
     }
     
 }
