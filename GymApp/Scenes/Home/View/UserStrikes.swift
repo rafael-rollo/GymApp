@@ -52,7 +52,7 @@ class UserStrikes: UIView {
         stack.axis = .horizontal
         stack.distribution = .fill
         stack.alignment = .fill
-        stack.spacing = 32
+        stack.spacing = 24
         return stack
     }()
 
