@@ -70,6 +70,7 @@
 		58A8BA76274418590022F023 /* UserStrikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA75274418590022F023 /* UserStrikes.swift */; };
 		58A8BA78274418900022F023 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA77274418900022F023 /* SectionTitle.swift */; };
 		58A8BA7A27441AD10022F023 /* Strike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA7927441AD10022F023 /* Strike.swift */; };
+		58A8BA7F274442530022F023 /* WellnessApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA7E274442530022F023 /* WellnessApps.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -164,6 +165,7 @@
 		58A8BA75274418590022F023 /* UserStrikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStrikes.swift; sourceTree = "<group>"; };
 		58A8BA77274418900022F023 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		58A8BA7927441AD10022F023 /* Strike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strike.swift; sourceTree = "<group>"; };
+		58A8BA7E274442530022F023 /* WellnessApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessApps.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -516,10 +518,9 @@
 		58A8BA672743C4CE0022F023 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				58A8BA682743C4ED0022F023 /* BannerCarousel.swift */,
-				58A8BA6C2743C8700022F023 /* Banner.swift */,
-				58A8BA75274418590022F023 /* UserStrikes.swift */,
-				58A8BA7927441AD10022F023 /* Strike.swift */,
+				58A8BA7D2744423B0022F023 /* Wellness */,
+				58A8BA7C2744421E0022F023 /* UserStrikes */,
+				58A8BA7B274441D00022F023 /* Banners */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -531,6 +532,32 @@
 				58A8BA27273F01260022F023 /* UsersAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		58A8BA7B274441D00022F023 /* Banners */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA6C2743C8700022F023 /* Banner.swift */,
+				58A8BA682743C4ED0022F023 /* BannerCarousel.swift */,
+			);
+			path = Banners;
+			sourceTree = "<group>";
+		};
+		58A8BA7C2744421E0022F023 /* UserStrikes */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA7927441AD10022F023 /* Strike.swift */,
+				58A8BA75274418590022F023 /* UserStrikes.swift */,
+			);
+			path = UserStrikes;
+			sourceTree = "<group>";
+		};
+		58A8BA7D2744423B0022F023 /* Wellness */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA7E274442530022F023 /* WellnessApps.swift */,
+			);
+			path = Wellness;
 			sourceTree = "<group>";
 		};
 		58AB9B61273C4CD7005445F3 = {
@@ -854,6 +881,7 @@
 				58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */,
 				58A8BA312742CA190022F023 /* ValidatedInput.swift in Sources */,
 				58A8BA332742CB1B0022F023 /* ConstraintHelpers+UIView.swift in Sources */,
+				58A8BA7F274442530022F023 /* WellnessApps.swift in Sources */,
 				58A8BA19273DD7C40022F023 /* Coordinator.swift in Sources */,
 				58A8BA402742E5540022F023 /* BaseTabBarController.swift in Sources */,
 				58A8BA0F273DB2FF0022F023 /* AnimatedShape.swift in Sources */,

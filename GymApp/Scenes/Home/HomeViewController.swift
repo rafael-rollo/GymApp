@@ -28,11 +28,18 @@ class HomeViewController: UIViewController {
         strikes.delegate = self
         return strikes
     }()
+    
+    private lazy var wellnessApps: WellnessApps = {
+        let view = WellnessApps()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private lazy var contentContainer: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             bannerCarousel,
             userStrikes,
+            wellnessApps,
         ])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical

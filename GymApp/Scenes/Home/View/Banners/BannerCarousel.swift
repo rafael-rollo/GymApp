@@ -63,6 +63,8 @@ class BannerCarousel: UIView {
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .fill
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0)
         return stack
     }()
 
