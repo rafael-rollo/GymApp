@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol WalkthroughViewControllerDelegate: AnyObject {
+    func walkthroughViewControllerDidComplete(_ viewController: WalkthroughViewController)
+}
+
 class WalkthroughViewController: UIViewController {
 
     // MARK: - subviews
@@ -26,7 +30,7 @@ class WalkthroughViewController: UIViewController {
     
     private lazy var skipButton: UIButton = {
         let atributedTitle = NSAttributedString(string: "Skip", attributes: [
-            .foregroundColor: UIColor(named: "Relax") ?? .purple,
+            .foregroundColor: UIColor.blueViolet ?? .purple,
             .font: UIFont.openSans(.bold, size: UIFont.smallSystemFontSize)
         ])
 
@@ -86,8 +90,19 @@ class WalkthroughViewController: UIViewController {
     // MARK: - properties
     
     private var currentPage: Int = 0
+    
+    weak var delegate: WalkthroughViewControllerDelegate?
 
     // MARK: - view lifecycle
+    init(delegate: WalkthroughViewControllerDelegate) {
+        super.init(nibName: nil, bundle: nil)
+        self.delegate = delegate
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         super.loadView()
         setup()
@@ -95,8 +110,11 @@ class WalkthroughViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         upperShape.rotate(by: RotatingShape.Angles.firstStep)
+        
+        skipButton.addTarget(self,
+                             action: #selector(completeWalkthrough),
+                             for: .touchUpInside)
         
         pageControl.addTarget(self,
                               action: #selector(pageControlValueChanged(_:)),
@@ -132,8 +150,9 @@ class WalkthroughViewController: UIViewController {
         nextButton.animate(by: currentPage)
     }
 
-    private func completeWalkthrough() {
-        debugPrint("Go to geolocation permission screen")
+    @objc private func completeWalkthrough() {
+        Storage.walkthroughHasAlreadyBeenSeen = true
+        delegate?.walkthroughViewControllerDidComplete(self)
     }
     
 }

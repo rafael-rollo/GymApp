@@ -58,11 +58,12 @@ class NextButton: UIButton {
 
 extension NextButton: ViewCode {
     func addTheme() {
-        backgroundColor = UIColor(named: "Terracotta")
+        backgroundColor = .terracotta
         tintColor = .white
         layer.cornerRadius = size.height / 2
         layer.masksToBounds = true
         setImage(image, for: .normal)
+        titleLabel?.font = .openSans(.bold, size: 14)
     }
 
     func addConstraints() {
