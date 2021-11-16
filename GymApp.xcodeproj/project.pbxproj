@@ -63,6 +63,7 @@
 		58A8BA6327431F6D0022F023 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6227431F6D0022F023 /* WebViewController.swift */; };
 		58A8BA66274323560022F023 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA65274323560022F023 /* MenuViewController.swift */; };
 		58A8BA692743C4ED0022F023 /* BannerCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA682743C4ED0022F023 /* BannerCarousel.swift */; };
+		58A8BA6D2743C8700022F023 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6C2743C8700022F023 /* Banner.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -150,6 +151,7 @@
 		58A8BA6227431F6D0022F023 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		58A8BA65274323560022F023 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		58A8BA682743C4ED0022F023 /* BannerCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCarousel.swift; sourceTree = "<group>"; };
+		58A8BA6C2743C8700022F023 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				58A8BA682743C4ED0022F023 /* BannerCarousel.swift */,
+				58A8BA6C2743C8700022F023 /* Banner.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				58A8BA28273F01260022F023 /* Users.swift in Sources */,
 				58A8BA06273D9F600022F023 /* NextButton.swift in Sources */,
 				58A8BA6327431F6D0022F023 /* WebViewController.swift in Sources */,
+				58A8BA6D2743C8700022F023 /* Banner.swift in Sources */,
 				58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */,
 				58A8BA3C2742DF900022F023 /* ExploreViewController.swift in Sources */,
 				58A8BA04273D9B6C0022F023 /* Carousel.swift in Sources */,

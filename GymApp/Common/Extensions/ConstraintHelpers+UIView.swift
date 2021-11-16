@@ -412,6 +412,21 @@ extension UIView {
             return constraint
         }
 
+    /// Constrains the width of your view code component by the width of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view that have the referenced width anchor
+    ///     - ratio: The `CGFloat` representing the ratio to apply as a multiplier of the width anchor's value
+    ///
+    /// - Returns: The activated layout constraint's reference
+    ///
+    @discardableResult
+    func constrainWidth(referencedBy view: UIView, withRatio ratio: CGFloat = 1) -> NSLayoutConstraint {
+        let constraint = self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: ratio)
+        constraint.isActive = true
+        return constraint
+    }
+    
     /// Constrains the height of your view code component
     ///
     /// - Parameters:
@@ -423,6 +438,21 @@ extension UIView {
     @discardableResult
     func constrainHeight(to constant: CGFloat) -> NSLayoutConstraint {
         let constraint = self.heightAnchor.constraint(equalToConstant: constant)
+        constraint.isActive = true
+        return constraint
+    }
+    
+    /// Constrains the height of your view code component by the height of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view that have the referenced height anchor
+    ///     - ratio: The `CGFloat` representing the ratio to apply as a multiplier of the height anchor's value
+    ///
+    /// - Returns: The activated layout constraint's reference
+    ///
+    @discardableResult
+    func constrainHeight(referencedBy view: UIView, withRatio ratio: CGFloat = 1) -> NSLayoutConstraint {
+        let constraint = self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: ratio)
         constraint.isActive = true
         return constraint
     }
