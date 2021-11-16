@@ -37,7 +37,6 @@ class ProfileViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        imageView.backgroundColor = .blue
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 26
         return imageView

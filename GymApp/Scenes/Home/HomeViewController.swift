@@ -110,6 +110,7 @@ class HomeViewController: UIViewController {
     private func updateViews(with data: HomeData) {
         bannerCarousel.banners = data.banners
         userStrikes.strikes = data.userStrikes
+        wellnessApps.apps = data.wellnessApps
     }
 
 }
