@@ -20,15 +20,23 @@ class HomeViewController: UIViewController {
         carousel.delegate = self
         return carousel
     }()
+    
+    private lazy var checkinStrikes: CheckinStrikes = {
+        let strikes = CheckinStrikes()
+        strikes.translatesAutoresizingMaskIntoConstraints = false
+        return strikes
+    }()
 
     private lazy var contentContainer: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-            bannerCarousel
+            bannerCarousel,
+            checkinStrikes,
         ])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .fill
+        stackView.spacing = 16
         return stackView
     }()
     

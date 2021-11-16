@@ -66,6 +66,9 @@
 		58A8BA6D2743C8700022F023 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6C2743C8700022F023 /* Banner.swift */; };
 		58A8BA702743C9180022F023 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6F2743C9180022F023 /* HomeAPI.swift */; };
 		58A8BA72274416F30022F023 /* BannerSkeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA71274416F30022F023 /* BannerSkeleton.json */; };
+		58A8BA74274417E30022F023 /* PillsSkeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA73274417E30022F023 /* PillsSkeleton.json */; };
+		58A8BA76274418590022F023 /* CheckinStrikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA75274418590022F023 /* CheckinStrikes.swift */; };
+		58A8BA78274418900022F023 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA77274418900022F023 /* SectionTitle.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -156,6 +159,9 @@
 		58A8BA6C2743C8700022F023 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		58A8BA6F2743C9180022F023 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		58A8BA71274416F30022F023 /* BannerSkeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BannerSkeleton.json; sourceTree = "<group>"; };
+		58A8BA73274417E30022F023 /* PillsSkeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PillsSkeleton.json; sourceTree = "<group>"; };
+		58A8BA75274418590022F023 /* CheckinStrikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinStrikes.swift; sourceTree = "<group>"; };
+		58A8BA77274418900022F023 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -377,6 +383,7 @@
 			children = (
 				58A8BA2D2742C0050022F023 /* Button */,
 				58A8BA1D273EF3850022F023 /* TextInput.swift */,
+				58A8BA77274418900022F023 /* SectionTitle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -509,6 +516,7 @@
 			children = (
 				58A8BA682743C4ED0022F023 /* BannerCarousel.swift */,
 				58A8BA6C2743C8700022F023 /* Banner.swift */,
+				58A8BA75274418590022F023 /* CheckinStrikes.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -594,6 +602,7 @@
 				58AB9B9F273C5253005445F3 /* LaunchAnimation.json */,
 				58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */,
 				58A8BA71274416F30022F023 /* BannerSkeleton.json */,
+				58A8BA73274417E30022F023 /* PillsSkeleton.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -717,6 +726,7 @@
 				58A8B9F8273D8BB20022F023 /* Open Sans Extrabold.ttf in Resources */,
 				58AB9B7A273C4CDC005445F3 /* LaunchScreen.storyboard in Resources */,
 				58A8B9F1273D8BB20022F023 /* Open Sans Italic.ttf in Resources */,
+				58A8BA74274417E30022F023 /* PillsSkeleton.json in Resources */,
 				58A8B9F5273D8BB20022F023 /* Open Sans Light.ttf in Resources */,
 				58A8BA72274416F30022F023 /* BannerSkeleton.json in Resources */,
 				58A8B9F2273D8BB20022F023 /* Open Sans Bold Italic.ttf in Resources */,
@@ -857,11 +867,13 @@
 				58A8BA3C2742DF900022F023 /* ExploreViewController.swift in Sources */,
 				58A8BA04273D9B6C0022F023 /* Carousel.swift in Sources */,
 				58A8BA0C273DA96E0022F023 /* PrimaryStorage.swift in Sources */,
+				58A8BA76274418590022F023 /* CheckinStrikes.swift in Sources */,
 				58A8BA1B273DD7F70022F023 /* ApplicationCoordinator.swift in Sources */,
 				58A8BA5A27431AE70022F023 /* MenuItems.swift in Sources */,
 				58A8BA14273DD0940022F023 /* LoginViewController.swift in Sources */,
 				58A8B9FF273D93090022F023 /* RotatingShape.swift in Sources */,
 				58A8B9DC273C5CB10022F023 /* ViewCode.swift in Sources */,
+				58A8BA78274418900022F023 /* SectionTitle.swift in Sources */,
 				58A8BA26273F010D0022F023 /* User.swift in Sources */,
 				58A8BA692743C4ED0022F023 /* BannerCarousel.swift in Sources */,
 				58A8B9E0273D85330022F023 /* WalkthroughViewController.swift in Sources */,

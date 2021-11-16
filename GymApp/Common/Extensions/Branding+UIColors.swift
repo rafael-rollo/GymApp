@@ -16,4 +16,5 @@ extension UIColor {
     static var moonRaker: UIColor? = UIColor(named: "MoonRaker")
     static var linkWater: UIColor? = UIColor(named: "LinkWater")
     static var havelockBlue: UIColor? = UIColor(named: "HavelockBlue")
+    static var whisper: UIColor? = UIColor(named: "Whisper")
 }
