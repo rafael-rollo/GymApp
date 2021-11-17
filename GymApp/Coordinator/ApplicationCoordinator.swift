@@ -14,7 +14,7 @@ class ApplicationCoordinator: Coordinator {
     // MARK: - properties
     let window: UIWindow
 
-    internal var rootViewController: UIViewController? {
+    internal lazy var rootViewController: UIViewController? = UIViewController() {
         didSet {
             UIView.transition(
                 with: window,
@@ -59,7 +59,12 @@ extension ApplicationCoordinator: LaunchViewControllerDelegate {
             return
         }
 
-        rootViewController = LoginViewController(delegate: self, users: users)
+        guard Storage.isUserLogged else {
+            rootViewController = LoginViewController(delegate: self, users: users)
+            return
+        }
+
+        rootViewController = TabNavigationCoordinator().start()
     }
     
 }
@@ -82,8 +87,9 @@ extension ApplicationCoordinator: LocationPermissionViewControllerDelegate {
 
 extension ApplicationCoordinator: LoginViewControllerDelegate {
     
-    func loginViewController(_ viewController: LoginViewController, didUserAuthenticate authentication: Authentication) {
-        print("go to home")
+    func loginViewController(_ viewController: LoginViewController,
+                             didUserAuthenticate authentication: Authentication) {
+        rootViewController = TabNavigationCoordinator().start()
     }
     
 }
