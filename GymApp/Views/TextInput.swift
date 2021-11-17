@@ -235,34 +235,21 @@ extension TextInput: ViewCode {
     }
 
     func addConstraints() {
-        heightAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
+        self.constrainHeight(greaterThanOrEqualTo: 60)
 
-        NSLayoutConstraint.activate([
-            textFieldView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            textFieldView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textFieldView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textFieldView.heightAnchor.constraint(equalToConstant: 50),
-        ])
+        textFieldView.constrainHeight(to: 50)
+        textFieldView.constrainToTopAndSides(of: self, topMargin: 8)
 
-        NSLayoutConstraint.activate([
-            textField.leadingAnchor.constraint(equalTo: textFieldView.leadingAnchor, constant: 16),
-            textField.trailingAnchor.constraint(equalTo: textFieldView.trailingAnchor, constant: -16),
-            textField.centerYAnchor.constraint(equalTo: textFieldView.centerYAnchor, constant: -1)
-        ])
+        textField.constrainHorizontally(to: textFieldView, withMargins: 16)
+        textField.anchorToCenter(of: textFieldView, withOffset: .init(x: 0, y: -1))
 
-        titleLeadingConstraint = fieldTitleLabel.leadingAnchor
-            .constraint(equalTo: textFieldView.leadingAnchor,constant: TitlePositions.t0.x)
-
-        titleTopConstraint = fieldTitleLabel.topAnchor
-            .constraint(equalTo: textFieldView.topAnchor,constant: TitlePositions.t0.y)
-
-        NSLayoutConstraint.activate([ titleLeadingConstraint!, titleTopConstraint! ])
+        titleLeadingConstraint = fieldTitleLabel
+            .constrainToLeading(of: textFieldView, withMargin: TitlePositions.t0.x)
+        titleTopConstraint = fieldTitleLabel
+            .constrainToTop(of: textFieldView, withMargin: TitlePositions.t0.y)
         
-        NSLayoutConstraint.activate([
-            errorMessageLabel.topAnchor.constraint(equalTo: textFieldView.bottomAnchor, constant: 4),
-            errorMessageLabel.leadingAnchor.constraint(equalTo: textFieldView.leadingAnchor),
-            errorMessageLabel.trailingAnchor.constraint(equalTo: textFieldView.trailingAnchor),
-        ])
+        errorMessageLabel.anchorBelow(of: textFieldView, withMargin: 4)
+        errorMessageLabel.constrainHorizontally(to: textFieldView)
     }
 
     func addTheme() {

@@ -186,39 +186,26 @@ extension WalkthroughViewController: ViewCode {
     func addConstraints() {
         let upperShapeXOffset = upperShape.bounds.width * 0.37
         let upperShapeYOffset = upperShape.bounds.height - view.bounds.height * 0.3
+        upperShape.constrainToTopAndLeading(of: view,
+                                         topMargin: -upperShapeYOffset,
+                                         leadingMargin: -upperShapeXOffset)
         
-        NSLayoutConstraint.activate([
-            upperShape.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -upperShapeXOffset),
-            upperShape.topAnchor.constraint(equalTo: view.topAnchor, constant: -upperShapeYOffset)
-        ])
+        logo.constrainWidth(to: 120)
         
-        NSLayoutConstraint.activate([
-            logo.widthAnchor.constraint(equalToConstant: 120),
-        ])
+        titleStackView.constrainHorizontally(to: view, withMargins: 24)
+        titleStackView.constrainToTop(of: view, withMargin: 48, notchSafe: true)
         
-        NSLayoutConstraint.activate([
-            titleStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
-            titleStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            titleStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
-        ])
-        
-        NSLayoutConstraint.activate([
-            carousel.bottomAnchor.constraint(equalTo: footerStackView.topAnchor, constant: -48),
-            carousel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            carousel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            carousel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
-        ])
+        carousel.constrainHorizontally(to: view)
+        carousel.constrainHeight(to: view.bounds.height * 0.4)
+        carousel.anchorAbove(of: footerStackView, withMargin: 48)
+
+        footerStackView.constrainToBottom(of: view, withMargin: 48, footerSafe: true)
+        footerStackView.constrainHorizontally(to: titleStackView)
         
         // sorry! Apple doesn't help to do it better 😢
-        NSLayoutConstraint.activate([
-            pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -16)
-        ])
-
-        NSLayoutConstraint.activate([
-            footerStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -48),
-            footerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            footerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
-        ])
+        // it'll conflict with stack leading constraint, but it is just to positioning properly
+        // since we don't have an easy way to edit the edge insets of the page control component
+        pageControl.constrainToLeading(of: view, withMargin: -16)
     }
 
 }

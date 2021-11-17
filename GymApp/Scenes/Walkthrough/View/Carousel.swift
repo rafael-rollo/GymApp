@@ -75,14 +75,11 @@ extension Carousel: ViewCode {
     }
 
     func addConstraints() {
+        contentStackView.constrainTo(edgesOf: self)
+        
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: topAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentStackView.heightAnchor.constraint(equalTo: heightAnchor),
-            contentStackView.widthAnchor.constraint(equalTo: widthAnchor,
-                                                    multiplier: 3)
+            contentStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 3)
         ])
     }
 
