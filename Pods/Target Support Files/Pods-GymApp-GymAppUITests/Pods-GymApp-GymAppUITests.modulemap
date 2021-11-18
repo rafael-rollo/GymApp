@@ -1,0 +1,6 @@
+module Pods_GymApp_GymAppUITests {
+  umbrella header "Pods-GymApp-GymAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
