@@ -39,7 +39,7 @@
 		58A8BA21273EF88F0022F023 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA20273EF88F0022F023 /* Button.swift */; };
 		58A8BA24273F00910022F023 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA23273F00910022F023 /* LoginState.swift */; };
 		58A8BA26273F010D0022F023 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA25273F010D0022F023 /* User.swift */; };
-		58A8BA28273F01260022F023 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA27273F01260022F023 /* Users.swift */; };
+		58A8BA28273F01260022F023 /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA27273F01260022F023 /* UsersAPI.swift */; };
 		58A8BA2A2742BD340022F023 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA292742BD340022F023 /* Validator.swift */; };
 		58A8BA2C2742BFE00022F023 /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */; };
 		58A8BA2F2742C1000022F023 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA2E2742C1000022F023 /* LoadingButton.swift */; };
@@ -62,6 +62,16 @@
 		58A8BA6027431E0A0022F023 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA5F27431E0A0022F023 /* ProfileCoordinator.swift */; };
 		58A8BA6327431F6D0022F023 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6227431F6D0022F023 /* WebViewController.swift */; };
 		58A8BA66274323560022F023 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA65274323560022F023 /* MenuViewController.swift */; };
+		58A8BA692743C4ED0022F023 /* BannerCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA682743C4ED0022F023 /* BannerCarousel.swift */; };
+		58A8BA6D2743C8700022F023 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6C2743C8700022F023 /* Banner.swift */; };
+		58A8BA702743C9180022F023 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA6F2743C9180022F023 /* HomeAPI.swift */; };
+		58A8BA72274416F30022F023 /* BannerSkeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA71274416F30022F023 /* BannerSkeleton.json */; };
+		58A8BA74274417E30022F023 /* PillsSkeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = 58A8BA73274417E30022F023 /* PillsSkeleton.json */; };
+		58A8BA76274418590022F023 /* UserStrikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA75274418590022F023 /* UserStrikes.swift */; };
+		58A8BA78274418900022F023 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA77274418900022F023 /* SectionTitle.swift */; };
+		58A8BA7A27441AD10022F023 /* Strike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA7927441AD10022F023 /* Strike.swift */; };
+		58A8BA7F274442530022F023 /* WellnessApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA7E274442530022F023 /* WellnessApps.swift */; };
+		58A8BA82274444350022F023 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A8BA81274444350022F023 /* AppCell.swift */; };
 		58AB9B6E273C4CD8005445F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */; };
 		58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */; };
 		58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB9B71273C4CD8005445F3 /* LaunchViewController.swift */; };
@@ -124,7 +134,7 @@
 		58A8BA20273EF88F0022F023 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		58A8BA23273F00910022F023 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		58A8BA25273F010D0022F023 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		58A8BA27273F01260022F023 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		58A8BA27273F01260022F023 /* UsersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
 		58A8BA292742BD340022F023 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		58A8BA2E2742C1000022F023 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
@@ -148,6 +158,16 @@
 		58A8BA5F27431E0A0022F023 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		58A8BA6227431F6D0022F023 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		58A8BA65274323560022F023 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		58A8BA682743C4ED0022F023 /* BannerCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCarousel.swift; sourceTree = "<group>"; };
+		58A8BA6C2743C8700022F023 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		58A8BA6F2743C9180022F023 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		58A8BA71274416F30022F023 /* BannerSkeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BannerSkeleton.json; sourceTree = "<group>"; };
+		58A8BA73274417E30022F023 /* PillsSkeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PillsSkeleton.json; sourceTree = "<group>"; };
+		58A8BA75274418590022F023 /* UserStrikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStrikes.swift; sourceTree = "<group>"; };
+		58A8BA77274418900022F023 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
+		58A8BA7927441AD10022F023 /* Strike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strike.swift; sourceTree = "<group>"; };
+		58A8BA7E274442530022F023 /* WellnessApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessApps.swift; sourceTree = "<group>"; };
+		58A8BA81274444350022F023 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 		58AB9B6A273C4CD8005445F3 /* GymApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AB9B6D273C4CD8005445F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AB9B6F273C4CD8005445F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -369,6 +389,7 @@
 			children = (
 				58A8BA2D2742C0050022F023 /* Button */,
 				58A8BA1D273EF3850022F023 /* TextInput.swift */,
+				58A8BA77274418900022F023 /* SectionTitle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,7 +399,6 @@
 			children = (
 				58A8BA23273F00910022F023 /* LoginState.swift */,
 				58A8BA25273F010D0022F023 /* User.swift */,
-				58A8BA27273F01260022F023 /* Users.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				58A8BA472742E7830022F023 /* Coordinator */,
+				58A8BA672743C4CE0022F023 /* View */,
 				58A8BA352742DC590022F023 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -496,6 +517,52 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		58A8BA672743C4CE0022F023 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA7D2744423B0022F023 /* Wellness */,
+				58A8BA7C2744421E0022F023 /* UserStrikes */,
+				58A8BA7B274441D00022F023 /* Banners */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		58A8BA6E2743C9080022F023 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA6F2743C9180022F023 /* HomeAPI.swift */,
+				58A8BA27273F01260022F023 /* UsersAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		58A8BA7B274441D00022F023 /* Banners */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA6C2743C8700022F023 /* Banner.swift */,
+				58A8BA682743C4ED0022F023 /* BannerCarousel.swift */,
+			);
+			path = Banners;
+			sourceTree = "<group>";
+		};
+		58A8BA7C2744421E0022F023 /* UserStrikes */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA7927441AD10022F023 /* Strike.swift */,
+				58A8BA75274418590022F023 /* UserStrikes.swift */,
+			);
+			path = UserStrikes;
+			sourceTree = "<group>";
+		};
+		58A8BA7D2744423B0022F023 /* Wellness */ = {
+			isa = PBXGroup;
+			children = (
+				58A8BA81274444350022F023 /* AppCell.swift */,
+				58A8BA7E274442530022F023 /* WellnessApps.swift */,
+			);
+			path = Wellness;
+			sourceTree = "<group>";
+		};
 		58AB9B61273C4CD7005445F3 = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +594,7 @@
 				58A8BA22273F00820022F023 /* Models */,
 				58A8BA1F273EF6AD0022F023 /* Views */,
 				58A8B9D7273C5BD00022F023 /* Scenes */,
+				58A8BA6E2743C9080022F023 /* API */,
 				58A8B9D5273C598C0022F023 /* SupportingFiles */,
 				58A8BA552743167C0022F023 /* GymApp.playground */,
 			);
@@ -566,6 +634,8 @@
 			children = (
 				58AB9B9F273C5253005445F3 /* LaunchAnimation.json */,
 				58A8BA2B2742BFE00022F023 /* LoadingAnimation.json */,
+				58A8BA71274416F30022F023 /* BannerSkeleton.json */,
+				58A8BA73274417E30022F023 /* PillsSkeleton.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -689,7 +759,9 @@
 				58A8B9F8273D8BB20022F023 /* Open Sans Extrabold.ttf in Resources */,
 				58AB9B7A273C4CDC005445F3 /* LaunchScreen.storyboard in Resources */,
 				58A8B9F1273D8BB20022F023 /* Open Sans Italic.ttf in Resources */,
+				58A8BA74274417E30022F023 /* PillsSkeleton.json in Resources */,
 				58A8B9F5273D8BB20022F023 /* Open Sans Light.ttf in Resources */,
+				58A8BA72274416F30022F023 /* BannerSkeleton.json in Resources */,
 				58A8B9F2273D8BB20022F023 /* Open Sans Bold Italic.ttf in Resources */,
 				58A8B9F0273D8BB20022F023 /* Open Sans Semibold.ttf in Resources */,
 				58A8B9F3273D8BB20022F023 /* Open Sans Extrabold Italic.ttf in Resources */,
@@ -793,6 +865,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A8BA702743C9180022F023 /* HomeAPI.swift in Sources */,
 				58A8BA6027431E0A0022F023 /* ProfileCoordinator.swift in Sources */,
 				58A8BA2F2742C1000022F023 /* LoadingButton.swift in Sources */,
 				58A8BA09273DA8920022F023 /* LocationPermissionViewController.swift in Sources */,
@@ -811,6 +884,7 @@
 				58AB9B72273C4CD8005445F3 /* LaunchViewController.swift in Sources */,
 				58A8BA312742CA190022F023 /* ValidatedInput.swift in Sources */,
 				58A8BA332742CB1B0022F023 /* ConstraintHelpers+UIView.swift in Sources */,
+				58A8BA7F274442530022F023 /* WellnessApps.swift in Sources */,
 				58A8BA19273DD7C40022F023 /* Coordinator.swift in Sources */,
 				58A8BA402742E5540022F023 /* BaseTabBarController.swift in Sources */,
 				58A8BA0F273DB2FF0022F023 /* AnimatedShape.swift in Sources */,
@@ -819,19 +893,25 @@
 				58A8BA02273D97210022F023 /* Page.swift in Sources */,
 				58A8BA492742E7930022F023 /* HomeCoordinator.swift in Sources */,
 				58A8B9E3273D87960022F023 /* Angles+CGFloat.swift in Sources */,
-				58A8BA28273F01260022F023 /* Users.swift in Sources */,
+				58A8BA28273F01260022F023 /* UsersAPI.swift in Sources */,
 				58A8BA06273D9F600022F023 /* NextButton.swift in Sources */,
 				58A8BA6327431F6D0022F023 /* WebViewController.swift in Sources */,
+				58A8BA6D2743C8700022F023 /* Banner.swift in Sources */,
 				58AB9B70273C4CD8005445F3 /* SceneDelegate.swift in Sources */,
+				58A8BA82274444350022F023 /* AppCell.swift in Sources */,
 				58A8BA3C2742DF900022F023 /* ExploreViewController.swift in Sources */,
 				58A8BA04273D9B6C0022F023 /* Carousel.swift in Sources */,
 				58A8BA0C273DA96E0022F023 /* PrimaryStorage.swift in Sources */,
+				58A8BA76274418590022F023 /* UserStrikes.swift in Sources */,
 				58A8BA1B273DD7F70022F023 /* ApplicationCoordinator.swift in Sources */,
 				58A8BA5A27431AE70022F023 /* MenuItems.swift in Sources */,
 				58A8BA14273DD0940022F023 /* LoginViewController.swift in Sources */,
 				58A8B9FF273D93090022F023 /* RotatingShape.swift in Sources */,
 				58A8B9DC273C5CB10022F023 /* ViewCode.swift in Sources */,
+				58A8BA7A27441AD10022F023 /* Strike.swift in Sources */,
+				58A8BA78274418900022F023 /* SectionTitle.swift in Sources */,
 				58A8BA26273F010D0022F023 /* User.swift in Sources */,
+				58A8BA692743C4ED0022F023 /* BannerCarousel.swift in Sources */,
 				58A8B9E0273D85330022F023 /* WalkthroughViewController.swift in Sources */,
 				58A8BA21273EF88F0022F023 /* Button.swift in Sources */,
 				58A8BA522742F48C0022F023 /* MenuItemCell.swift in Sources */,

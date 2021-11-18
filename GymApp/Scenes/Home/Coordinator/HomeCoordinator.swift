@@ -9,18 +9,24 @@ import UIKit
 
 class HomeCoordinator: StackBasedCoordinator {
 
-    internal var rootViewController: UIViewController?
-
     var parentCoordinator: TabBasedCoordinator?
 
     var tab: Tab? {
         return .home
     }
 
-    private var navigationController: UINavigationController
+    internal var navigationController: UINavigationController
+    internal var rootViewController: UIViewController?
+    
+    private var isPresentingModal: Bool = false
 
-    init(navigationController: UINavigationController = UINavigationController()) {
+    // dependencies to inject
+    private var homeApi: HomeAPI
+
+    init(navigationController: UINavigationController = UINavigationController(),
+         homeApi: HomeAPI = HomeAPI()) {
         self.navigationController = navigationController
+        self.homeApi = homeApi
     }
     
     func start() -> UIViewController {
@@ -29,7 +35,8 @@ class HomeCoordinator: StackBasedCoordinator {
 
         let homeViewController = HomeViewController(
             flowDelegate: self,
-            profileViewController: profileViewController
+            profileViewController: profileViewController,
+            homeApi: homeApi
         )
 
         navigationController.setViewControllers([homeViewController], animated: false)
@@ -39,23 +46,60 @@ class HomeCoordinator: StackBasedCoordinator {
         return navigationController
     }
     
-    func goToExplore() {
-        parentCoordinator?.moveTo(.explore)
-    }
+    private func showUsersUsageStatsPage() {
+        let url = "https://gympass.com"
+        guard let url = URL(string: url) else { return }
 
-    func goToCheckin() {
-        parentCoordinator?.moveTo(.checkin)
+        let webview = WebViewController(path: url, flowDelegate: self)
+        webview.modalPresentationStyle = .fullScreen
+
+        navigationController.present(webview, animated: true) { [weak self] in
+            self?.isPresentingModal.toggle()
+        }
     }
+    
+    private func showWellnessPage(for app: WellnessAppData) {
+        let url = "https://gympass.com?app=\(app.slug)"
+        guard let url = URL(string: url) else { return }
+
+        let webview = WebViewController(path: url, flowDelegate: self)
+        webview.modalPresentationStyle = .fullScreen
+
+        navigationController.present(webview, animated: true) { [weak self] in
+            self?.isPresentingModal.toggle()
+        }
+    }
+    
 }
 
 extension HomeCoordinator: HomeFlowDelegate {
     
-    func toExploreTab() {
-        parentCoordinator?.moveTo(.explore)
-    }
+    func carouselBannerDidTap(_ bannerData: BannerData) {
+        guard let bannerDestination = bannerData.destination else { return }
 
-    func toCheckinTab() {
-        parentCoordinator?.moveTo(.checkin)
+        guard let tab = Tab(rawValue: bannerDestination.tab) else { return }
+
+        parentCoordinator?.moveTo(tab, passing: bannerDestination.bag)
+    }
+    
+    func userStrikesDidTap() {
+        showUsersUsageStatsPage()
+    }
+    
+    func wellnessAppDidTap(_ appData: WellnessAppData) {
+        showWellnessPage(for: appData)
+    }
+    
+}
+
+extension HomeCoordinator: WebViewFlowDelegate {
+    
+    func webViewDidClose() {
+        guard isPresentingModal else { return }
+
+        navigationController.dismiss(animated: true) { [weak self] in
+            self?.isPresentingModal.toggle()
+        }
     }
     
 }

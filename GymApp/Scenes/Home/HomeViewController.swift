@@ -8,43 +8,76 @@
 import UIKit
 
 protocol HomeFlowDelegate: AnyObject {
-    func toExploreTab()
-    func toCheckinTab()
+    func carouselBannerDidTap(_ bannerData: BannerData)
+    func userStrikesDidTap()
+    func wellnessAppDidTap(_ appData: WellnessAppData)
 }
 
 class HomeViewController: UIViewController {
 
     // MARK: - subviews
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .openSans(.bold, size: 14)
-        label.text = "Home Scene!"
-        return label
+    private lazy var bannerCarousel: BannerCarousel = {
+        let carousel = BannerCarousel()
+        carousel.translatesAutoresizingMaskIntoConstraints = false
+        carousel.delegate = self
+        return carousel
     }()
     
-    private lazy var toExploreButton: Button = {
-        let button = Button()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Go to Explore"
-        return button
+    private lazy var userStrikes: UserStrikes = {
+        let strikes = UserStrikes()
+        strikes.translatesAutoresizingMaskIntoConstraints = false
+        strikes.delegate = self
+        return strikes
+    }()
+    
+    private lazy var wellnessApps: WellnessApps = {
+        let view = WellnessApps()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
+        return view
     }()
 
-    private lazy var toCheckinButton: UIButton = {
-        let button = Button()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Go to Check-in"
-        return button
+    private lazy var contentContainer: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            bannerCarousel,
+            userStrikes,
+            wellnessApps,
+        ])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        return stackView
+    }()
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(contentContainer)
+        return scrollView
     }()
 
     // MARK: - properties
+    var homeData: HomeData? {
+        didSet {
+            if let homeData = homeData {
+                self.updateViews(with: homeData)
+            }
+        }
+    }
+    
     private var flowDelegate: HomeFlowDelegate
     private var profileViewController: ProfileViewController
+    private var homeApi: HomeAPI
 
     // MARK: - view lifecycle
-    init(flowDelegate: HomeFlowDelegate, profileViewController: ProfileViewController) {
+    init(flowDelegate: HomeFlowDelegate,
+         profileViewController: ProfileViewController,
+         homeApi: HomeAPI) {
+
         self.flowDelegate = flowDelegate
         self.profileViewController = profileViewController
+        self.homeApi = homeApi
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -61,19 +94,53 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        toExploreButton.addTarget(self, action: #selector(toExploreButtonTapped(_:)), for: .touchUpInside)
-        toCheckinButton.addTarget(self, action: #selector(toCheckinButtonTapped(_:)), for: .touchUpInside)
+        guard let user = Storage.usersAuthentication else { return }
+        loadData(for: user)
     }
     
-    // MARK: - view methods
-    @objc func toExploreButtonTapped(_ sender: UIButton) {
-        flowDelegate.toExploreTab()
+    // TODO: be sure to implement some empty state for subviews
+    private func loadData(for user: Authentication) {
+        homeApi.getHomeInfo(for: user) { homeData in
+            self.homeData = homeData
+
+        } failureHandler: { [weak self] in
+            self?.showAlert(withTitle: "Error", message: "Couldn't work. Sorry")
+        }
     }
 
-    @objc func toCheckinButtonTapped(_ sender: UIButton) {
-        flowDelegate.toCheckinTab()
+    private func updateViews(with data: HomeData) {
+        bannerCarousel.banners = data.banners
+        userStrikes.strikes = data.userStrikes
+        wellnessApps.apps = data.wellnessApps
     }
 
+}
+
+// MARK: - banner carousel delegation
+extension HomeViewController: BannerCarouselDelegate {
+    
+    func bannerCarouselDelegate(_ carousel: BannerCarousel, didTapBanner data: BannerData) {
+        self.flowDelegate.carouselBannerDidTap(data)
+    }
+    
+}
+
+// MARK: - strikes view delegation
+extension HomeViewController: UserStrikesDelegate {
+    
+    func userStrikesDidTap() {
+        self.flowDelegate.userStrikesDidTap()
+    }
+    
+}
+
+// MARK: - wellness apps view delegation
+extension HomeViewController: WellnessAppsDelegate {
+    
+    func appDidSelect(_ app: WellnessAppData) {
+        self.flowDelegate.wellnessAppDidTap(app)
+    }
+    
 }
 
 extension HomeViewController: ViewCodeController {
@@ -83,9 +150,7 @@ extension HomeViewController: ViewCodeController {
     }
     
     func addViews() {
-        view.addSubview(label)
-        view.addSubview(toExploreButton)
-        view.addSubview(toCheckinButton)
+        view.addSubview(scrollView)
     }
     
     func addChild() {
@@ -101,13 +166,18 @@ extension HomeViewController: ViewCodeController {
     }
 
     func addConstraints() {
-        label.anchorToCenter(of: view)
-        
-        toExploreButton.anchorBelow(of: label, withMargin: 42)
-        toExploreButton.constrainHorizontally(to: view, withMargins: 48)
+        let topMargin = ProfileViewController.LayoutProps.defaultHeight - 12
 
-        toCheckinButton.anchorBelow(of: toExploreButton, withMargin: 12)
-        toCheckinButton.constrainHorizontally(to: view, withMargins: 48)
+        scrollView.constrainToTop(of: view, withMargin: topMargin)
+        scrollView.constrainToBottomAndSides(of: view)
+
+        contentContainer.constrainToTopAndSides(of: scrollView)
+        let bottomConstraint = contentContainer.constrainToBottom(of: scrollView)
+        bottomConstraint.priority = .defaultLow
+
+        contentContainer.anchorToCenterX(of: scrollView)
+        let centerYConstraint = contentContainer.anchorToCenterY(of: scrollView)
+        centerYConstraint.priority = .defaultLow
     }
 
 }

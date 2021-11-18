@@ -9,15 +9,14 @@ import UIKit
 
 class ProfileCoordinator: StackBasedCoordinator {
 
-    internal var rootViewController: UIViewController?
-
     var parentCoordinator: TabBasedCoordinator?
 
     var tab: Tab? {
         return .home
     }
 
-    private var navigationController: UINavigationController
+    internal var rootViewController: UIViewController?
+    internal var navigationController: UINavigationController
     
     private var isPresentingModal: Bool = false
 

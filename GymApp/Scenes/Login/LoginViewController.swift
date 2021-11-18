@@ -128,10 +128,10 @@ class LoginViewController: UIViewController {
     private var passwordValidator = Validator()
 
     private weak var delegate: LoginViewControllerDelegate?
-    private weak var users: Users?
+    private weak var users: UsersAPI?
 
     // MARK: - view lifecycle
-    init(delegate: LoginViewControllerDelegate, users: Users) {
+    init(delegate: LoginViewControllerDelegate, users: UsersAPI) {
         self.delegate = delegate
         self.users = users
         super.init(nibName: nil, bundle: nil)

@@ -156,6 +156,22 @@ extension UIView {
         return constraint
     }
 
+    /// Constrains the trailing of your view code component to the trailing of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view to constrain to the trailing anchor
+    ///     - margin: The margin to apply as the constant of the trailing anchor constraint
+    ///
+    /// - Returns: The activated layout constraint's reference
+    ///
+    @discardableResult
+    func constrainToTrailing(of view: UIView,
+                            withMargin margin: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: margin)
+        NSLayoutConstraint.activate([constraint])
+        return constraint
+    }
+    
     /// Constrains the bottom of your view code component to the bottom of the target view
     ///
     /// - Parameters:
@@ -201,6 +217,54 @@ extension UIView {
 
         NSLayoutConstraint.activate(constraints)
     }
+    
+    /// Constrains the bottom and leading of your view code component to the
+    /// same edges of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view to constrain to
+    ///     - bottomMargin: The margin to apply as the constant of the bottom anchor constraint
+    ///     - leadingMargin: The margin to apply as the constant of the leading anchor constraint
+    ///     - footerSafe: A boolean that flags whether it should use the `safeAreaLayoutGuide`'s
+    ///     bottom anchor instead of the default one
+    ///
+    func constrainToBottomAndLeading(of view: UIView,
+                                  bottomMargin: CGFloat = 0,
+                                  leadingMargin: CGFloat = 0,
+                                  footerSafe: Bool = false) {
+        let bottomAnchor = footerSafe ? view.safeBottomAnchor : view.bottomAnchor
+
+        let constraints = [
+            self.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomMargin),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingMargin),
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    /// Constrains the bottom and trailing of your view code component to the
+    /// same edges of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view to constrain to
+    ///     - bottomMargin: The margin to apply as the constant of the bottom anchor constraint
+    ///     - trailingMargin: The margin to apply as the constant of the trailing anchor constraint
+    ///     - footerSafe: A boolean that flags whether it should use the `safeAreaLayoutGuide`'s
+    ///     bottom anchor instead of the default one
+    ///
+    func constrainToBottomAndTrailing(of view: UIView,
+                                  bottomMargin: CGFloat = 0,
+                                  trailingMargin: CGFloat = 0,
+                                  footerSafe: Bool = false) {
+        let bottomAnchor = footerSafe ? view.safeBottomAnchor : view.bottomAnchor
+
+        let constraints = [
+            self.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomMargin),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailingMargin),
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+    }
 
     /// Constrains the leading and trailing of your view code component to the same edges of the target view
     ///
@@ -213,6 +277,22 @@ extension UIView {
         let constraints = [
             leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalMargin),
             trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalMargin),
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    /// Constrains the top and bottom of your view code component to the same edges of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view to constrain to
+    ///     - horizontalMargin: The margin to apply as the constant of the top and bottom anchor contraints
+    ///
+    func constrainVertically(to view: UIView,
+                               withMargins verticalMargin: CGFloat = 0) {
+        let constraints = [
+            topAnchor.constraint(equalTo: view.topAnchor, constant: verticalMargin),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -verticalMargin),
         ]
 
         NSLayoutConstraint.activate(constraints)
@@ -268,6 +348,22 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
     
+    /// Positions your view code component centering on the X axis of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view to anchor center horizontally
+    ///     - offset: A float representing the offset to apply as the constant of the
+    ///     centerX anchor constraint
+    ///
+    @discardableResult
+    func anchorToCenterX(of view: UIView, withOffset offset: CGFloat = .zero) -> NSLayoutConstraint {
+        let constraint = self.centerXAnchor
+            .constraint(equalTo: view.centerXAnchor, constant: offset)
+
+        NSLayoutConstraint.activate([constraint])
+        return constraint
+    }
+    
     /// Positions your view code component centering on the Y axis of the target view
     ///
     /// - Parameters:
@@ -316,6 +412,21 @@ extension UIView {
             return constraint
         }
 
+    /// Constrains the width of your view code component by the width of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view that have the referenced width anchor
+    ///     - ratio: The `CGFloat` representing the ratio to apply as a multiplier of the width anchor's value
+    ///
+    /// - Returns: The activated layout constraint's reference
+    ///
+    @discardableResult
+    func constrainWidth(referencedBy view: UIView, withRatio ratio: CGFloat = 1) -> NSLayoutConstraint {
+        let constraint = self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: ratio)
+        constraint.isActive = true
+        return constraint
+    }
+    
     /// Constrains the height of your view code component
     ///
     /// - Parameters:
@@ -327,6 +438,21 @@ extension UIView {
     @discardableResult
     func constrainHeight(to constant: CGFloat) -> NSLayoutConstraint {
         let constraint = self.heightAnchor.constraint(equalToConstant: constant)
+        constraint.isActive = true
+        return constraint
+    }
+    
+    /// Constrains the height of your view code component by the height of the target view
+    ///
+    /// - Parameters:
+    ///     - view: The target view that have the referenced height anchor
+    ///     - ratio: The `CGFloat` representing the ratio to apply as a multiplier of the height anchor's value
+    ///
+    /// - Returns: The activated layout constraint's reference
+    ///
+    @discardableResult
+    func constrainHeight(referencedBy view: UIView, withRatio ratio: CGFloat = 1) -> NSLayoutConstraint {
+        let constraint = self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: ratio)
         constraint.isActive = true
         return constraint
     }

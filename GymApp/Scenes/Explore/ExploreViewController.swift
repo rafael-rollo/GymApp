@@ -16,6 +16,20 @@ class ExploreViewController: UIViewController {
         label.text = "Explore Scene!"
         return label
     }()
+    
+    private lazy var sectionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .openSans(size: 12)
+        return label
+    }()
+    
+    var navigationParams: [String : Any]? {
+        didSet {
+            guard let navigationParams = navigationParams else { return }
+            self.navigationParamsDidSet(navigationParams)
+        }
+    }
 
     override func loadView() {
         super.loadView()
@@ -24,6 +38,10 @@ class ExploreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    private func navigationParamsDidSet(_ navigationParams: [String : Any]) {
+        sectionLabel.text = navigationParams["ref"] as? String
     }
 }
 
@@ -35,10 +53,14 @@ extension ExploreViewController: ViewCode {
     
     func addViews() {
         view.addSubview(label)
+        view.addSubview(sectionLabel)
     }
 
     func addConstraints() {
         label.anchorToCenter(of: view)
+        
+        sectionLabel.anchorBelow(of: label, withMargin: 24)
+        sectionLabel.anchorToCenterX(of: label)
     }
 
 }
