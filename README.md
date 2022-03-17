@@ -6,11 +6,10 @@ This project is a study project that helped me to learn some Swift and iOS devel
 
 This project is part of a structured study plan and you can see details below.
 
-![iOS Learning Path - Skill Map and Objectives](https://user-images.githubusercontent.com/13206745/142451019-becb309a-673a-4075-bf99-e46925544003.jpg)
-*iOS Learning Path - Skill Map and Objectives*
+![An image with the iOS learning path, skill map and objectives](https://user-images.githubusercontent.com/13206745/158856964-76eaae1c-4161-4c4a-b51f-5248a833d777.jpg)
+*iOS Learning Path, Skill Map and Objectives*
 
-![Jornada de Aprendizado - iOS (2)](https://user-images.githubusercontent.com/13206745/142453021-c28981c7-c7c6-4629-851f-90e659d9d968.jpg)
-*iOS Learning Path - Practice tasks*
+![An image with the code challenges of the study plan](https://user-images.githubusercontent.com/13206745/158857241-7b54bb89-cf55-4add-86ac-b5e73435dc1b.jpg)
 
 ## Repo organization
 
